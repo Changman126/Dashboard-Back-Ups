@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.1103.2331                                -->
+<workbook source-build='9.3.9 (9300.16.1103.2331)' source-platform='mac' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='grades_persistentsubsectiongrade (lms_read_replica.grades_persistentsubsectiongrade) (lms_read_replica)' inline='true' name='vertica.137am2y1awf0f9153i03o0cyqjha' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='' one-time-sql='' port='5433' schema='lms_read_replica' server='warehouse.analytics.edx.org' username='ahemphill'>
+        <relation name='grades_persistentsubsectiongrade' table='[lms_read_replica].[grades_persistentsubsectiongrade]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>created</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>created</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>modified</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[modified]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>modified</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>usage_key</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[usage_key]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>usage_key</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subtree_edited_timestamp</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[subtree_edited_timestamp]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>subtree_edited_timestamp</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_version</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_version]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>course_version</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>earned_all</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[earned_all]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>earned_all</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>possible_all</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[possible_all]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>possible_all</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>earned_graded</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[earned_graded]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>earned_graded</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>possible_graded</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[possible_graded]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>possible_graded</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>visible_blocks_hash</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[visible_blocks_hash]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>visible_blocks_hash</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_attempted</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[first_attempted]</local-name>
+            <parent-name>[grades_persistentsubsectiongrade]</parent-name>
+            <remote-alias>first_attempted</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='subsection_pct' datatype='real' name='[Calculation_3739676589334597632]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[earned_graded]/[possible_graded]' />
+      </column>
+      <column datatype='integer' name='[Earned Graded (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='0' formula='[earned_graded]' peg='0' size='1' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+      <column caption='Course Version' datatype='string' name='[course_version]' role='dimension' type='nominal' />
+      <column caption='Created' datatype='datetime' name='[created]' role='dimension' type='ordinal' />
+      <column caption='Earned All' datatype='real' name='[earned_all]' role='measure' type='quantitative' />
+      <column caption='Earned Graded' datatype='real' name='[earned_graded]' role='measure' type='quantitative' />
+      <column caption='First Attempted' datatype='datetime' name='[first_attempted]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Modified' datatype='datetime' name='[modified]' role='dimension' type='ordinal' />
+      <column caption='Possible All' datatype='real' name='[possible_all]' role='measure' type='quantitative' />
+      <column caption='Possible Graded' datatype='real' name='[possible_graded]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[subsection_pct (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-1' formula='[Calculation_3739676589334597632]' peg='0' size='0.1' />
+      </column>
+      <column caption='Subtree Edited Timestamp' datatype='datetime' name='[subtree_edited_timestamp]' role='dimension' type='ordinal' />
+      <column caption='Usage Key' datatype='string' name='[usage_key]' role='dimension' type='nominal' />
+      <column caption='User Id' datatype='integer' name='[user_id]' role='dimension' type='ordinal' />
+      <column caption='Visible Blocks Hash' datatype='string' name='[visible_blocks_hash]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.537449' measure-ordering='alphabetic' measure-percentage='0.462551' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[subsection_pct (bin)]' type='palette'>
+            <map to='#09622a'>
+              <bucket>10</bucket>
+            </map>
+            <map to='#136b2e'>
+              <bucket>9</bucket>
+            </map>
+            <map to='#1c7533'>
+              <bucket>8</bucket>
+            </map>
+            <map to='#247e39'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#2b893e'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#339444'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#539f55'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#71ab67'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#8bb77c'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#a4c396'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#bccfb4'>
+              <bucket>0</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='grades_persistentsubsectiongrade (lms_read_replica.grades_persistentsubsectiongrade) (lms_read_replica)' name='vertica.137am2y1awf0f9153i03o0cyqjha' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.137am2y1awf0f9153i03o0cyqjha'>
+            <column caption='subsection_pct' datatype='real' name='[Calculation_3739676589334597632]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[earned_graded]/[possible_graded]' />
+            </column>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column caption='Earned Graded' datatype='real' name='[earned_graded]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_3739676589334597632]' derivation='None' name='[none:Calculation_3739676589334597632:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[course_id]' derivation='None' name='[none:course_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[usage_key]' derivation='None' name='[none:usage_key:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3739676589334597632]' derivation='Count' name='[pcto:cnt:Calculation_3739676589334597632:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.137am2y1awf0f9153i03o0cyqjha].[subsection_pct (bin)]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+            <column caption='Possible Graded' datatype='real' name='[possible_graded]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[subsection_pct (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-1' formula='[Calculation_3739676589334597632]' peg='0' size='0.1' />
+            </column>
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+            <column caption='Usage Key' datatype='string' name='[usage_key]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:Calculation_3739676589334597632:qk]' included-values='in-range'>
+            <min>0.0</min>
+            <max>1.0</max>
+          </filter>
+          <filter class='categorical' column='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:course_id:nk]'>
+            <groupfilter function='member' level='[none:course_id:nk]' member='&quot;course-v1:ETSx+TOEFLx+1T2017&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:usage_key:nk]'>
+            <groupfilter function='level-members' level='[none:usage_key:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:course_id:nk]</column>
+            <column>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:usage_key:nk]</column>
+            <column>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:Calculation_3739676589334597632:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:usage_key:nk]' value='-90' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[vertica.137am2y1awf0f9153i03o0cyqjha].[subsection_pct (bin)]' />
+              <text column='[vertica.137am2y1awf0f9153i03o0cyqjha].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-transparency' value='255' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.137am2y1awf0f9153i03o0cyqjha].[pcto:cnt:Calculation_3739676589334597632:qk:3]</rows>
+        <cols>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:usage_key:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='28'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.137am2y1awf0f9153i03o0cyqjha].[subsection_pct (bin)]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='checkdropdown' param='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:course_id:nk]' type='filter' />
+            <card mode='checkdropdown' param='[vertica.137am2y1awf0f9153i03o0cyqjha].[none:usage_key:nk]' type='filter' values='relevant' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:Calculation_3739676589334597632:qk]</field>
+            <field>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:course_id:nk]</field>
+            <field>[vertica.137am2y1awf0f9153i03o0cyqjha].[none:earned_graded:ok]</field>
+            <field>[vertica.137am2y1awf0f9153i03o0cyqjha].[subsection_pct (bin)]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      AZ/Ts6vP/X+GNjN/EFBFkgAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

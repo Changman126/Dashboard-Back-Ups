@@ -1,0 +1,3096 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' inline='true' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='ed_services' server='10.5.3.246' username='ojchang'>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[mm_days_between_engagement].[course_id]' />
+              <expression op='[micromasters].[course_id]' />
+            </expression>
+          </clause>
+          <relation name='mm_days_between_engagement' table='[ed_services].[mm_days_between_engagement]' type='table' />
+          <relation name='micromasters' table='[ed_services].[micromasters]' type='table' />
+        </relation>
+        <cols>
+          <map key='[catalog_course]' value='[micromasters].[catalog_course]' />
+          <map key='[catalog_course_title]' value='[micromasters].[catalog_course_title]' />
+          <map key='[course_id (micromasters)]' value='[micromasters].[course_id]' />
+          <map key='[course_id]' value='[mm_days_between_engagement].[course_id]' />
+          <map key='[created]' value='[micromasters].[created]' />
+          <map key='[date_diff]' value='[mm_days_between_engagement].[date_diff]' />
+          <map key='[engaged_users]' value='[mm_days_between_engagement].[engaged_users]' />
+          <map key='[id]' value='[micromasters].[id]' />
+          <map key='[org_id]' value='[micromasters].[org_id]' />
+          <map key='[partner_short_code]' value='[micromasters].[partner_short_code]' />
+          <map key='[program_id]' value='[micromasters].[program_id]' />
+          <map key='[program_title]' value='[micromasters].[program_title]' />
+          <map key='[program_type]' value='[micromasters].[program_type]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date_diff</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[date_diff]</local-name>
+            <parent-name>[mm_days_between_engagement]</parent-name>
+            <remote-alias>date_diff</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[mm_days_between_engagement]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>256</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>engaged_users</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[engaged_users]</local-name>
+            <parent-name>[mm_days_between_engagement]</parent-name>
+            <remote-alias>engaged_users</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>36</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_type]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_type</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>32</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_title]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_title</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catalog_course</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catalog_course]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>catalog_course</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catalog_course_title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catalog_course_title]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>catalog_course_title</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id (micromasters)]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>org_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[org_id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>org_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>partner_short_code</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[partner_short_code]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>partner_short_code</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>created</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+        <aliases>
+          <alias key='%null%' value='Didn&apos;t Return' />
+          <alias key='0' value='Week 1' />
+          <alias key='1' value='Week 2' />
+          <alias key='2' value='Week 3' />
+        </aliases>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Catalog Course' datatype='string' name='[catalog_course]' role='dimension' type='nominal' />
+      <column caption='Catalog Course Title' datatype='string' name='[catalog_course_title]' role='dimension' type='nominal' />
+      <column caption='Course Id (Micromasters)' datatype='string' name='[course_id (micromasters)]' role='dimension' type='nominal' />
+      <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+      <column caption='Created' datatype='datetime' name='[created]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+        <aliases>
+          <alias key='%null%' value='Didn&apos;t Return' />
+        </aliases>
+      </column>
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      <column caption='Partner Short Code' datatype='string' name='[partner_short_code]' role='dimension' type='nominal' />
+      <column caption='Program Id' datatype='string' name='[program_id]' role='dimension' type='nominal' />
+      <column caption='Program Title' datatype='string' name='[program_title]' role='dimension' type='nominal' />
+      <column caption='Program Type' datatype='string' name='[program_type]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.691589' measure-ordering='alphabetic' measure-percentage='0.308411' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' inline='true' name='vertica.0n510531ueh3p216qu5501a83deg' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='ed_services' server='10.5.3.246' username='ojchang'>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[mm_days_between_active].[course_id]' />
+              <expression op='[micromasters].[course_id]' />
+            </expression>
+          </clause>
+          <relation name='mm_days_between_active' table='[ed_services].[mm_days_between_active]' type='table' />
+          <relation name='micromasters' table='[ed_services].[micromasters]' type='table' />
+        </relation>
+        <cols>
+          <map key='[active_users]' value='[mm_days_between_active].[active_users]' />
+          <map key='[catalog_course]' value='[micromasters].[catalog_course]' />
+          <map key='[catalog_course_title]' value='[micromasters].[catalog_course_title]' />
+          <map key='[course_id (micromasters)]' value='[micromasters].[course_id]' />
+          <map key='[course_id]' value='[mm_days_between_active].[course_id]' />
+          <map key='[created]' value='[micromasters].[created]' />
+          <map key='[date_diff]' value='[mm_days_between_active].[date_diff]' />
+          <map key='[id]' value='[micromasters].[id]' />
+          <map key='[org_id]' value='[micromasters].[org_id]' />
+          <map key='[partner_short_code]' value='[micromasters].[partner_short_code]' />
+          <map key='[program_id]' value='[micromasters].[program_id]' />
+          <map key='[program_title]' value='[micromasters].[program_title]' />
+          <map key='[program_type]' value='[micromasters].[program_type]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date_diff</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[date_diff]</local-name>
+            <parent-name>[mm_days_between_active]</parent-name>
+            <remote-alias>date_diff</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[mm_days_between_active]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>256</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active_users</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[active_users]</local-name>
+            <parent-name>[mm_days_between_active]</parent-name>
+            <remote-alias>active_users</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>36</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_type]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_type</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>32</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>program_title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[program_title]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>program_title</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catalog_course</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catalog_course]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>catalog_course</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catalog_course_title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[catalog_course_title]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>catalog_course_title</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id (micromasters)]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>org_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[org_id]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>org_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>partner_short_code</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[partner_short_code]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>partner_short_code</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created]</local-name>
+            <parent-name>[micromasters]</parent-name>
+            <remote-alias>created</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+        <aliases>
+          <alias key='%null%' value='Didn&apos;t Return' />
+          <alias key='0' value='Week 1' />
+          <alias key='1' value='Week 2' />
+          <alias key='2' value='Week 3' />
+        </aliases>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+      <column caption='Catalog Course' datatype='string' name='[catalog_course]' role='dimension' type='nominal' />
+      <column caption='Catalog Course Title' datatype='string' name='[catalog_course_title]' role='dimension' type='nominal' />
+      <column caption='Course Id (Micromasters)' datatype='string' name='[course_id (micromasters)]' role='dimension' type='nominal' />
+      <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+      <column caption='Created' datatype='datetime' name='[created]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+        <aliases>
+          <alias key='%null%' value='Didn&apos;t Return' />
+        </aliases>
+      </column>
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      <column caption='Partner Short Code' datatype='string' name='[partner_short_code]' role='dimension' type='nominal' />
+      <column caption='Program Id' datatype='string' name='[program_id]' role='dimension' type='nominal' />
+      <column caption='Program Title' datatype='string' name='[program_title]' role='dimension' type='nominal' />
+      <column caption='Program Type' datatype='string' name='[program_type]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.691589' measure-ordering='alphabetic' measure-percentage='0.308411' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Active Michigan Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[date_diff]' derivation='None' name='[none:date_diff:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</rows>
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Active Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[date_diff]' derivation='None' name='[none:date_diff:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;PennX&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='height-header' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</rows>
+        <cols />
+        <show-full-range>
+          <column>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Binned Active Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;PennX&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='height-header' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</rows>
+        <cols />
+        <show-full-range>
+          <column>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Binned Active Users Michigan'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</rows>
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Binned Engaged Michigan Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</rows>
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Binned Engaged Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;RITx&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</rows>
+        <cols />
+        <show-full-range>
+          <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Engaged Michigan Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[date_diff]' derivation='None' name='[none:date_diff:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</rows>
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Engaged Users'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[date_diff]' derivation='None' name='[none:date_diff:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;RITx&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</rows>
+        <cols />
+        <show-full-range>
+          <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 10'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Michigan MicroMasters</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Date Diff (bin)]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[Date Diff (bin)]' member='20' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='21' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='22' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='23' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='24' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='25' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='26' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='28' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='30' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='31' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='32' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='34' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='35' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='36' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' value='0' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</rows>
+        <cols>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>%null%</value>
+                <value>0.49165660090368185</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>0</value>
+                <value>0.34107278665056145</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1</value>
+                <value>0.062430098868160873</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 11'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>All Other Programs</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Date Diff (bin)]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[Date Diff (bin)]' member='15' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='16' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='17' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='18' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='19' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='20' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='21' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='22' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='23' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='24' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='25' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='26' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='27' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='28' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='29' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='30' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='31' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='32' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='33' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='34' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='35' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='36' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='37' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='38' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='39' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='40' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='41' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='42' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='43' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='44' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='45' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='46' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='47' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='48' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='49' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;RITx&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</rows>
+        <cols>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>%null%</value>
+                <value>0.44163591440025118</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>0</value>
+                <value>0.39990535430706159</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1</value>
+                <value>0.092325053351959119</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>2</value>
+                <value>0.026746508802504471</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 12'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Michigan MicroMasters</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column datatype='integer' name='[engaged_users]' role='measure' type='quantitative' />
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[engaged_users]' derivation='Sum' name='[pcto:sum:engaged_users:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Date Diff (bin)]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[Date Diff (bin)]' member='15' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='16' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='17' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='18' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='19' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='20' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='21' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='23' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]'>
+            <groupfilter function='member' level='[none:org_id:nk]' member='&quot;MichiganX&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</rows>
+        <cols>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>%null%</value>
+                <value>0.49112525117213662</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>0</value>
+                <value>0.349715338245144</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1</value>
+                <value>0.077235432016075023</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+                  <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[pcto:sum:engaged_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>2</value>
+                <value>0.025661419959812456</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 9'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>All Other MicroMasters</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+            <column caption='Date Diff (bin)' datatype='integer' name='[Date Diff (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='0' formula='[date_diff]' peg='0' size='7' />
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+                <alias key='0' value='Week 1' />
+                <alias key='1' value='Week 2' />
+                <alias key='2' value='Week 3' />
+              </aliases>
+            </column>
+            <column caption='Active Users' datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column aggregation='Sum' caption='Date Diff' datatype='integer' name='[date_diff]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='%null%' value='Didn&apos;t Return' />
+              </aliases>
+            </column>
+            <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+            <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+            <column-instance column='[active_users]' derivation='Sum' name='[pcto:sum:active_users:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Date Diff (bin)]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[Date Diff (bin)]' member='20' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='21' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='22' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='23' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='24' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='25' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='26' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='27' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='28' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='29' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='30' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='31' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='32' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='33' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='34' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='35' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='36' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='37' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='38' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='39' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='40' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='41' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='42' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='43' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='44' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='45' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='46' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='47' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='48' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='49' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='50' />
+                <groupfilter function='member' level='[Date Diff (bin)]' member='51' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter from='&quot;ANUx&quot;' function='range' level='[none:org_id:nk]' to='&quot;MITx&quot;' />
+              <groupfilter from='&quot;PennX&quot;' function='range' level='[none:org_id:nk]' to='&quot;WageningenX&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]' value='0' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</rows>
+        <cols>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>%null%</value>
+                <value>0.44471981726226195</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>0</value>
+                <value>0.36558640963709615</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+                  <field>[vertica.0n510531ueh3p216qu5501a83deg].[pcto:sum:active_users:qk:3]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>1</value>
+                <value>0.077040798317844661</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Active Comparison'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' />
+      <datasources>
+        <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+      </datasources>
+      <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+        <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+        <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='100000' id='1' name='Active Users' show-title='true' w='21666' x='0' y='0' />
+              <zone h='100000' id='9' name='Binned Active Users' show-title='true' w='21666' x='43334' y='0' />
+              <zone h='100000' id='11' name='Binned Active Users Michigan' show-title='true' w='21667' x='65000' y='0' />
+              <zone h='100000' id='7' name='Active Michigan Users' show-title='true' w='21668' x='21666' y='0' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='7000' id='6' mode='checkdropdown' name='Active Users' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='0' />
+              <zone h='6500' id='8' mode='checkdropdown' name='Active Michigan Users' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='7000' />
+              <zone h='6500' id='10' mode='checkdropdown' name='Binned Active Users' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='13500' />
+              <zone h='6500' id='12' mode='checkdropdown' name='Binned Active Users Michigan' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='20000' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Binned Active Users Graphs'>
+      <style />
+      <size maxheight='1000' maxwidth='1200' minheight='1000' minwidth='1200' />
+      <datasources>
+        <datasource caption='mm_days_between_active (ed_services.mm_days_between_active)+ (ed_services)' name='vertica.0n510531ueh3p216qu5501a83deg' />
+      </datasources>
+      <datasource-dependencies datasource='vertica.0n510531ueh3p216qu5501a83deg'>
+        <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+        <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='50000' id='1' name='Sheet 9' show-title='true' w='86667' x='0' y='0' />
+              <zone h='50000' id='7' name='Sheet 10' show-title='true' w='86667' x='0' y='50000' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='46800' id='6' name='Sheet 9' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='0' />
+              <zone h='46400' id='8' name='Sheet 10' param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' w='13333' x='86667' y='46800' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Binned Engaged Users Graph'>
+      <style />
+      <size maxheight='1000' maxwidth='1200' minheight='1000' minwidth='1200' />
+      <datasources>
+        <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+      </datasources>
+      <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+        <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+        <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='50000' id='1' name='Sheet 11' show-title='true' w='86667' x='0' y='0' />
+              <zone h='50000' id='7' name='Sheet 12' show-title='true' w='86667' x='0' y='50000' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='36000' id='6' name='Sheet 11' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='0' />
+              <zone h='35600' id='8' name='Sheet 12' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='36000' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Engaged Comparison'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' />
+      <datasources>
+        <datasource caption='mm_days_between_engagement (ed_services.mm_days_between_engagement)+ (ed_services)' name='vertica.044xzr01et8gmc1ezi9pg1go3piz' />
+      </datasources>
+      <datasource-dependencies datasource='vertica.044xzr01et8gmc1ezi9pg1go3piz'>
+        <column-instance column='[org_id]' derivation='None' name='[none:org_id:nk]' pivot='key' type='nominal' />
+        <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='100000' id='1' name='Engaged Users' show-title='true' w='21666' x='0' y='0' />
+              <zone h='100000' id='9' name='Binned Engaged Users' show-title='true' w='21666' x='43334' y='0' />
+              <zone h='100000' id='11' name='Binned Engaged Michigan Users' show-title='true' w='21667' x='65000' y='0' />
+              <zone h='100000' id='7' name='Engaged Michigan Users' show-title='true' w='21668' x='21666' y='0' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='7000' id='6' mode='checkdropdown' name='Engaged Users' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='0' />
+              <zone h='6500' id='8' mode='checkdropdown' name='Engaged Michigan Users' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='7000' />
+              <zone h='6500' id='10' mode='checkdropdown' name='Binned Engaged Users' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='13500' />
+              <zone h='6500' id='12' mode='checkdropdown' name='Binned Engaged Michigan Users' param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' w='13333' x='86667' y='20000' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='56'>
+    <window class='dashboard' name='Binned Active Users Graphs'>
+      <viewpoints>
+        <viewpoint name='Sheet 10'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Sheet 9'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' maximized='true' name='Binned Engaged Users Graph'>
+      <viewpoints>
+        <viewpoint name='Sheet 11'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Sheet 12'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' name='Active Comparison'>
+      <viewpoints>
+        <viewpoint name='Active Michigan Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Active Users'>
+          <zoom type='fit-width' />
+          <selection-collection>
+            <node-selection select-tuples='false'>
+              <oriented-node-reference orientation='vertical'>
+                <node-reference>
+                  <fields>
+                    <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+                  </fields>
+                  <multibucket>
+                    <bucket>%null%</bucket>
+                  </multibucket>
+                </node-reference>
+                <page-reference />
+              </oriented-node-reference>
+            </node-selection>
+          </selection-collection>
+        </viewpoint>
+        <viewpoint name='Binned Active Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Binned Active Users Michigan'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='dashboard' name='Engaged Comparison'>
+      <viewpoints>
+        <viewpoint name='Binned Engaged Michigan Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Binned Engaged Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Engaged Michigan Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Engaged Users'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='worksheet' hidden='true' name='Active Michigan Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Active Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Binned Active Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Binned Active Users Michigan'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Binned Engaged Michigan Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Binned Engaged Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Engaged Michigan Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Engaged Users'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 10'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 11'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 12'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[Date Diff (bin)]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:date_diff:ok]</field>
+            <field>[vertica.044xzr01et8gmc1ezi9pg1go3piz].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 9'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[Date Diff (bin)]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:date_diff:ok]</field>
+            <field>[vertica.0n510531ueh3p216qu5501a83deg].[none:org_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Binned Active Users Graphs' width='192'>
+      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
+      SpEuDqJi/H/9w8gml2FLTwAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Binned Engaged Users Graph' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Active Comparison' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Engaged Comparison' width='192'>
+      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
+      oQAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

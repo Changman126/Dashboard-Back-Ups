@@ -1,0 +1,967 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xml:base='https://tableau.analytics.edx.org' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location id='BI-145PartnerActiveLearnersReport' path='/workbooks' revision='1.2' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='active_users+ (business_intelligence)' inline='true' name='vertica.03yagnz1ydo8cz19r10zy05911fj' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='business_intelligence' server='10.5.3.246' server-oauth='' server-userid='58' username='ojchang' workgroup-auth-mode='prompt'>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[active_users].[course_partner]' />
+              <expression op='[total_enrollments].[course_partner]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[active_users].[course_partner]' />
+                <expression op='[new_enrollments].[course_partner]' />
+              </expression>
+            </clause>
+            <relation join='left' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[active_users].[course_partner]' />
+                  <expression op='[registrations].[course_partner]' />
+                </expression>
+              </clause>
+              <relation name='active_users' type='text'>SELECT&#13;&#10;&#9;course_partner,&#13;&#10;&#9;COUNT(DISTINCT user_id) AS active_users&#13;&#10;FROM&#13;&#10;&#9;production.f_user_activity activity&#13;&#10;LEFT JOIN&#13;&#10;&#9;business_intelligence.course_master course_master&#13;&#10;ON&#13;&#10;&#9;activity.course_id = course_master.course_id&#13;&#10;GROUP BY&#13;&#10;&#9;course_partner</relation>
+              <relation name='registrations' type='text'>SELECT&#13;&#10;&#9;course_partner,&#13;&#10;&#9;SUM(cnt_registrations) AS registrations&#13;&#10;FROM&#13;&#10;&#9;business_intelligence.cnt_registrations_course registrations&#13;&#10;LEFT JOIN&#13;&#10;&#9;business_intelligence.course_master course_master&#13;&#10;ON&#13;&#10;&#9;registrations.course_id = course_master.course_id&#13;&#10;GROUP BY&#13;&#10;&#9;course_partner</relation>
+            </relation>
+            <relation name='new_enrollments' type='text'>SELECT&#13;&#10;&#9;course_partner,&#13;&#10;&#9;COUNT(*) AS new_enrollments&#13;&#10;FROM&#13;&#10;&#9;(&#13;&#10;&#9;&#9;SELECT&#13;&#10;&#9;&#9;&#9;user_id,&#13;&#10;&#9;&#9;&#9;course_id,&#13;&#10;&#9;&#9;&#9;first_enrollment_time,&#13;&#10;&#9;&#9;&#9;row_number() OVER (PARTITION BY user_id ORDER BY first_enrollment_time) AS rank&#13;&#10;&#9;&#9;FROM&#13;&#10;&#9;&#9;&#9;production.d_user_course&#13;&#10;&#9;) new_enrolls&#13;&#10;LEFT JOIN&#13;&#10;&#9;business_intelligence.course_master course_master&#13;&#10;ON&#13;&#10;&#9;new_enrolls.course_id = course_master.course_id&#13;&#10;WHERE&#13;&#10;&#9;rank = 1&#13;&#10;GROUP BY&#13;&#10;&#9;course_partner</relation>
+          </relation>
+          <relation name='total_enrollments' type='text'>SELECT&#13;&#10;&#9;course_partner,&#13;&#10;&#9;SUM(sum_enrolls) AS enrolls&#13;&#10;FROM&#13;&#10;&#9;business_intelligence.course_stats_summary css&#13;&#10;LEFT JOIN&#13;&#10;&#9;business_intelligence.course_master cm&#13;&#10;ON&#13;&#10;&#9;css.course_id = cm.course_id&#13;&#10;GROUP BY&#13;&#10;&#9;course_partner</relation>
+        </relation>
+        <cols>
+          <map key='[active_users]' value='[active_users].[active_users]' />
+          <map key='[course_partner (custom_sql_query) #1]' value='[new_enrollments].[course_partner]' />
+          <map key='[course_partner (custom_sql_query) #2]' value='[total_enrollments].[course_partner]' />
+          <map key='[course_partner (custom_sql_query)]' value='[registrations].[course_partner]' />
+          <map key='[course_partner]' value='[active_users].[course_partner]' />
+          <map key='[enrolls]' value='[total_enrollments].[enrolls]' />
+          <map key='[new_enrollments]' value='[new_enrollments].[new_enrollments]' />
+          <map key='[registrations]' value='[registrations].[registrations]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner]</local-name>
+            <parent-name>[active_users]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>active_users</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[active_users]</local-name>
+            <parent-name>[active_users]</parent-name>
+            <remote-alias>active_users</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner (custom_sql_query)]</local-name>
+            <parent-name>[registrations]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>registrations</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[registrations]</local-name>
+            <parent-name>[registrations]</parent-name>
+            <remote-alias>registrations</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner (custom_sql_query) #1]</local-name>
+            <parent-name>[new_enrollments]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>new_enrollments</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[new_enrollments]</local-name>
+            <parent-name>[new_enrollments]</parent-name>
+            <remote-alias>new_enrollments</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner (custom_sql_query) #2]</local-name>
+            <parent-name>[total_enrollments]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>enrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[enrolls]</local-name>
+            <parent-name>[total_enrollments]</parent-name>
+            <remote-alias>enrolls</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='% Active Learners' datatype='real' name='[Calculation_626844780754665472]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[active_users]/[enrolls]' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.486417' measure-ordering='alphabetic' measure-percentage='0.513583' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Partner Active Learners Report'>
+      <layout-options>
+        <caption>
+          <formatted-text>
+            <run bold='true'>*active_users are those who are &quot;active&quot; within the last 12 months&#10;&#10;*% Active Learners = active_users/Total Enrollments</run>
+          </formatted-text>
+        </caption>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='active_users+ (business_intelligence)' name='vertica.03yagnz1ydo8cz19r10zy05911fj' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.03yagnz1ydo8cz19r10zy05911fj'>
+            <column caption='% Active Learners' datatype='real' name='[Calculation_626844780754665472]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[active_users]/[enrolls]' />
+            </column>
+            <column datatype='integer' name='[active_users]' role='measure' type='quantitative' />
+            <column datatype='string' name='[course_partner]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[enrolls]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[new_enrollments]' role='measure' type='quantitative' />
+            <column-instance column='[course_partner]' derivation='None' name='[none:course_partner:nk]' pivot='key' type='nominal' />
+            <column datatype='integer' name='[registrations]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_626844780754665472]' derivation='Sum' name='[sum:Calculation_626844780754665472:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[active_users]' derivation='Sum' name='[sum:active_users:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[new_enrollments]' derivation='Sum' name='[sum:new_enrollments:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[registrations]' derivation='Sum' name='[sum:registrations:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.03yagnz1ydo8cz19r10zy05911fj].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:Calculation_626844780754665472:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:active_users:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:new_enrollments:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:registrations:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[vertica.03yagnz1ydo8cz19r10zy05911fj].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:active_users:qk]&quot;</bucket>
+              <bucket>&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:Calculation_626844780754665472:qk]&quot;</bucket>
+              <bucket>&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:new_enrollments:qk]&quot;</bucket>
+              <bucket>&quot;[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:registrations:qk]&quot;</bucket>
+            </dictionary>
+          </sort>
+          <filter class='categorical' column='[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ACCA&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ANUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ASUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;AdelaideX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;AmnestyInternationalX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BAx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BITSx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BabsonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BerkeleyX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BerkleeX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;BrownX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CTX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CaltechDelftX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CaltechX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CatalystX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Catalystx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ChalmersX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ColgateX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ColumbiaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CooperUnion&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CornellX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CornellX_UQx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Course_Re-runs&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;CurtinX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;DartmouthX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;DavidsonNext&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;DavidsonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;DelftWageningenX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;DelftX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Delftx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;EFPLx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;EPFLx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ETHx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ETSx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;EdX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;EdinburghX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;FullbridgeX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;GEMSx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;GTx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;GalileoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;GeorgetownX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HKPolyUX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HKPolyUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HKUSTx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HKUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HamiltonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HarvardMedGlobalAcademy&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HarvardX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HarvardXPLUS&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Harvardx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;HarveyMuddX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IDBx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IEEEx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IIMBx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IITBombayX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IMF&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IMFx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IMTx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IRTIx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ITMOx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;ImperialBusinessX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;IsraelX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;JAx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;JaverianaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;JuilliardOpenClassroom&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;JuilliardX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KIx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KTHx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KULeuvenX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KironX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KyotoUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;KyotoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;LinuxFoundationX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;LouvainX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MEPhIx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MISISx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MISiSx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MITProfX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MITProfessionalX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MITx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MandarinX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;McGillX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MexicoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MichiganX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Microsoft&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;MongoDBx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;NYIF&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;NewcastleX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;NotreDameX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;OECx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;OpenedX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;OsakaUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;OsakaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;OxfordX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PKUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Peking&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PekingX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PennX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PerkinsX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PrincetonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;PurdueX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RICEx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RITx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RWTHTUMx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RWTHx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RedHat&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RiceX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;RicexX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SMES&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SNUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SaveALifeX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SchoolYourself&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SmithX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SmithsonianX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;SorbonneX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TBRx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TUMx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TeachForAmericaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TeachersCollegeX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TecdeMonterreyX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TenarisUniversityX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TokyoTechX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TrinityX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;TsinghuaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UAMx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UBCx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UC3Mx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UCSDx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UCSanDiegoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UChicagoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UNINA&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UPMCx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UPV&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UPValenciaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UPValenciax&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UQx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;USMx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTArlingtonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTAustinX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTAustinXProfEd&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTAx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTHealthSPHx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTMBx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTPermianBasin&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTSanAntonioX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTennesseeX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UTokyoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UWashingtonX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;University_of_TorontoX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;UrFUx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;VEDA&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;VJx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;VictoriaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;W3Cx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WBGx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WageningenX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WasedaX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WellesleyX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WestonHS&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;Wharton&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WhartonOnlineProfessionalEd&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;WitsX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;edX&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;edx&quot;' />
+              <groupfilter function='member' level='[none:course_partner:nk]' member='&quot;tennessee&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='computed' column='[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]' direction='DESC' using='[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:registrations:qk]' />
+          <slices>
+            <column>[vertica.03yagnz1ydo8cz19r10zy05911fj].[:Measure Names]</column>
+            <column>[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[vertica.03yagnz1ydo8cz19r10zy05911fj].[:Measure Names]' value='144' />
+            <format attr='text-format' field='[vertica.03yagnz1ydo8cz19r10zy05911fj].[sum:Calculation_626844780754665472:qk]' value='p0.00%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.03yagnz1ydo8cz19r10zy05911fj].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]</rows>
+        <cols>[vertica.03yagnz1ydo8cz19r10zy05911fj].[:Measure Names]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='32'>
+    <window class='worksheet' maximized='true' name='Partner Active Learners Report'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='checkdropdown' param='[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]' type='filter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='71'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.03yagnz1ydo8cz19r10zy05911fj].[none:course_partner:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Partner Active Learners Report' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.1103.2331                                -->
+<workbook source-build='9.3.9 (9300.16.1103.2331)' source-platform='mac' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='zero_certs (business_intelligence)' inline='true' name='sqlproxy.0qaj6fo1woc4z917eth270h7von3' version='9.3'>
+      <repository-location id='zero_certsbusiness_intelligence' path='/datasources' revision='1.0' />
+      <connection channel='https' class='sqlproxy' dbname='zero_certsbusiness_intelligence' directory='/dataserver' port='443' server='https://tableau.analytics.edx.org' username='ahemphill'>
+        <relation name='sqlproxy' table='[sqlproxy]' type='table' />
+        <calculations>
+          <calculation column='[Number of Records]' formula='1' />
+        </calculations>
+        <metadata-records>
+          <metadata-record class='measure'>
+            <remote-name>Number of Records</remote-name>
+            <remote-type>16</remote-type>
+            <local-name>[Number of Records]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>Number of Records</remote-alias>
+            <ordinal>9</ordinal>
+            <layered>true</layered>
+            <caption>Number of Records</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+              <attribute datatype='string' name='formula'>&quot;1&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>catalog_course_title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[catalog_course_title]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>catalog_course_title</remote-alias>
+            <ordinal>1</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>cnt_certs</remote-name>
+            <remote-type>16</remote-type>
+            <local-name>[cnt_certs]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>cnt_certs</remote-alias>
+            <ordinal>2</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>cnt_verified_enrolls</remote-name>
+            <remote-type>16</remote-type>
+            <local-name>[cnt_verified_enrolls]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>cnt_verified_enrolls</remote-alias>
+            <ordinal>3</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>4</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[end_time]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>end_time</remote-alias>
+            <ordinal>5</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='field-type'>1</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pacing_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[pacing_type]</local-name>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias>pacing_type</remote-alias>
+            <ordinal>6</ordinal>
+            <layered>true</layered>
+            <family>zero_certs</family>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='integer' name='field-type'>2</attribute>
+              <attribute datatype='integer' name='role'>0</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sqlproxy]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='boolean' name='CAP_64BIT_CALCULATIONS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_CREATE_TEMP_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_ALWAYS_USE_LOCAL_MAPPING_TABLES'>false</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_PREFER_LOCAL_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_BLENDING_REMOTE_MAPPING_TABLES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_EXTRACT_RANGES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SORT_BY'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERIES'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_SUPPORTS_LODJOINS'>true</attribute>
+              <attribute datatype='boolean' name='CAP_QUERY_USE_QUERY_FUSION'>false</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_LEFT'>true</attribute>
+              <attribute datatype='boolean' name='CAP_SUPPORTS_SPLIT_FROM_RIGHT'>true</attribute>
+              <attribute datatype='integer' name='charset'>0</attribute>
+              <attribute datatype='string' name='class'>&quot;dataengine&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='datasource'>&quot;&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos; ?&gt;&#10;&#10;&lt;datasource :source-version=&apos;9.3&apos; formatted-name=&apos;repoItem7055771838757356753&apos; inline=&apos;true&apos; version=&apos;9.3&apos; xml:base=&apos;https://tableau.analytics.edx.org&apos; xmlns:user=&apos;http://www.tableausoftware.com/xml/user&apos;&gt;&#10;  &lt;repository-location id=&apos;zero_certsbusiness_intelligence&apos; path=&apos;/datasources&apos; revision=&apos;1.0&apos; /&gt;&#10;  &lt;connection channel=&apos;https&apos; class=&apos;sqlproxy&apos; dbname=&apos;zero_certsbusiness_intelligence&apos; directory=&apos;/dataserver&apos; port=&apos;443&apos; server=&apos;https://tableau.analytics.edx.org&apos;&gt;&#10;    &lt;relation name=&apos;sqlproxy&apos; table=&apos;[sqlproxy]&apos; type=&apos;table&apos; /&gt;&#10;    &lt;cols&gt;&#10;      &lt;map key=&apos;[Number of Records]&apos; value=&apos;[sqlproxy].[Number of Records]&apos; /&gt;&#10;      &lt;map key=&apos;[catalog_course_title]&apos; value=&apos;[sqlproxy].[catalog_course_title]&apos; /&gt;&#10;      &lt;map key=&apos;[cnt_certs]&apos; value=&apos;[sqlproxy].[cnt_certs]&apos; /&gt;&#10;      &lt;map key=&apos;[cnt_verified_enrolls]&apos; value=&apos;[sqlproxy].[cnt_verified_enrolls]&apos; /&gt;&#10;      &lt;map key=&apos;[course_id]&apos; value=&apos;[sqlproxy].[course_id]&apos; /&gt;&#10;      &lt;map key=&apos;[end_time]&apos; value=&apos;[sqlproxy].[end_time]&apos; /&gt;&#10;      &lt;map key=&apos;[pacing_type]&apos; value=&apos;[sqlproxy].[pacing_type]&apos; /&gt;&#10;    &lt;/cols&gt;&#10;  &lt;/connection&gt;&#10;  &lt;aliases enabled=&apos;yes&apos; /&gt;&#10;  &lt;column aggregation=&apos;Count&apos; datatype=&apos;string&apos; default-type=&apos;nominal&apos; name=&apos;[:Measure Names]&apos; pivot=&apos;key&apos; role=&apos;dimension&apos; type=&apos;nominal&apos; user-datatype=&apos;string&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;aliases&gt;&#10;      &lt;alias key=&apos;&amp;quot;[repoItem7055771838757356753].[sum:cnt_certs:qk]&amp;quot;&apos; value=&apos;Certs Issued&apos; /&gt;&#10;      &lt;alias key=&apos;&amp;quot;[repoItem7055771838757356753].[sum:cnt_verified_enrolls:qk]&amp;quot;&apos; value=&apos;Verified Enrollment Date&apos; /&gt;&#10;    &lt;/aliases&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[Number of Records]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; user:auto-column=&apos;numrec&apos; visual-totals=&apos;Default&apos;&gt;&#10;    &lt;calculation class=&apos;tableau&apos; formula=&apos;1&apos; /&gt;&#10;  &lt;/column&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[cnt_certs]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column aggregation=&apos;Sum&apos; datatype=&apos;integer&apos; default-type=&apos;quantitative&apos; name=&apos;[cnt_verified_enrolls]&apos; pivot=&apos;key&apos; role=&apos;measure&apos; type=&apos;quantitative&apos; user-datatype=&apos;integer&apos; visual-totals=&apos;Default&apos; /&gt;&#10;  &lt;column-instance column=&apos;[cnt_certs]&apos; derivation=&apos;Sum&apos; name=&apos;[sum:cnt_certs:qk]&apos; pivot=&apos;key&apos; type=&apos;quantitative&apos; /&gt;&#10;  &lt;column-instance column=&apos;[cnt_verified_enrolls]&apos; derivation=&apos;Sum&apos; name=&apos;[sum:cnt_verified_enrolls:qk]&apos; pivot=&apos;key&apos; type=&apos;quantitative&apos; /&gt;&#10;  &lt;layout dim-ordering=&apos;alphabetic&apos; dim-percentage=&apos;0.507819&apos; measure-ordering=&apos;alphabetic&apos; measure-percentage=&apos;0.492181&apos; show-structure=&apos;true&apos; /&gt;&#10;  &lt;semantic-values&gt;&#10;    &lt;semantic-value key=&apos;[Country].[Name]&apos; value=&apos;&amp;quot;United States&amp;quot;&apos; /&gt;&#10;  &lt;/semantic-values&gt;&#10;&lt;/datasource&gt;&#10;&quot;</attribute>
+              <attribute datatype='boolean' name='extract-active'>true</attribute>
+              <attribute datatype='boolean' name='fast-get-server-time'>true</attribute>
+              <attribute datatype='string' name='update-time'>&quot;3/21/2017 6:59:56 PM&quot;</attribute>
+              <attribute datatype='string' name='version'>&quot;0.0.0&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <overridable-settings>
+        <date-options fiscal-year-start='january' start-of-week='sunday' />
+        <default-date-format />
+      </overridable-settings>
+      <aliases enabled='yes' />
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[:Measure Names]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default'>
+        <aliases>
+          <alias key='&quot;[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[sum:cnt_certs:qk]&quot;' value='Certs Issued' />
+          <alias key='&quot;[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[sum:cnt_verified_enrolls:qk]&quot;' value='Verified Enrollment Date' />
+        </aliases>
+      </column>
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[Number of Records]' pivot='key' role='measure' type='quantitative' user-datatype='integer' user:auto-column='numrec' visual-totals='Default'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[catalog_course_title]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[cnt_certs]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[cnt_verified_enrolls]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[course_id]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column aggregation='Year' datatype='datetime' default-type='ordinal' layered='true' name='[end_time]' pivot='key' role='dimension' type='ordinal' user-datatype='datetime' visual-totals='Default' />
+      <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[pacing_type]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+      <column-instance column='[cnt_certs]' derivation='Sum' name='[sum:cnt_certs:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[cnt_verified_enrolls]' derivation='Sum' name='[sum:cnt_verified_enrolls:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.507819' measure-ordering='alphabetic' measure-percentage='0.492181' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='zero_certs (business_intelligence)' name='sqlproxy.0qaj6fo1woc4z917eth270h7von3' />
+          </datasources>
+          <datasource-dependencies datasource='sqlproxy.0qaj6fo1woc4z917eth270h7von3'>
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[catalog_course_title]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[cnt_certs]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column aggregation='Sum' datatype='integer' default-type='quantitative' layered='true' name='[cnt_verified_enrolls]' pivot='key' role='measure' type='quantitative' user-datatype='integer' visual-totals='Default' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[course_id]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column aggregation='Year' datatype='datetime' default-type='ordinal' layered='true' name='[end_time]' pivot='key' role='dimension' type='ordinal' user-datatype='datetime' visual-totals='Default' />
+            <column-instance column='[catalog_course_title]' derivation='None' name='[none:catalog_course_title:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_id]' derivation='None' name='[none:course_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[end_time]' derivation='None' name='[none:end_time:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[pacing_type]' derivation='None' name='[none:pacing_type:nk]' pivot='key' type='nominal' />
+            <column aggregation='Count' datatype='string' default-type='nominal' layered='true' name='[pacing_type]' pivot='key' role='dimension' type='nominal' user-datatype='string' visual-totals='Default' />
+            <column-instance column='[cnt_certs]' derivation='Sum' name='[sum:cnt_certs:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_verified_enrolls]' derivation='Sum' name='[sum:cnt_verified_enrolls:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[sum:cnt_certs:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[sum:cnt_verified_enrolls:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[:Measure Names]' value='145' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:course_id:nk]' value='256' />
+            <format attr='width' field='[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:catalog_course_title:nk]' value='392' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:course_id:nk] / ([sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:catalog_course_title:nk] / ([sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:pacing_type:nk] / [sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:end_time:ok])))</rows>
+        <cols>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[:Measure Names]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='28'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:catalog_course_title:nk]</field>
+            <field>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:course_id:nk]</field>
+            <field>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[none:pacing_type:nk]</field>
+            <field>[sqlproxy.0qaj6fo1woc4z917eth270h7von3].[yr:end_time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='84' name='Sheet 1' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

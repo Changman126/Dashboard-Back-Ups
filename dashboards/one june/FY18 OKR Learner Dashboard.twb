@@ -1,0 +1,2943 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Google Analytics (edX    (35248639))' inline='true' name='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4' version='9.3'>
+      <connection REDIRECT_URI='urn:ietf:wg:oauth:2.0:oob' SCOPE='https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile' account-id='35248639' account-name='edX    (35248639)' can-partition='yes' class='google-analytics' currency='' date-type='13' dimensions='ga:date' end-date='2017-07-10' goal-name-ids='' incremental-refresh-enabled='true' metrics='ga:sessions' profile-id='86300562' profile-name='All Web Site Data    (86300562)' property-id='UA-35248639-2' property-name='edX.org    (UA-35248639-2)    https://www.edx.org' request-unsampling='yes' response-sampled='no' sample-size='-1' sample-space='-1' sampled-data='no' segment-id='-1' segment-name='All Visits    (-1)' server-oauth='' start-date='2017-07-01' total-results='10' username='ojchang@edx.org'>
+        <refresh increment-key='[ga:date]' incremental-updates='true' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>ga:date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[ga:date]</local-name>
+            <remote-alias>ga:date</remote-alias>
+            <caption>Date</caption>
+            <local-type>date</local-type>
+            <aggregation>None</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The date of the session formatted as YYYYMMDD.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>true</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:sessions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:sessions]</local-name>
+            <remote-alias>ga:sessions</remote-alias>
+            <caption>Sessions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of sessions.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='sampled-data'>
+            <remote-name>sampled-data</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>sampled-data</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='response-sampled'>&quot;FALSE&quot;</attribute>
+              <attribute datatype='string' name='sample-size'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='sample-space'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='total-results'>&quot;10&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4]&quot;' value='Cnt Sessions' />
+        </aliases>
+      </column>
+      <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[ga:date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The date of the session formatted as YYYYMMDD.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of sessions.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='C:\Users\ochang\Documents\My Tableau Repository\Datasources\google-analytics.1ri7vik1t0syjj14avzd61wx0xq4_00ayv9x0egtvpi1dbx4lm14h3e8n.tde' schema='Extract' tablename='Extract' update-time='07/11/2017 08:33:35 PM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='[ga:date]' incremental-updates='true'>
+            <refresh-event add-from-file-path='' increment-value='#2017-07-10#' refresh-type='create' rows-inserted='10' timestamp-start='2017-07-11 20:33:35.155' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>ga:date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[ga:date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:date</remote-alias>
+              <ordinal>0</ordinal>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='date'>#2017-07-01#</statistic>
+                <statistic aggregation='Max' datatype='date'>#2017-07-10#</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='Median' datatype='date'>#2017-07-06#</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:sessions</remote-name>
+              <remote-type>3</remote-type>
+              <local-name>[ga:sessions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:sessions</remote-alias>
+              <ordinal>1</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>2881538.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>288153.79999999999</statistic>
+                <statistic aggregation='Min' datatype='integer'>218960</statistic>
+                <statistic aggregation='Max' datatype='integer'>347587</statistic>
+                <statistic aggregation='Stdev' datatype='real'>49281.767078707722</statistic>
+                <statistic aggregation='StdevP' datatype='real'>46752.789325985679</statistic>
+                <statistic aggregation='Var' datatype='real'>2428692566.4000001</statistic>
+                <statistic aggregation='VarP' datatype='real'>2185823309.7600002</statistic>
+                <statistic aggregation='Count' datatype='integer'>10</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>852184357642.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.500668' measure-ordering='alphabetic' measure-percentage='0.499332' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' inline='true' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='business_intelligence' server='10.5.3.246' username='ojchang'>
+        <relation name='stats_summary_user' table='[business_intelligence].[stats_summary_user]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>absolute_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[absolute_date]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>absolute_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_country_code</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[user_country_code]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>user_country_code</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>45</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_gender</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[user_gender]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>user_gender</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>45</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_age</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_age]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>user_age</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_education_level</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[user_education_level]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>user_education_level</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>200</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_registrations</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_registrations]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_registrations</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_enrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_enrolls]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_enrolls</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_enrolls_vtr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_enrolls_vtr]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_enrolls_vtr</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_verifications</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_verifications]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_verifications</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_unenrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_unenrolls]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_unenrolls</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_certificates</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_certificates]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_certificates</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_completions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_completions]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>cnt_completions</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_bookings]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>sum_bookings</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>12</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_seat_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_seat_bookings]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>sum_seat_bookings</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_reg_code_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_reg_code_bookings]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>sum_reg_code_bookings</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_donations_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_donations_bookings]</local-name>
+            <parent-name>[stats_summary_user]</parent-name>
+            <remote-alias>sum_donations_bookings</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[vertica.0uf3em40lw6l1j18meimu0z8ji12]&quot;' value='Registrations' />
+        </aliases>
+      </column>
+      <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+      <column caption='Cnt Certificates' datatype='integer' name='[cnt_certificates]' role='measure' type='quantitative' />
+      <column caption='Cnt Completions' datatype='integer' name='[cnt_completions]' role='measure' type='quantitative' />
+      <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+      <column caption='Cnt Enrolls Vtr' datatype='integer' name='[cnt_enrolls_vtr]' role='measure' type='quantitative' />
+      <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+      <column caption='Cnt Unenrolls' datatype='integer' name='[cnt_unenrolls]' role='measure' type='quantitative' />
+      <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+      <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Donations Bookings' datatype='real' name='[sum_donations_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Reg Code Bookings' datatype='real' name='[sum_reg_code_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Seat Bookings' datatype='real' name='[sum_seat_bookings]' role='measure' type='quantitative' />
+      <column caption='User Age' datatype='integer' name='[user_age]' role='measure' type='quantitative' />
+      <column caption='User Country Code' datatype='string' name='[user_country_code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='User Education Level' datatype='string' name='[user_education_level]' role='dimension' type='nominal' />
+      <column caption='User Gender' datatype='string' name='[user_gender]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.353805' measure-ordering='alphabetic' measure-percentage='0.646195' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='FY18 Bookings'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Quarter' name='[qr:absolute_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[sum_bookings]' derivation='Sum' name='[sum:sum_bookings:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_donations_bookings]' derivation='Sum' name='[sum:sum_donations_bookings:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_seat_bookings]' derivation='Sum' name='[sum:sum_seat_bookings:qk]' pivot='key' type='quantitative' />
+            <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Donations Bookings' datatype='real' name='[sum_donations_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Seat Bookings' datatype='real' name='[sum_seat_bookings]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_bookings:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_seat_bookings:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_donations_bookings:qk]' value='C1033%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_seat_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_donations_bookings:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols total='true'>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[qr:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Bookings Over Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column-instance column='[sum_bookings]' derivation='Sum' name='[cum:sum:sum_bookings:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Day-Trunc' name='[tdy:absolute_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:sum_bookings:qk]' value='C1033%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:sum_bookings:qk]' value='C1033%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:sum_bookings:qk]</rows>
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Enrollments'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Quarter' name='[qr:absolute_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[cnt_enrolls]' derivation='Sum' name='[sum:cnt_enrolls:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_enrolls:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols total='true'>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[qr:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Enrollments Over Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+            <column-instance column='[cnt_enrolls]' derivation='Sum' name='[cum:sum:cnt_enrolls:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Day-Trunc' name='[tdy:absolute_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' field-type='quantitative' max='#2018-07-01 11:03:27.052#' min='#2017-06-30 12:56:32.947#' range-type='fixed' scope='cols' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='true' />
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_enrolls:qk]' field-type='quantitative' max='20000000' min='0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_enrolls:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_enrolls:qk]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_enrolls:qk]</rows>
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Registrations'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Quarter' name='[qr:absolute_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[cnt_registrations]' derivation='Sum' name='[sum:cnt_registrations:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_registrations:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols total='true'>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[qr:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Registrations Over Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+            <column-instance column='[cnt_registrations]' derivation='Sum' name='[cum:sum:cnt_registrations:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Day-Trunc' name='[tdy:absolute_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' field-type='quantitative' max='#2018-07-01 11:03:27.052#' min='#2017-07-01 12:56:32.947#' range-type='fixed' scope='cols' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='true' />
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_registrations:qk]' field-type='quantitative' max='1000000' min='0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_registrations:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_registrations:qk]' scope='rows' value='true' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_registrations:qk]</rows>
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Sessions'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4' />
+          </datasources>
+          <datasource-dependencies datasource='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4'>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[ga:date]' derivation='Quarter' name='[qr:ga:date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[sum:ga:sessions:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[sum:ga:sessions:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[:Measure Names]</rows>
+        <cols total='true'>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[qr:ga:date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Sessions Over Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4' />
+          </datasources>
+          <datasource-dependencies datasource='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4'>
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[cum:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[ga:date]' derivation='Day-Trunc' name='[tdy:ga:date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tdy:ga:date:qk]' field-type='quantitative' max='#2018-07-01 11:03:31.764#' min='#2017-07-01 12:56:28.235#' range-type='fixed' scope='cols' type='space' />
+            <format attr='subtitle' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tdy:ga:date:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tdy:ga:date:qk]' scope='cols' value='true' />
+            <encoding attr='space' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[cum:sum:ga:sessions:qk]' field-type='quantitative' max='50000000' min='0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[cum:sum:ga:sessions:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[cum:sum:ga:sessions:qk]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[cum:sum:ga:sessions:qk]</rows>
+        <cols>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tdy:ga:date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Verifications'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Quarter' name='[qr:absolute_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[cnt_verifications]' derivation='Sum' name='[sum:cnt_verifications:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_verifications:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols total='true'>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[qr:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY18 Verifications Over Time'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+            <column-instance column='[cnt_verifications]' derivation='Sum' name='[cum:sum:cnt_verifications:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Day-Trunc' name='[tdy:absolute_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' included-values='in-range'>
+            <min>#2017-07-01#</min>
+          </filter>
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' field-type='quantitative' max='#2018-07-01 12:25:23.076#' min='#2017-06-30 11:34:36.923#' range-type='fixed' scope='cols' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]' scope='cols' value='true' />
+            <encoding attr='space' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_verifications:qk]' field-type='quantitative' max='50000' min='0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_verifications:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_verifications:qk]' scope='rows' value='true' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[cum:sum:cnt_verifications:qk]</rows>
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[tdy:absolute_date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Bookings'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_bookings]' derivation='Sum' name='[sum:sum_bookings:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_donations_bookings]' derivation='Sum' name='[sum:sum_donations_bookings:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_seat_bookings]' derivation='Sum' name='[sum:sum_seat_bookings:qk]' pivot='key' type='quantitative' />
+            <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Donations Bookings' datatype='real' name='[sum_donations_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Seat Bookings' datatype='real' name='[sum_seat_bookings]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_bookings:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_seat_bookings:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_donations_bookings:qk]' value='C1033%' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]' value='41' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_seat_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:sum_donations_bookings:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Bookings %'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sum_bookings]' derivation='Sum' name='[pcdf:sum:sum_bookings:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[sum_donations_bookings]' derivation='Sum' name='[pcdf:sum:sum_donations_bookings:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[sum_seat_bookings]' derivation='Sum' name='[pcdf:sum:sum_seat_bookings:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Donations Bookings' datatype='real' name='[sum_donations_bookings]' role='measure' type='quantitative' />
+            <column caption='Sum Seat Bookings' datatype='real' name='[sum_seat_bookings]' role='measure' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:sum_bookings:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:sum_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:sum_seat_bookings:qk]' />
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:sum_donations_bookings:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Enrollments'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_enrolls]' derivation='Sum' name='[sum:cnt_enrolls:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_enrolls:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Enrollments %'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_enrolls]' derivation='Sum' name='[pcdf:sum:cnt_enrolls:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:cnt_enrolls:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:cnt_enrolls:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Registrations'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_registrations]' derivation='Sum' name='[sum:cnt_registrations:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_registrations:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Registrations %'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_registrations]' derivation='Sum' name='[pcdf:sum:cnt_registrations:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:cnt_registrations:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:cnt_registrations:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Sessions'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4' />
+          </datasources>
+          <datasource-dependencies datasource='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[ga:date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ga:date]' derivation='None' name='[none:ga:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[sum:ga:sessions:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:date]' derivation='Week-Trunc' name='[twk:ga:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]</column>
+            <column>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[twk:ga:date:ok]' value='129' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[sum:ga:sessions:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[twk:ga:date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Sessions %'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4' />
+          </datasources>
+          <datasource-dependencies datasource='google-analytics.1ri7vik1t0syjj14avzd61wx0xq4'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[ga:date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ga:date]' derivation='None' name='[none:ga:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[pcdf:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[ga:date]' derivation='Week-Trunc' name='[twk:ga:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]</column>
+            <column>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[twk:ga:date:ok]' value='129' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[pcdf:sum:ga:sessions:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[twk:ga:date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Verifications'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_verifications]' derivation='Sum' name='[sum:cnt_verifications:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[sum:cnt_verifications:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='WoW Verifications %'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='stats_summary_user (business_intelligence.stats_summary_user) (business_intelligence)' name='vertica.0uf3em40lw6l1j18meimu0z8ji12' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0uf3em40lw6l1j18meimu0z8ji12'>
+            <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[absolute_date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+            </column>
+            <column caption='Absolute Date' datatype='date' fiscal-year-start='7' name='[absolute_date]' role='dimension' type='ordinal' />
+            <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_664562469744820233]' derivation='None' name='[none:Calculation_664562469744820233:nk]' pivot='key' type='nominal' />
+            <column-instance column='[absolute_date]' derivation='None' name='[none:absolute_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[cnt_verifications]' derivation='Sum' name='[pcdf:sum:cnt_verifications:qk]' pivot='key' type='quantitative'>
+              <table-calc diff-options='Relative' ordering-type='Rows' type='PctDiff'>
+                <address>
+                  <value>-1</value>
+                </address>
+              </table-calc>
+            </column-instance>
+            <column-instance column='[absolute_date]' derivation='Week-Trunc' name='[twk:absolute_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]'>
+            <groupfilter function='member' level='[none:Calculation_664562469744820233:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='relative-date' column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]' first-period='-2' include-future='true' include-null='false' last-period='0' period-type='week' />
+          <slices>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</column>
+            <column>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.0uf3em40lw6l1j18meimu0z8ji12].[pcdf:sum:cnt_verifications:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[twk:absolute_date:ok]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Bookings FY18'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='15000' id='1' name='FY18 Bookings' show-title='true' w='100000' x='0' y='0' />
+          <zone h='68500' id='3' name='FY18 Bookings Over Time' show-title='true' w='100000' x='0' y='31500' />
+          <zone h='16500' id='4' name='WoW Bookings' show-title='true' w='50000' x='0' y='15000' />
+          <zone h='16500' id='5' name='WoW Bookings %' show-title='true' w='50000' x='50000' y='15000' />
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Enrollments FY18'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='15125' id='1' name='FY18 Enrollments' show-title='true' w='100000' x='0' y='0' />
+          <zone h='66750' id='3' name='FY18 Enrollments Over Time' show-title='true' w='100000' x='0' y='33250' />
+          <zone h='18125' id='4' name='WoW Enrollments' show-title='true' w='50000' x='0' y='15125' />
+          <zone h='18125' id='5' name='WoW Enrollments %' show-title='true' w='50000' x='50000' y='15125' />
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Registrations FY18'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='17875' id='1' name='FY18 Registrations' show-title='true' w='100000' x='0' y='0' />
+          <zone h='65250' id='3' name='FY18 Registrations Over Time' show-title='true' w='100000' x='0' y='34750' />
+          <zone h='16875' id='4' name='WoW Registrations' show-title='true' w='50000' x='0' y='17875' />
+          <zone h='16875' id='5' name='WoW Registrations %' show-title='true' w='50000' x='50000' y='17875' />
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Sessions FY18'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='16000' id='1' name='FY18 Sessions' show-title='true' w='100000' x='0' y='0' />
+          <zone h='70125' id='3' name='FY18 Sessions Over Time' show-title='true' w='100000' x='0' y='29875' />
+          <zone h='13875' id='4' name='WoW Sessions' show-title='true' w='50000' x='0' y='16000' />
+          <zone h='13875' id='5' name='WoW Sessions %' show-title='true' w='50000' x='50000' y='16000' />
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='Verifications FY18'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='14125' id='1' name='FY18 Verifications' show-title='true' w='100000' x='0' y='0' />
+          <zone h='69000' id='3' name='FY18 Verifications Over Time' show-title='true' w='100000' x='0' y='31000' />
+          <zone h='16875' id='4' name='WoW Verifications' show-title='true' w='50000' x='0' y='14125' />
+          <zone h='16875' id='5' name='WoW Verifications %' show-title='true' w='50000' x='50000' y='14125' />
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='56'>
+    <window class='dashboard' maximized='true' name='Sessions FY18'>
+      <viewpoints>
+        <viewpoint name='FY18 Sessions'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='FY18 Sessions Over Time'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='WoW Sessions'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='WoW Sessions %'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+    </window>
+    <window class='dashboard' name='Registrations FY18'>
+      <viewpoints>
+        <viewpoint name='FY18 Registrations'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='FY18 Registrations Over Time'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='WoW Registrations'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='WoW Registrations %'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' name='Enrollments FY18'>
+      <viewpoints>
+        <viewpoint name='FY18 Enrollments'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='FY18 Enrollments Over Time'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='WoW Enrollments'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='WoW Enrollments %'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' name='Verifications FY18'>
+      <viewpoints>
+        <viewpoint name='FY18 Verifications'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='FY18 Verifications Over Time'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='WoW Verifications'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='WoW Verifications %'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' name='Bookings FY18'>
+      <viewpoints>
+        <viewpoint name='FY18 Bookings'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='FY18 Bookings Over Time'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='WoW Bookings'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='WoW Bookings %'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Bookings'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Bookings Over Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Enrollments'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Enrollments Over Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Registrations'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[:Measure Names]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Registrations Over Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Sessions'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[:Measure Names]</field>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Sessions Over Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Verifications'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY18 Verifications Over Time'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Bookings'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Bookings %'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Enrollments'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Enrollments %'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Registrations'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Registrations %'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Sessions'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]</field>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]</field>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Sessions %'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:Calculation_664562469744820233:nk]</field>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[none:ga:date:qk]</field>
+            <field>[google-analytics.1ri7vik1t0syjj14avzd61wx0xq4].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Verifications'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='WoW Verifications %'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:Calculation_664562469744820233:nk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[none:absolute_date:qk]</field>
+            <field>[vertica.0uf3em40lw6l1j18meimu0z8ji12].[yr:absolute_date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sessions FY18' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAZWElEQVR4nO3d2Xeb953f8TcWYl8I7vtOUUsoeWRLlhLHcWK7mcSpkzluU+fMOZNJ+x/0
+      phe9aNrT9ao909Ne2JM6cZzTjDtJJp7Y1r7Y0UKtlCjuG0gQJEEAJFYSywM8vaBCGdYahwQo
+      Pt/XlUhAX3wfPPjw2X7PDzpVVVWE0Ch9qRsQopQkAELTNgIQ8M8yODjIxLSXOf8iAH6/HxVI
+      RKMoQDaVZGR0nFx+fa9JVXNMjI6wHE0+8kViy0HWsvktWwghvqiNAJz87W9ZBdAZuHDqAyYm
+      Rjh94SbRwCz/6d//N1aB//fuTxi8fYVjF24DcP3MB9yYmGclEiG9GmdkbIKcquKfmSK4Eie0
+      6GduMciNS+cIRNZY9M/gXwyxFo/g9XrxL4ZQ0quMjI6TzcuhiCg+471/KowODvLSS3/OP339
+      O/zb//Df+Xf/+b9gJktXczUAnnIXfQOjfLv3RQB2HTjEtV/+mkBjPf/w3ltU19Zy5WYt4wMD
+      vPGXf8XJX73D4VffIBoO4BsfYGBkGmt6idauHiYCq8R9o/Tu72RsPkN9Wydus64U74HQsM8c
+      A1h4/fvfp6nGhc3TQEtLA+VWI1ardeMZM4th/vwbRxkeHgcglcpy5CtHuN53BUVRKLM52X/g
+      IK+++BzHT5zilVdf5eTx45SXl6OqKnq9nnw+j04HrV091LqtNO05jCU9z8DobLGXXQh0fzgN
+      GvD7qWxs3Ngk+Hw+mpubAVjw+ahubkZJRpn2Beje1Y1RryOdjDE1O097Vzf5VIyZuQAdXd3M
+      z0zgrm4iFVtCZ3Zj1Wcpc1YSD/nJGexU2I2sqWVk48tYXS7m54N07+rEoJMtgCgunVwHEFom
+      p0HFY+VyuVK3sGUkAKJALptidHT9bF40HEYB0ul0qdvaMhIAUeD0yVM0NlRw8sQJ3n375+un
+      xncwCYAooKKysLBAOmtg/97OUrez5eQgWBTIZVOMT3oxWx147BYcVVVkVlex2Wylbm1LbARg
+      dXWnb+zEF5VKpbBYLKVuY0tsXAleT7jK7PQkzqoGPM7CxK+EFkmrZuqqPfcViUdCmBxVmI33
+      PSS2ifnZaZxVDThtJqYnp2lpa2LGF6CjrZl4PI7T6WTRP4Na5iSTXKGhpY3ZGR8dHW0AO3YL
+      UPCR9Q31EbF1Y0kluTp4HburittDI7z5z/6CEx8fo/fI14gEZjA7PQTnZqlvbcc7PYPTomLx
+      tBCNLOO2GYmsZqmvdLCSyPJM795SLZvYoGJ3u+m/cYMvH2jn8qVLLAbamfKFsdgM3Lo9wbde
+      eZHBO4McPPICcf8iffMBvF4fztoWHDv4+mRBAGzOcsZnJjE31LIYXIHgCoZ8FoDOzlau3biF
+      x5SltqGRiYlxMqqe8bFRKsutZBZTOIgzFodah5GM4sLnj0sAtoU8F8+epm3/UcLhZax2G/HE
+      GjYLWN11lNtn7m4FHNwZuI3TrGM1uoLdZiGTyYK51P1vHTkI1hSVaDSG2+2+75FoNPrA38P6
+      8eFO3QXaCEAy+egx/UK7FEXBaNyZB3iyBRCaJhfChKZJAISmSQCEpkkAhKZJAISmSQCEpkkA
+      hKZJAISmSQCEpkkAhKZJAISmSQCEpkkAhKbdDUAev38eyBGJxEglooQjiY0nzfv95IFIJAL5
+      LP75ALB+A/XI8DDJVPaRLxJcWkImR99Ots/69nmnyORUQqHQF1uUP5Hhxz/+8Y9Bxy/f+znN
+      tXbe+c3vUZZGMNR0sxaeI503cOfCMRRXI2/9z/9FT4uTy+Mr7O1s4rfvvU3WXo3D4USXSeAL
+      hPG4nUxPjGG0OgnNz5JW4dzHx2jv7WVhegIFE5lkjMWlAIpqBGUV79wSFRXl7OA777aZ7bG+
+      c1Ef7//6I2YWgyTSOtqb64r+TtwNAOSiPv7+RD8uRxmL0TW6y7NcGAxw4/xxXnj567z/7s8p
+      r3Bz5dYU3/ned3FZDDidNs6f/YSmxhreevunBLxD+BZDnDzfR3dbLX/7k/do6uhkuO8qxrIk
+      A94Yl08fI5VYYDaq58THHxKaGmQ2ptK7p0sCUETbYX0bTDaWlwLMzc5gttrp6upAX+QPwcYx
+      wDOHj5DTlfHt57uwV7WhU/PoDHpyqoqrvhtVSfPXP/pLsqqBRrcJgKxq4MiBLq7cuIOi5HFW
+      NnLw2Wd5bncdp/pG7k6Tfo7ycieqml+fHv3u/Tc9+w5gNaocfvEbzN/+lNnlnTv93na0Lda3
+      voy6Kjd1NR7mvOOE14r/PhTcERaNRnE7rERXc7idFnzeScyuamoq3Bv3jH723tHYSpD5YJTu
+      7k5i4QCBlVW625uZmJigqbWTJf807uomsokIlY0N+KfGsXvqMeZWKXNWsry0gMtmJhhP09nW
+      LFuAItsO6zsUClHhduCdD9HR2lT090BuiRSaJqdBhaY9JQFQCIUiD300lYwxPTtPbDnIhNd3
+      97cq0+NjpJUc3ukZVCAcDrPg8zI8PlWUrjdLKHzvFGH4s6cL1RzjY+Mod79gMBEJMbcQJLYS
+      JBxJkEpEicViDA4OEorEi932n6B46/spmetilUvnPmXXn+2FdJqlcJjG1g6W5mbYfeA5SGUY
+      vHKBVYOBnp4vAaAqGfT5BP/33Z9RUVXNhH8J7/Q0/+oHr3Hl2AX2dHeUeJme3KWLF+nZ1YOq
+      g7GRYXbv7kUlR0drI/nEIhdvG3jxmQ5SCly6cA6nwwkqrC2Ns+vlH5IIzlHR+PQsbzHX9/bf
+      AuRTjA5PYdQrDA0NMTw0xMraGhdOfMzo1Axef5BEeJalnJWXv/oi87OThEJh0OX53bFPef7g
+      HgBqW7qoKbcyO9xPe++hEi/UkxsbG8VoLGN0dITBO3cAA6O3zjEfyaPLKxz79BZ7m8tJphUW
+      J25icDejqoAO9vfuByCYyFJfbn3k62wbRV7fT8VB8Oz0BNWNbQTnZ7HZnWAwAAbiK0Ga2jqJ
+      hRZYDEWpra1EoYxoeImutmZGJqaprm9iNRahta2VcCiE2chTNZFvbCVIUjFgIUMklcdpNXHp
+      zAle/N6bWJQEE9M+TLocnta9KCtzhJMKzTVusjorNoNC3uRgLR6hqqqq1IvyxIq5vmV6dA3R
+      6/Ub05zL+l73VGwBnsRycAFFb6OmwkE0tkqZHkxOJ4ZchmlfgLpKB5G1PGbS6C3leFxP51yX
+      n53mfHbWR3NjHdO+ADXlNiIplaa6KsJL85hd1YQXZmloaWPBv0BLS/HPsT8Ntv8xwBMymGyM
+      Dt1mZmKQG3fGOf/RRySBwNQQl/r6iSl5Bvpvkc/n6e+/Vep2v6B705yvLU0yOTHJxb7rXOrr
+      J64amR4fBmBieobB/mukI4ucO3WaiclplkpwlfVpsGMCMHCjD7PDQzQeZzURp6WlhVwqSSSZ
+      xWaB5XCUPBCPxXh6v497fZrzqoZm1rIq0UgUg06HzQLDt/rJGa3E43GUVBKDycKqAgY9RKIx
+      zIZS97497ZhdoAfJp+IkseO07Jic3/XFpjkX95Pp0TXEYDBsHATL+l63o7cAQjzOTts3EOKP
+      IgEQmiYBEJomARCaJgEQmiYBEJomARCaJgEQmiYBEJomARCatnGfzO2rv2fUu4Crqh6P3crh
+      wwe5cuUqhw4fxjs6SkNPDyuz41y4PsTXX/knVDitpBLLHD95lu79z7O38+Hjzb2jt7HX91Dt
+      Mj+2oVQiwqnTZylv6OSFQ/sf+/zlBS+nf38VgOqmTuzGHIcOPT23PIrS2pga8eRvP+S1v/4h
+      +9pbGL52nrFpL5GcE7c+wd/8zU/4yrde5dTf/xKTpYzAahldzTVcO/c7cpW72d/VQGBmnNPn
+      L1HT0MClsyeI50z4Rm4wtRhnZvg6Va17uHXxNGNzy5SbFM5+cgHfUhR3WZZjJ8/R1NGN2ajn
+      l+++w4uvvYH36nFmljMYLQ5mxwYwlBk5cew4elsFM6P9XO+/Q0tHF063h2Y33PSlee3LPZy4
+      0E+FReVCXx+zsz4GhsZo72jj8tmTjM6F6Whtkgm4xIbP7AKl+OD995lbivGNb73O+U+u8u2v
+      H6K+rYfd7fXrTzaZScaTGI3rH6FDL71G1t/P785c5O23/pZEeI6/+9UHjE35UBSFsbExFEXB
+      bTMxcvMSgVw56tIgF64NkHfUM3P9PMPTXqLJNFllfT7haCpHtdtGfUMtBqOREx/9A5dvjfPB
+      L/4Py4lVfvrue9y8coUjL7+KxVj4UTa7asjGQ8yM9tPQc4Br14coV0N8+ME/cuLyAH0nf8XQ
+      XKw476x4KnwmABZe//73aapxoTfZqanxUPb5IwQ1T1bJoWTWp8ee904QV/SouRw9PV2YHOV8
+      9/XvUFfp5PLlq9TV1XH58mUAPLWNLIzdZHguTn2FDZPZjKnMiM1ZQTLsY9q/BMDzvR288+4v
+      uHhnnuee/TNqzQpfeeWbdO7ahdFg5J+/8RdgtOC0lj1ywUwWG2aTEbPZjKe2gSq3nX1Hv8m+
+      JtemvXni6SfDoYWmyVkgoWlfeHacZDJJPr8+BbYQT6tHByC/yscffUpXSw0DvjAVhgTtB7/G
+      mWPH+dFfvUkymcRut29KI4qiYDRu3mxVm1lPeittra1cxkf++c5nsrgrLPQP+mmr9WCsaeH2
+      2Y+oaWnZtGaEKKVHxkrVGbCYHHztld3M+MN01XqIO51YrE/JPJNCPMYjA2AwOzj43LMA1FTX
+      AlD8rzETYuvIEazQNAmA0DQJgNA0CYDQNAmA0LTHXl2IRqPo1SyByBpuu4XqCheBlTVqq8qL
+      0Z8QW+qRWwBVWeUfPzrB0OAgVouV8yeOMTo2Qf/QcLH6E2JLPXIL4J2cxmiA8tpWvJOjtLfX
+      c/WOl87mSpLJJIqioCjKpjSSy+U2pc5W1JPeSltrK5fxscOhY7EY+nyWWAZcVhNKLodOr8ft
+      cslYoG1QTwu9beUyPraqy7V+A4lj015eiO1DzgIJTZMACE2TAAhNkwAITZMACE2TAAhNkwAI
+      TXuisUBmA8TSoMtnZCyQ2FEefU/w3bFAuzrbQAezYyP0HjyINxjjmy8eLVKLQmydJxoLlMrm
+      sZj0MhZoG9bTQm8lHwtk0qvE0mAz6WUs0Darp4XetsVYIIsMBhI7kJwFEpomARCaJgEQmiYB
+      EJomARCaJgEQmiYBEJr2yOsA0XCAqYVl6twWkjkj6USU3Z2NDPli9O5qLVaPQmyZRwbAXVlL
+      5MZtYstGqmqa8Q7dIpZSyGRTgARAPP3uC8Dc/CINdTXo9XoiwQV0qNQ0tuKfnaOxvZ2xGT/N
+      jTIWaLvU00JvRRsLNOOb59cfnqKi3M0P3/zuYwvJWKDS19NCb0X7jrD+OyPE4kl+8Ma3N+3F
+      hNjOCmL1/LP7OXroGUxlj/4WdiF2ioIA1NVUlaoPIUqi8DpAeoXf/OZ3nL9ys0TtCFFchQEw
+      2cmnk7BJZ3aE2O4KA7C2gs5ZRWNDfYnaEaK4CgNgLqfSAqupVInaEaK4CgOQz6IzWcllZRdI
+      aEPBWaD5hSVsVhM2mw24NxaosdJBNAWZpIwFEjtLQQAaaj30XR+iIm+gp7NlYyxQKlWBCVic
+      GpGxQGJHKby+bLLhMOkx6HQAG2OBMpksaRUZC7QN62mht61cxsIAZNaI5c00OMwAlFfX89Kr
+      hWeEnjl079/JZHJTx2hsZq3Nrie9lbbWVi1j4UGwTk8qk0K3qS8lxPZVGACjlZYqO2UyC5bQ
+      iIIAXLtxCwMK4eWVUvUjRFEV7FiVkcVW3URGlZ0goQ0FAejq2YvR4sBcZihVP0IUVUEAfOO3
+      uT66SPe+Xg7v312qnoQomoIA7N63j5llHal4tFT9CFFUhSdXzR46Gt04q5tL1I4QxVUYAFVF
+      pzOQWlsDyllemmdodIaKKgcmazmzk+McfaaHvsllXjrcW5qOhdhEhdcBUiGWVo1UV3oAcLnd
+      lJnKSK+lCAWD6NeWOX1zBlM+WYpehdh0hVsAvYlY2M/cgoWezhYW5+aw2u24HGbWMtDW9BXi
+      iQQWq7VE7Qqxue4LgNthIbC0RE9nC02dPTR97j/UFa83Ibbc50YY6SgrK8Pl9JSmGyGKrCAA
+      124NkklGUHSmUvUjRFHJUAihaQUBOPCcfPu70JbCY4C1MB9+chtVWaV7Ty89HS0lakuI4vjc
+      lWAnLrOKo7YJ+90b44XYyQovhGXjrCRVnOWVNNXJPKFi5ysIwOJiiEjYz+SMH4DMWoKpGT+p
+      RJSlcJRgMAi5NIFQpCTNCrHZCnaBqusaaG5qprKmEoB0NkfY58UfMGHWwezYCL0HD+INxvjm
+      i3LALJ5+BQEwoJBSwGxavw6QTycxeqqxJKOoQHt7PVfveOlslmlRtks9LfRWvGlR0KHX6VDu
+      PiGv02MiR9eeXaxlwGbS07k3h06vx263y7Qo26SeFnrbqmUsrKozkF5LkM5kAPBU1eGpWh/9
+      49zUlxdieyg8C6Qvo6WliZVwqETtCFFcBQHIKQp5FVpa5AKY0IaCXaBLfX1E40ns7spS9SNE
+      URVsAVQ1D3rjpp3ZEWK7K9gCfPWlV0vVhxAloX/8U4TYuSQAQtMee3UhHo+vj/+JrOG2W6iu
+      cBFYWaO2qrwY/QmxpR65BUgno5z+5CJDg4NYLVbOnzjG6NgE/UPDxepPiC31yC2A2e6mrtJN
+      XUMD3slRGQu0DetpobetXEadqqrqo54ci8XQ57PEMuCymlBy62OB3C4XyWQSu92+KU0pirKp
+      4z02s570VtpaW7mMj63qcrkAkO+METuRnAUSmiYBEJomARCaJgEQmiYBEJomARCaJgEQmvaY
+      6wAqk1PTOK1lRFOQSUbZ3dnIkC9G767W4nQoxBZ6ZADSyRgTXh+VLgc6YHFqhFhKIZNNARIA
+      8fR77Fggt82MQc0SzUBjeztjM36aG2Us0Happ4XeSjoW6FFkLFDp62mht61cRjkIFpomARCa
+      JgEQmiYBEJomARCaJgEQmiYBEJomARCa9kRXFxZ80yRzRtIJGQskdpYnCsD0tBd3TTPeoVsy
+      FkjsKE8UgNa2VoYn52Qs0Dasp4XeZCxQietJb6WtJWOBhNgiEgChaZseAG8oudklhdgymxqA
+      O/4o/+ZXt1Fy+c0sK8SW2bQji/OjS/zvc5P8jzefwWiQPSvxdNiUAFyeCvPORS8/+5eHsZQZ
+      NqOkEEXxRAGYHB0iloGVpUWOPtND3+QyLx3uBSAQS/FfPx7hpz86JB9+8dR5ogAsx1fRqaBP
+      Bjkz4MBjWd/Hz+ZU/vX7/fzH732JcptpSxsVYis80c56hdOG3mKjafcBnAYF993vDHjv8gz/
+      4lALX2p0b2mTQmyVL3wleHV1lcXlOHUVzk1pJJfLYTBs3i7UZtaT3kpbayuX8U8aCrGZNnNY
+      xWbXk95KW2srl3HbBEALf8m2op4WetvKZSz6CfvZqSEmZwL3/d5AjjNnP934ORKc5/rACFNj
+      d7h45dYDa+VTEX5/6QqjEzP3PZZJRrh0pX/j58mBy0zNh7l+6RwjvvAD681MjHKr/wZzgQgA
+      /rk5AIL+cQbH/X94VU6fOUs8EuLUieMkMg++6Dd++wreQJTx8Yn7Hvtj6wW9Q1y6cYfhsen7
+      HosvB7g+MLLx8+XTZ1hJxvj0zEkWo6kH9gYwNDT4gN/muHFzYOOn+ckBRrwBLn16mnHv4kNr
+      nTt9HK9vAYDVoBdvcBUAJRXnQt/1jedNDlzGG4xw4ewppnyhghqrQS+Xb09y+fQxIpnC+ssB
+      LwMj3rs/3X2/lmY4eeoTEtmHtsXlT86y9vmBpLkM5z+5uPHj5g2xe0ITEzOkWCC4MA1kSETX
+      0FmcvPzCYczmso3nOTw1ZCdnMZZZ6dyz54G1dEYzhnyWXC7Jz95+i3K3DYOrlu59z9FZ70aX
+      G994boXTyny+DMoc7GqufGC9hdAyR44c5cyHf8ewvYVkNEhVXRNVleV4R+8N8TCbTTjLq3BX
+      VOIwPfhvSHxNJT41hE1Ncmxqgmwyi7uhnucPPfdH10snYzR3HWFu6BN+8ZOTVNbVYbBXc+To
+      4Y336Q+sZjMGuwury0Od2/LglQDE4zEGrl1g2B/HrlvFVdXEV7/8LJn0vU9MTYWT2bkE0Ugc
+      s+fhQ1xisRhWs8rP3n6L2hoPKZOL1V3PsKu1EoN67xNa4bQyn1wjEovjSK4W1FDSSeaDcXS+
+      OcrGBrh5c5jWKitHv/4tPDUVTM7OF7xfa4kEiUSMtJLD8YDT7/lMnMXAArmrl/DPhSk3JrB1
+      HOGFfU0Fn7OibgHUbIKmrv10Nzeg06tgtOFy2tHrAYMRj9tFKLz+19loNOJyuVjTWah1PvgU
+      a2Y1jsHiQFV17N63j7bmetCbcDrMG///D/XMdjd2sxGH0/nQha6r8nCr/wYde57FajJQV1+P
+      quYxlllwOS2EQmFAT4XHA/k1XK6ahy6r0+nk4L5O0joHDquF3kPPUqYzYDZwr174yeqZ7S58
+      EwO4KxvZtXcfPT27sJoM5PP5jeUMh9b/ororPBgBh/PhJyf80+NkMJHTGWmoraS9azeVbgdg
+      wOO5V8totuOym3F7qnDYzA+t19Wzj9rqanbv20dXVydOqw2ny3ZvHYQ+uw7KcFdUY7eWFdQw
+      mu3UO3TUdR8gm8nR0dJAY2sHDosRo9GMy2UveP+NFjtVVeUPXZcLcwu88r0fUGFR0AEVNfW0
+      tzRsfM4ioTAK8P8BV3ezXp7hcmgAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Registrations FY18' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Enrollments FY18' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Verifications FY18' width='192'>
+      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
+      TkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Bookings FY18' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

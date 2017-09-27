@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xml:base='https://tableau.analytics.edx.org' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location id='CourseDateChangesDashboard' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='course_date_changes (business_intelligence.course_date_changes) (business_intelligence)' inline='true' name='vertica.19em7ob0ux7ewu13gos290j3f3gl' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='business_intelligence' server='10.5.3.246' username='ojchang' workgroup-auth-mode='prompt'>
+        <relation name='course_date_changes' table='[business_intelligence].[course_date_changes]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>change_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[change_date]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>change_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>555</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>new_start_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[new_start_time]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>new_start_time</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>original_start_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[original_start_time]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>original_start_time</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>new_end_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[new_end_time]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>new_end_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>original_end_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[original_end_time]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>original_end_time</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>new_pacing_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[new_pacing_type]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>new_pacing_type</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>555</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>original_pacing_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[original_pacing_type]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>original_pacing_type</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>555</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>type_change</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[type_change]</local-name>
+            <parent-name>[course_date_changes]</parent-name>
+            <remote-alias>type_change</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>555</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Blank' datatype='string' name='[Calculation_1100004221482344448]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='&quot; &quot;' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Change Date' datatype='date' name='[change_date]' role='dimension' type='ordinal' />
+      <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+      <column caption='New End Date' datatype='date' name='[new_end_time]' role='dimension' type='ordinal' />
+      <column caption='New Pacing Type' datatype='string' name='[new_pacing_type]' role='dimension' type='nominal' />
+      <column caption='New Start Date' datatype='date' name='[new_start_time]' role='dimension' type='ordinal' />
+      <column caption='Original End Date' datatype='date' name='[original_end_time]' role='dimension' type='ordinal' />
+      <column caption='Original Pacing Type' datatype='string' name='[original_pacing_type]' role='dimension' type='nominal' />
+      <column caption='Original Start Date' datatype='date' name='[original_start_time]' role='dimension' type='ordinal' />
+      <column caption='Type Change' datatype='string' name='[type_change]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.628719' measure-ordering='alphabetic' measure-percentage='0.371281' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Course Date Changes'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='course_date_changes (business_intelligence.course_date_changes) (business_intelligence)' name='vertica.19em7ob0ux7ewu13gos290j3f3gl' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.19em7ob0ux7ewu13gos290j3f3gl'>
+            <column caption='Blank' datatype='string' name='[Calculation_1100004221482344448]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='&quot; &quot;' />
+            </column>
+            <column caption='Change Date' datatype='date' name='[change_date]' role='dimension' type='ordinal' />
+            <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column caption='New End Date' datatype='date' name='[new_end_time]' role='dimension' type='ordinal' />
+            <column caption='New Pacing Type' datatype='string' name='[new_pacing_type]' role='dimension' type='nominal' />
+            <column caption='New Start Date' datatype='date' name='[new_start_time]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_1100004221482344448]' derivation='None' name='[none:Calculation_1100004221482344448:nk]' pivot='key' type='nominal' />
+            <column-instance column='[change_date]' derivation='None' name='[none:change_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[change_date]' derivation='None' name='[none:change_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[course_id]' derivation='None' name='[none:course_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[new_end_time]' derivation='None' name='[none:new_end_time:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[new_pacing_type]' derivation='None' name='[none:new_pacing_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[new_start_time]' derivation='None' name='[none:new_start_time:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[original_end_time]' derivation='None' name='[none:original_end_time:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[original_pacing_type]' derivation='None' name='[none:original_pacing_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[original_start_time]' derivation='None' name='[none:original_start_time:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[type_change]' derivation='None' name='[none:type_change:nk]' pivot='key' type='nominal' />
+            <column caption='Original End Date' datatype='date' name='[original_end_time]' role='dimension' type='ordinal' />
+            <column caption='Original Pacing Type' datatype='string' name='[original_pacing_type]' role='dimension' type='nominal' />
+            <column caption='Original Start Date' datatype='date' name='[original_start_time]' role='dimension' type='ordinal' />
+            <column caption='Type Change' datatype='string' name='[type_change]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='relative-date' column='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:qk]' first-period='-29' include-future='true' include-null='false' last-period='0' period-type='day' />
+          <filter class='categorical' column='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]'>
+            <groupfilter function='member' level='[none:type_change:nk]' member='&quot;End Date&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]</column>
+            <column>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='border-color' value='#b0b0b0' />
+            <format attr='border-width' value='1' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' value='5' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_start_time:ok]' value='140' />
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_start_time:ok]' value='116' />
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_end_time:ok]' value='136' />
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_end_time:ok]' value='120' />
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]' value='124' />
+            <format attr='width' field='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_pacing_type:nk]' value='140' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='row-levels' value='16' />
+            <format attr='row-horiz-levels' value='16' />
+            <format attr='col-levels' value='16' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='4'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:Calculation_1100004221482344448:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='aspect' value='1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:ok] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:course_id:nk] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_start_time:ok] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_start_time:ok] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_end_time:ok] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_end_time:ok] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_pacing_type:nk] / ([vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_pacing_type:nk] / [vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]))))))))</rows>
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='32'>
+    <window class='worksheet' maximized='true' name='Course Date Changes'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card mode='checkdropdown' param='[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:Calculation_1100004221482344448:nk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:change_date:qk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:course_id:nk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_pacing_type:nk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:new_start_time:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_pacing_type:nk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:original_start_time:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[none:type_change:nk]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[yr:change_date:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[yr:new_end_time:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[yr:new_start_time:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[yr:original_end_time:ok]</field>
+            <field>[vertica.19em7ob0ux7ewu13gos290j3f3gl].[yr:original_start_time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='124' name='Course Date Changes' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAAB8CAYAAAA/1L8JAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAR9UlEQVR4nO3df1xUdb7H8dfucPm5qKitpo6I4ZKSrLJNobLqhqutu2lYTcHGijdJjSLF
+      SHatzMxdc1Ro/AX+iGmlpqYfc7PVx9VdS13C6Y6LBYtKIOgiLpKARIpyOXn/mAEHHPkhtmz3
+      fJ6Ph38wPz7nzHfO+5zvOTMf53tXrly5ghAq9f2eXgEhepIEQKiaBEComgRAqJoEQKiaBECo
+      mgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoE
+      QKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBECo
+      mgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoE
+      QKiaR0cPOH78+L9iPYToEd+7cuXKlZ5eCSF6ikyBhKpJAISqdXgO0K68TcSu2k+Ty02RKRaS
+      dAANHFw1m6xblpH12FDyTasw7ivmq8se+AZNJfm5eML8Hc9RqmxsW5vBgbKLaH54J7OeWkB0
+      iPNO1zrxvdi/MYNsezFfXQavNo9tv45DY9HrLH5+F94xaRiiBwN2jHoDOde8uEBi0gxED+7W
+      CKlKvS2dpPcCedkQjdthsxvRG1qPtFevEehiEpgfNQzPDpfgeK9wbmP1+SZeNOym/HIoczOX
+      EeVzCcXbG0+lHOvSJewe+gzGJ8LxaVlBO8bkLXgsMPJEuOPWbh0ByktLaGII+rUWLBbHP8fG
+      D1BKcRGEjBjO5by3ydxfRsDMtZi3JzGmajer1u2lGoBq9qxfx75vfsUr5mySQ49hXpWFveHa
+      OhUfvMqmnDPcMX8rZks2z+nKMS9fx97qTtRprKHA+nuSlu/ibKtXoSPJcnX9zcum0RvwCL+P
+      KbLxd1p9/naeN+ZyocNHRpLSMt5mtqZOoO6t3/HCzoouLrGWQ9bdfH/mWsyWZUytzCbxP7fw
+      OYBGy4zEWfTZv5msvOYNoB571hYKxi5gTnhLJLoTgFqOFZ4GhhGodXN35QmKLwwhOMgHr/C5
+      bDS9ieFBLRp/LYH9oanwOKUAFQf5uAgCx49Dq/Fk7J1j4UIO+5q3XJc6g2etwWLJYuGE3mjw
+      JGTUCGgq5NDfajusY8+Yzwrz3+kzNLCd11TBTtMe6jxCiU+YiH87jxRXlb6/mCcMZQSG9e/i
+      MzV4B09nYVwY/7DuIl/pynMvcuFr0AZq0QB8XUONy1REo40mSd+H/ZvfpFCBett2NhVEsHCe
+      yxGBbgWgjJIiwMOOMVaPPu5JVu8+SaPz3oYvjlLqEczwNuFQ6oooqgCP8DHcDnCmnFNAv359
+      HQ8YpCUQqKo6124dUMg/cuTqnx3UwUtLVHI6Kx9wl1Znxfxd7DwFA375a6L6dW00boRSZSNz
+      STyxej2x8UvItFXh2AbqKbKu5sk4PXp9HE+u3ku5c+OosKagT7HSsr+0G9Hrjdgdd5KiX4lx
+      03xi9bGkHbpI+d7mOrHEL8nEXt2ydOqOmFgSH9tyn63K/Rao5G9hTqwRe8vdtexdruept8sc
+      f2pnYdj+MvoQvzbPrMCaosdob38c/EeHE3LhMwqc5ZS6I5jcjotr3UWYT0GOQY/+FSMphhwg
+      B0PzWKBBGz2Pmd57SF+3jnXGQiIXxhOqab3sGw9A5ZfU9vKlb0QiG3Zks/pXPhw2rWSb85BT
+      WlwEYXcwstVzdrI0IYO8Xjoej5+AP1D5zzMA+Pr4tCp/+kzl9esA9faNrP/LBWAAt48I6LCO
+      bt5a5kX8kDav30UDh/bs5wIh/OLe4HYed7OU8e6KdZSMepbNZgumF8MpMWayvxYacjJYvvMb
+      ZhiysWSvYHKNiZdMhXRuB/k5xX6LMJlNJAb+hY3b/pcZG8xYLCZ+O+rvpL1hd9Qpe5fn/lDI
+      qGc3Y7aYeFFXhnHFu5S5qagJjWCcl41Dec41qLVzqDCEX0wJAmC4bgID3U7gBxNtcJ0WX0dA
+      AAGco7rWOS7P/YHClnHRUWZcwbutVmww0YY0YgIhMCYNy5IkDCmROKZXSbQsThPMI0/PxNtu
+      4+y0Z4hvu/XTnQAMnMbSDBMZSRH01ngybNJPGU4dObZjQCUnii8wJDio1eGGgTNYZd7K/GFH
+      2JT8snPu3h73dertRpINOdQBHuEPMT3ohl/FVQ12cuxNEPpTxv0L9v6U5HLgbCg/nzGK3hrw
+      HPYwhjefJyqgAXuOHa/I+5g60BM8hxF9/13U7TvgmN92qD8RE0Lw1Hji6eONDyf59L8/pfjL
+      bwievZ43k3RogJLcA5wNvw/9KMd0clj0/dx19gC5JW5KasKYEOnFkSOOEDYU5FGkm8bPvo1x
+      KsnlwNlw7tM3j0s09991lgNuV6wjCmcKCqgGzh0+TJnrHsRuRK/Xd/MqkKuBtzIIKG1SQDlJ
+      aakHwXo30w1NbyZNvouMvFwO/a2WqbcOAkq52NAALpv5kEED3dZRyq2sTHNs/PSOZFGiY67u
+      316dTlD+/hn5wPCxYQR0+cXfgNpqzhFAwDULq6G6GvqH9Gm5RaP5PjQ1dfII4Idv88sPiGLh
+      i028/sZrvPReOopvEBHxT5I4WUtt9TnI28Bs/YZWz46sdUyzFplPNd/i2KtOmoLPSjvHHx9B
+      dW4+EVEprXdu3VH5T87Qn9EBOMcljw2z9bRas8jaLpdVyney8R2FWStSqFpj4NW37ib9186j
+      uy4JiyXpJgag4jTlgJ+fLxy38TkhxFxnz9zYeAkAL29vGDiIITTP1bUtc/nxQwbB8b2t6zTk
+      kfmSmdImoHckyWsS0TWfqbZXpxPKvjhOE36MuK1zgem2gH70p4TaWmiduL706wfnas6D82Ki
+      onwDHp43MC3T0HvUdJJWTofGrzmVs5mXN73Gvh8vY3i//hD+CK+nTrx2Q9YZsES3uS14PJN+
+      8BI2ewg1JyYzLeXmTRKr8+yU+v2EuGCgpB/9CeeR11OZeM2KdXAy4Uopx2o0o8xaS3SIlsYF
+      k0lalYl14ioe1F5d9xufAhWbeTJWz1NbP6NOaeRkTi6nPIYTfW8olSeKuTAklJHON7Zi11Li
+      9HNI/6QORTnLxx/nQ+/JTNX5gHYcPw2E059+SrnSyJHDR8Avkgk/1lxTp/pjK/vrAI/hxLyQ
+      SERvlzehnTqdUVt9DhiGtnN56b7g8UwaUMifdx6lToHGmoOkz0nAdMwHXaSOyzkfsreyERpP
+      Yv2v/8EvQsdIYOAQLR6ncsk52QiNlfxpt+36yzhmImFOOgdrGsHThwFDh9LHwxdfbwgeP4kB
+      eR9iOVqHgkKdzUhC7PJ2pqVB3BX5A3K2vM6ZKT8n7KZs/43UFFjZZD1BaMz9hLaMSx4fWhzj
+      otTZMCbEsryj+bKvH35cpKEBQKHkrdW8r4khKdpxlcgnfA4LJp/HYrS2XFCA7nwQNuIBnnns
+      SzbvWE3Cn5vw6jWC6ampzBisYHunFI9gPc0Tl8H3Pk3i6VfZlpFAzKse+AZNInnlXByXYwcz
+      47nfUvf7V1kSY0HzwzuJSZ2DzkfBVupap5a/2YscBZtKMS+OweysH+j8UMt9nc68mApOlwNu
+      pyTfliAefD6Z82tXsyDmIvjeypjYF4gbCRrms+zLzaxPeZRtii+3jnmUZfN1jj11eDTxd77C
+      jmcf5QPfUcz8zTQCC+vcL2JkLEsfSictOZ4NFx3vUVRqKpE+QNCDPJ98nrWrFxDjct/Udub1
+      QZH30P+9PH42pbMnXY6rNeV61xPhHAz65g/DPPDtG8S4x9KZG9G84Nbj0uTVixFRqaRO7QeO
+      C+fuDR9LRN81bJi9nIvJQ3hvlx8PvTKDqzt7H8LjHicyOY2NO+9mpTMY8mU4oWryXSChahIA
+      oWoSAKFqEgChahIAoWo374Mw4Zb0VP97k8ugQtVkCiRUTQIgVE0CIG6aels6c1ybddpyfgXZ
+      9V/c3KUY911tpGqfHaP+aoNNfb6JxXF69Prl7K0F5dIlRx2lHGtqLAmb8mhwfXq9HWNCApvy
+      rt4qARA3hQp7goVwUGlPsOgu6Ql2+G72BItukp7gFt/JnmDRPdIT7N53tidYdI30BF/1/6In
+      WHSN9AS3+G72BIvukZ5gvts9waKbpCdYeoKF6GEyBRKqJgEQqiYBEKomARCqJgEQqiYBEKom
+      ARCqJgEQqiYBEDdN51oiW7ckAs4+BmNXvulz00gAxE3R+ZbIOvZnvU9Jl7q/vj0SANFtXWuJ
+      DCTQ+wMyreWd/Hr3t0sC0IPU2RKp5YH4aZx//zX2XecLntdriSzcPocn3mhujCnhjSf0bf6e
+      w/ZCd+NnpajeWbt8L6ufdtTWx8ZLAHqOelsiNaGxLIg8jWnrQerdjct1WiJvDxvL+ZJSagFq
+      SynxC8Sv+e+KAj5riCQitM34mTcQ47mTNe8dc9RebeKbma+yw2Lmj7+dJAHoMapuifQhPO4x
+      7irKYrutTQTaaYnUBN9OSOFRihRQio5Sd/f93F2XR0ED1Bbmc26cjttpM36a3kxYmMXW+JFA
+      EA+vf5PUSA11laUc/eKs9AP0GLW3RPpHEBezh6e2Wyh8oe/V29triQwIJSzQTOFx8C88QWjE
+      QoZXmThSquBz/DTjJoeiofKa8buqgcLs51i1swqvW4YyYpSnBKDHSEsk/abO5ZGPUsh4I4z/
+      wNdxY0B7LZEweowPmV/Y6Xt8MCNiYWT1bWQf2wMFoxmbqMHd+LWo/DM7djYwZYWJ2SEaKH9X
+      pkA9RloigcH8MnEW3nl5nG41LtdviQwe8xPO5VrIJYTbfMAnKBg++hOfjR5HuAagzfgplyh5
+      O4XYFfsc5wo0cPGiAkodNuseOQL0HLW2RLam0UYTP20Py/e4H5fWLZHA7WGMrdjDkah4x/5d
+      O5LQhvepCb+j5QjpE+kyfpe96DUiitTUKAL8G4ib8QkGw6P81TOISfPjpCVSqJtMgYSqSQCE
+      qkkAhKpJAISqSQCEqsll0G+Z/Ezqvze5DCpUTaZAQtUkAELVJADipulcT7Cb3l83tzdWfoJp
+      +dPExzqaWuYuzeSTys79mGr7HE06KVbHWkoAxE3R+Z7gjinlVl5INlEeNpd1JgsW81ZejPoK
+      U3ISmW0b6rtJAiC67cZ/JtWdWvab3uHs5Kf4XfRo+noCGm+G3JPMC7P82Ze1023Xmnt2jPoU
+      rO38BLEEoAepsye4A7V2cgr6MOWesDb9Dxq048YT6Oxaqz+4itgEI3ZnQ1m93UjCnHTaNph1
+      RALQY9TbE9yuixf42rWrrVW5IWidP6fqPzGR+bfZ2JJlp77+IBvTChj9xGNE+HdhWcgHYT3H
+      2RN8v7MnmGEPY3gToIGDOXa8Ipc5elpx9ARbjAf4/LFQBnRYuLknGHDpCQ66J9zRE9yy+AOc
+      DX/E2ROMoyfY8kdySx4mKLhNSWdP8JojhSi6MBqdPcHPfhs/k9pp/kxMnE/uvC2kHL2AErGI
+      dTrH1m836jHkuDx0kR4zQGQKlqRBrapIAHqKGnuCr9MG2qrl09ePH3CBi+7OdV1/ThXAfyLR
+      07J5flcIc2fraN7565IsWJLAcQ5gQZtmILqlO7L1CYEEoKeosSe43y0M4BO+rKbVay478QUM
+      vZdBAAE6IkebyP4on0eCw9DQwKHsrdTqZjO64K+UDpjEPOcRSim3krXHix/96DTmLBvjFkbQ
+      xRmQnAP0GDX2BAf8hHGh59m17V1KLimAwqXTH2Hdf57QeyYw0PEgJsc/xID96/m9tYCaRk9G
+      /bg/f12ZwGLLeSbPmUEQOH8H+B146FmWL3mcsYWZ1/4XK50g3wXqQUqVjW1rMzhQ1twT/AyL
+      p2rRUE+RdTPr3z9MleLLrWP0LFo4nWGegFLO3rWvsONwFYrvKGb+JojDGXXoLUnoKqykLMpl
+      fMshv5GTu9NJs3zGP5v7fpNSiQ/zBxSqbNtYm3GAsmvuu44KKymL8vjZ5hVMdzP/r7CmsCh3
+      PGmGaOexy01PcONJ9mVsxWwv5qvL4OEbRETcAuZHDcP1PFqpsrFjczb7Cqu47Pw51cF+/+Af
+      l4O5b8FiQm2LWFk8nVdWRqPVOD6ES8qEecaFHZwIO9apeYYnARDfIY3UFB/mtO94wgZ3/OjO
+      kAAIVZNzAKFq/wf0bKpnGaOn5AAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>

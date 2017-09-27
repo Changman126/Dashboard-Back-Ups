@@ -1,0 +1,2191 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.0726.1843                                -->
+<workbook source-build='9.3.9 (9300.16.1103.2331)' source-platform='mac' version='9.3' xml:base='https://tableau.analytics.edx.org' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location derived-from='https://tableau.analytics.edx.org/workbooks/FY18_Verifiable_Courses?rev=1.0' id='FY18_Verifiable_Courses' path='/workbooks' revision='1.1' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='9.3'>
+      <aliases enabled='yes' />
+      <column caption='Breakdown_Parameter' datatype='string' name='[Color_Parameter (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+        <calculation class='tableau' formula='&quot;PM&quot;' />
+        <aliases>
+          <alias key='&quot;Partner&quot;' value='Course Partner' />
+        </aliases>
+        <members>
+          <member value='&quot;Content Language&quot;' />
+          <member value='&quot;Course Run&quot;' />
+          <member alias='Course Partner' value='&quot;Partner&quot;' />
+          <member value='&quot;Seat Price&quot;' />
+          <member value='&quot;Level&quot;' />
+          <member value='&quot;Pacing&quot;' />
+          <member value='&quot;Subject&quot;' />
+          <member value='&quot;PM&quot;' />
+          <member value='&quot;Course_id&quot;' />
+          <member value='&quot;None&quot;' />
+        </members>
+      </column>
+      <column caption='Color_Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+        <calculation class='tableau' formula='&quot;PM&quot;' />
+        <aliases>
+          <alias key='&quot;Partner&quot;' value='Course Partner' />
+        </aliases>
+        <members>
+          <member value='&quot;Content Language&quot;' />
+          <member value='&quot;Course Run&quot;' />
+          <member alias='Course Partner' value='&quot;Partner&quot;' />
+          <member value='&quot;Seat Price&quot;' />
+          <member value='&quot;Level&quot;' />
+          <member value='&quot;Pacing&quot;' />
+          <member value='&quot;Subject&quot;' />
+          <member value='&quot;PM&quot;' />
+          <member value='&quot;None&quot;' />
+        </members>
+      </column>
+      <column caption='Agg_Parameter' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Raw&quot;'>
+        <calculation class='tableau' formula='&quot;Raw&quot;' />
+        <members>
+          <member value='&quot;Raw&quot;' />
+          <member value='&quot;Percent&quot;' />
+        </members>
+      </column>
+      <column caption='Date_Paramter' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;Month&quot;'>
+        <calculation class='tableau' formula='&quot;Month&quot;' />
+        <members>
+          <member value='&quot;Day&quot;' />
+          <member value='&quot;Week&quot;' />
+          <member value='&quot;Month&quot;' />
+          <member value='&quot;Quarter&quot;' />
+        </members>
+      </column>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[Parameter 1]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>&quot;Pacing&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;Subject&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;Partner&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Level&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+    </datasource>
+    <datasource caption='course_availability (ahemphill.course_availability) (ahemphill)' inline='true' name='vertica.1yh5vra0dxiixo107tyrm09qrwkz' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='curated' server='warehouse.analytics.edx.org' server-oauth='' username='ahemphill' workgroup-auth-mode='prompt'>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[course_master].[course_partner]' />
+              <expression op='[partnerpmmapping].[org_id]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[course_availability].[course_id]' />
+                <expression op='[course_master].[course_id]' />
+              </expression>
+            </clause>
+            <relation name='course_availability' table='[business_intelligence].[course_availability]' type='table' />
+            <relation name='course_master' table='[business_intelligence].[course_master]' type='table' />
+          </relation>
+          <relation name='partnerpmmapping' table='[curated].[PartnerPMMapping]' type='table' />
+        </relation>
+        <cols>
+          <map key='[content_language]' value='[course_master].[content_language]' />
+          <map key='[course_about_url]' value='[course_master].[course_about_url]' />
+          <map key='[course_announcement_date (course_master)]' value='[course_master].[course_announcement_date]' />
+          <map key='[course_announcement_date]' value='[course_availability].[course_announcement_date]' />
+          <map key='[course_content_language]' value='[course_availability].[course_content_language]' />
+          <map key='[course_end_date (course_master)]' value='[course_master].[course_end_date]' />
+          <map key='[course_end_date]' value='[course_availability].[course_end_date]' />
+          <map key='[course_enrollment_end_date]' value='[course_master].[course_enrollment_end_date]' />
+          <map key='[course_enrollment_start_date]' value='[course_master].[course_enrollment_start_date]' />
+          <map key='[course_id (course_master)]' value='[course_master].[course_id]' />
+          <map key='[course_id]' value='[course_availability].[course_id]' />
+          <map key='[course_level_type]' value='[course_availability].[course_level_type]' />
+          <map key='[course_name]' value='[course_master].[course_name]' />
+          <map key='[course_number (course_master)]' value='[course_master].[course_number]' />
+          <map key='[course_number]' value='[course_availability].[course_number]' />
+          <map key='[course_pacing_type]' value='[course_availability].[course_pacing_type]' />
+          <map key='[course_partner (course_master)]' value='[course_master].[course_partner]' />
+          <map key='[course_partner]' value='[course_availability].[course_partner]' />
+          <map key='[course_reporting_type (course_master)]' value='[course_master].[course_reporting_type]' />
+          <map key='[course_reporting_type]' value='[course_availability].[course_reporting_type]' />
+          <map key='[course_run_number (course_master)]' value='[course_master].[course_run_number]' />
+          <map key='[course_run_number]' value='[course_availability].[course_run_number]' />
+          <map key='[course_seat_price (course_master)]' value='[course_master].[course_seat_price]' />
+          <map key='[course_seat_price]' value='[course_availability].[course_seat_price]' />
+          <map key='[course_start_date (course_master)]' value='[course_master].[course_start_date]' />
+          <map key='[course_start_date]' value='[course_availability].[course_start_date]' />
+          <map key='[course_subject (course_master)]' value='[course_master].[course_subject]' />
+          <map key='[course_subject]' value='[course_availability].[course_subject]' />
+          <map key='[course_verification_end_date (course_master)]' value='[course_master].[course_verification_end_date]' />
+          <map key='[course_verification_end_date]' value='[course_availability].[course_verification_end_date]' />
+          <map key='[date]' value='[course_availability].[date]' />
+          <map key='[days_to_course_end]' value='[course_master].[days_to_course_end]' />
+          <map key='[days_to_course_start]' value='[course_master].[days_to_course_start]' />
+          <map key='[days_to_verification_deadline]' value='[course_master].[days_to_verification_deadline]' />
+          <map key='[has_verification_deadline_passed]' value='[course_master].[has_verification_deadline_passed]' />
+          <map key='[is_WL]' value='[course_master].[is_WL]' />
+          <map key='[is_active]' value='[course_master].[is_active]' />
+          <map key='[is_course_enrollable]' value='[course_availability].[is_course_enrollable]' />
+          <map key='[is_course_running]' value='[course_availability].[is_course_running]' />
+          <map key='[is_course_verifiable]' value='[course_availability].[is_course_verifiable]' />
+          <map key='[level_type]' value='[course_master].[level_type]' />
+          <map key='[org_id]' value='[partnerpmmapping].[org_id]' />
+          <map key='[pacing_type]' value='[course_master].[pacing_type]' />
+          <map key='[pm]' value='[partnerpmmapping].[pm]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_number</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_number]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_number</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_subject</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_subject]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_subject</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>200</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_start_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_start_date]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_start_date</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_end_date]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_end_date</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_announcement_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_announcement_date]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_announcement_date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_verification_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_verification_end_date]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_verification_end_date</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_seat_price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[course_seat_price]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_seat_price</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_content_language</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_content_language]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_content_language</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_pacing_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_pacing_type]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_pacing_type</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_level_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_level_type]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_level_type</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_run_number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[course_run_number]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_run_number</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_reporting_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_reporting_type]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>course_reporting_type</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_course_enrollable</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_course_enrollable]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>is_course_enrollable</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_course_running</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_course_running]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>is_course_running</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_course_verifiable</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_course_verifiable]</local-name>
+            <parent-name>[course_availability]</parent-name>
+            <remote-alias>is_course_verifiable</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_subject</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_subject (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_subject</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>200</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_WL</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_WL]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>is_WL</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_name]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_name</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_start_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_start_date (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_start_date</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_end_date (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_end_date</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_announcement_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_announcement_date (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_announcement_date</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_enrollment_start_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_enrollment_start_date]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_enrollment_start_date</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_enrollment_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_enrollment_end_date]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_enrollment_end_date</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_seat_price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[course_seat_price (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_seat_price</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>content_language</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[content_language]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>content_language</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pacing_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[pacing_type]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>pacing_type</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>level_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[level_type]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>level_type</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_verification_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_verification_end_date (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_verification_end_date</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_active</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_active]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>is_active</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>has_verification_deadline_passed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[has_verification_deadline_passed]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>has_verification_deadline_passed</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_to_course_start</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_to_course_start]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>days_to_course_start</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_to_course_end</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_to_course_end]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>days_to_course_end</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_to_verification_deadline</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_to_verification_deadline]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>days_to_verification_deadline</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_number</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_number (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_number</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_run_number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[course_run_number (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_run_number</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_partner</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_partner (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_partner</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_about_url</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_about_url]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_about_url</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>1024</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_reporting_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_reporting_type (course_master)]</local-name>
+            <parent-name>[course_master]</parent-name>
+            <remote-alias>course_reporting_type</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>20</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>org_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[org_id]</local-name>
+            <parent-name>[partnerpmmapping]</parent-name>
+            <remote-alias>org_id</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>555</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pm</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[pm]</local-name>
+            <parent-name>[partnerpmmapping]</parent-name>
+            <remote-alias>pm</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>55</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[usr:Calculation_4196651177815388160:qk]&quot;' value='Count Enrollable Courses' />
+        </aliases>
+      </column>
+      <column datatype='real' default-format='p0.00%' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Number of Records]) / TOTAL(SUM([Number of Records]))'>
+          <table-calc ordering-type='Columns' />
+        </calculation>
+      </column>
+      <column caption='count_distinct_course_ids' datatype='integer' name='[Calculation_4196651177815388160]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD([course_id])' />
+      </column>
+      <column caption='Date_Selector' datatype='datetime' name='[Calculation_6237485506040631297]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 3]&#10;WHEN &quot;Day&quot; THEN DATETRUNC(&apos;day&apos;,[date])&#10;WHEN &quot;Week&quot; THEN DATETRUNC(&apos;week&apos;,[date])&#10;WHEN &quot;Month&quot; THEN DATETRUNC(&apos;month&apos;,[date])&#10;WHEN &quot;Quarter&quot; THEN DATETRUNC(&apos;quarter&apos;,[date])&#10;END' />
+      </column>
+      <column caption='Color' datatype='string' name='[Calculation_6993879174418550785]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#10;WHEN  &apos;Content Language&apos;&#10;THEN [course_content_language]&#10;WHEN &apos;Course Run&apos;&#10;THEN [course_run_number]&#10;WHEN  &apos;Partner&apos;&#10;THEN [course_partner]&#10;WHEN  &apos;Seat Price&apos;&#10;THEN [course_seat_price]&#10;WHEN  &apos;Level&apos;&#10;THEN [course_level_type]&#10;WHEN  &apos;Pacing&apos;&#10;THEN [course_pacing_type]&#10;WHEN  &apos;Subject&apos;&#10;THEN [course_subject]&#10;WHEN  &apos;PM&apos;&#10;THEN [pm]&#10;END' />
+      </column>
+      <column caption='pct_courses' datatype='real' name='[Calculation_6993879174424977410]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Number of Records]) / TOTAL(SUM([Number of Records]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Aggregation' datatype='real' name='[Calculation_6993879174425083907]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 2]&#10;WHEN &apos;Raw&apos; THEN ([Calculation_4196651177815388160]) &#10;WHEN &apos;Percent&apos; THEN [Calculation_6993879174424977410]&#10;END'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Breakdown' datatype='string' name='[Color (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='CASE [Parameters].[Color_Parameter (copy)]&#10;WHEN  &apos;Content Language&apos;&#10;THEN [course_content_language]&#10;WHEN &apos;Course Run&apos;&#10;THEN [course_run_number]&#10;WHEN  &apos;Partner&apos;&#10;THEN [course_partner]&#10;WHEN  &apos;Seat Price&apos;&#10;THEN [course_seat_price]&#10;WHEN  &apos;Level&apos;&#10;THEN [course_level_type]&#10;WHEN  &apos;Pacing&apos;&#10;THEN [course_pacing_type]&#10;WHEN  &apos;Subject&apos;&#10;THEN [course_subject]&#10;WHEN  &apos;PM&apos;&#10;THEN [pm]&#10;WHEN  &apos;Course_id&apos;&#10;THEN [course_id (course_master)]&#10;END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Content Language' datatype='string' name='[content_language]' role='dimension' type='nominal' />
+      <column caption='Course About Url' datatype='string' name='[course_about_url]' role='dimension' type='nominal' />
+      <column caption='Course Announcement Date (Course Master)' datatype='date' name='[course_announcement_date (course_master)]' role='dimension' type='ordinal' />
+      <column caption='Course Announcement Date' datatype='date' name='[course_announcement_date]' role='dimension' type='ordinal' />
+      <column caption='Course Content Language' datatype='string' name='[course_content_language]' role='dimension' type='nominal' />
+      <column caption='Course End Date (Course Master)' datatype='date' name='[course_end_date (course_master)]' role='dimension' type='ordinal' />
+      <column caption='Course End Date' datatype='date' name='[course_end_date]' role='dimension' type='ordinal' />
+      <column caption='Course Enrollment End Date' datatype='date' name='[course_enrollment_end_date]' role='dimension' type='ordinal' />
+      <column caption='Course Enrollment Start Date' datatype='date' name='[course_enrollment_start_date]' role='dimension' type='ordinal' />
+      <column caption='Course Id (Course Master)' datatype='string' name='[course_id (course_master)]' role='dimension' type='nominal' />
+      <column caption='Course Level Type' datatype='string' name='[course_level_type]' role='dimension' type='nominal' />
+      <column caption='Course Name' datatype='string' name='[course_name]' role='dimension' type='nominal' />
+      <column caption='Course Number (Course Master)' datatype='string' name='[course_number (course_master)]' role='dimension' type='nominal' />
+      <column caption='Course Pacing Type' datatype='string' name='[course_pacing_type]' role='dimension' type='nominal' />
+      <column caption='Course Partner (Course Master)' datatype='string' name='[course_partner (course_master)]' role='dimension' type='nominal' />
+      <column caption='Course Partner' datatype='string' name='[course_partner]' role='dimension' type='nominal' />
+      <column caption='Course Reporting Type (Course Master)' datatype='string' name='[course_reporting_type (course_master)]' role='dimension' type='nominal' />
+      <column caption='Course Reporting Type' datatype='string' name='[course_reporting_type]' role='dimension' type='nominal' />
+      <column caption='Course Run Number (Course Master)' datatype='integer' name='[course_run_number (course_master)]' role='dimension' type='ordinal' />
+      <column caption='Course Run Number' datatype='string' datatype-customized='true' name='[course_run_number]' role='dimension' type='nominal' />
+      <column caption='Course Seat Price (Course Master)' datatype='real' name='[course_seat_price (course_master)]' role='measure' type='quantitative' />
+      <column caption='Course Seat Price' datatype='string' datatype-customized='true' name='[course_seat_price]' role='dimension' type='nominal' />
+      <column caption='Course Start Date (Course Master)' datatype='date' name='[course_start_date (course_master)]' role='dimension' type='ordinal' />
+      <column caption='Course Start Date' datatype='date' name='[course_start_date]' role='dimension' type='ordinal' />
+      <column caption='Course Subject (Course Master)' datatype='string' name='[course_subject (course_master)]' role='dimension' type='nominal' />
+      <column caption='Course Subject' datatype='string' name='[course_subject]' role='dimension' type='nominal' />
+      <column caption='Course Verification End Date (Course Master)' datatype='date' name='[course_verification_end_date (course_master)]' role='dimension' type='ordinal' />
+      <column caption='Course Verification End Date' datatype='date' name='[course_verification_end_date]' role='dimension' type='ordinal' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Days To Course End' datatype='integer' name='[days_to_course_end]' role='measure' type='quantitative' />
+      <column caption='Days To Course Start' datatype='integer' name='[days_to_course_start]' role='measure' type='quantitative' />
+      <column caption='Days To Verification Deadline' datatype='integer' name='[days_to_verification_deadline]' role='measure' type='quantitative' />
+      <column caption='Has Verification Deadline Passed' datatype='integer' name='[has_verification_deadline_passed]' role='measure' type='quantitative' />
+      <column caption='is WL' datatype='integer' name='[is_WL]' role='measure' type='quantitative' />
+      <column caption='Is Active' datatype='integer' name='[is_active]' role='measure' type='quantitative' />
+      <column aggregation='Sum' caption='Is Course Enrollable' datatype='integer' name='[is_course_enrollable]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Is Course Running' datatype='integer' name='[is_course_running]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Is Course Verifiable' datatype='integer' name='[is_course_verifiable]' role='dimension' type='ordinal' />
+      <column caption='Level Type' datatype='string' name='[level_type]' role='dimension' type='nominal' />
+      <column caption='Org Id' datatype='string' name='[org_id]' role='dimension' type='nominal' />
+      <column caption='Pacing Type' datatype='string' name='[pacing_type]' role='dimension' type='nominal' />
+      <column caption='Pm' datatype='string' name='[pm]' role='dimension' type='nominal' />
+      <column-instance column='[Calculation_6993879174418550785]' derivation='None' name='[none:Calculation_6993879174418550785:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_6237485506040631297]' derivation='Day-Trunc' name='[tdy:Calculation_6237485506040631297:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation_4196651177815388160]' derivation='User' name='[usr:Calculation_4196651177815388160:qk]' pivot='key' type='quantitative' />
+      <group caption='Action (DAY(Date_Selector),Color)' hidden='true' name='[Action (DAY(Date_Selector),Color)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tdy:Calculation_6237485506040631297:ok]' />
+          <groupfilter function='level-members' level='[Calculation_6993879174418550785]' />
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' dim-percentage='0.663873' measure-ordering='alphabetic' measure-percentage='0.239732' parameter-percentage='0.0963956' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Calculation_6993879174418550785:nk]' type='palette'>
+            <map to='#17becf'>
+              <bucket>&quot;11&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;99&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;CornellX_UQx&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;HKPolyUX&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;HarvardMedGlobalAcademy&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;History&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;MandarinX&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;RICEx&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;UBCx&quot;</bucket>
+            </map>
+            <map to='#17becf'>
+              <bucket>&quot;UWashingtonX&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;1&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;ACCA&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;Architecture&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;DartmouthX&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;HKUx&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;Harvardx&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;Law&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;MEPhIx&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;RITx&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;UChicagoX&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;VJx&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;de-de&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;instructor_paced&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;200&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;3&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;30&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;ASUx&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;Chemistry&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;DelftX&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;IITBombayX&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;Intermediate&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;Kathleen Duffy&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;MITx&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;Music&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;SMES&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;UPMCx&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;WBGx&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;hi&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;75&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;8&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;ColgateX&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;Environmental Studies&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;GEMSx&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;HamiltonX&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;KyotoUx&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;PekingX&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;TrinityX&quot;</bucket>
+            </map>
+            <map to='#7f7f7f'>
+              <bucket>&quot;UTHealthSPHx&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;50&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;6&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;CaltechX&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;Education &amp; Teacher Training&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;FullbridgeX&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;JaverianaX&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;OsakaUx&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;Stacey Moyer&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;TeachersCollegeX&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;UTArlingtonX&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;tr&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;45&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;5&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;500&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;BUx&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;BerkleeX&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;Design&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;EPFLx&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;IRTIx&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;NYIF&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;Nina Huntemann&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;Social Sciences&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;SorbonneX&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;UQx&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;pt-pt&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;249&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;35&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;BabsonX&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;Communication&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;Delftx&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;IMF&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;Krister Svensson&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;MongoDBx&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;PerkinsX&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;Philosophy &amp; Ethics&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;SmithsonianX&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;UPV&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;WellesleyX&quot;</bucket>
+            </map>
+            <map to='#98df8a'>
+              <bucket>&quot;ja&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;100&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;CurtinX&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;HKUSTx&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;Humanities&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;JuilliardOpenClassroom&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;McGillX&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;RiceX&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;UC3Mx&quot;</bucket>
+            </map>
+            <map to='#9edae5'>
+              <bucket>&quot;VictoriaX&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;125&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;149&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;AdelaideX&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;Alison Kuryla&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;Art &amp; Culture&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;DavidsonNext&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;HarvardXPLUS&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;IDBx&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;Literature&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;MexicoX&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;RWTHx&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;UCSanDiegoX&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;W3Cx&quot;</bucket>
+            </map>
+            <map to='#aec7e8'>
+              <bucket>&quot;en-us&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;89&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;9&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;CooperUnion&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;Food &amp; Nutrition&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;HarveyMuddX&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;LinuxFoundationX&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;PrincetonX&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;TUMx&quot;</bucket>
+            </map>
+            <map to='#bcbd22'>
+              <bucket>&quot;UTokyoX&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;12&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;59&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;60&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;Catalystx&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;ETSx&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;Electronics&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;GalileoX&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;KIx&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;OsakaX&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;TeachForAmericaX&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;UTAustinX&quot;</bucket>
+            </map>
+            <map to='#c49c94'>
+              <bucket>&quot;zh-cmn&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;10&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;49&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;600&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;CaltechDelftX&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;ETHx&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;Economics &amp; Finance&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;ITMOx&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;None&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;OECx&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;TBRx&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;UrFUx&quot;</bucket>
+            </map>
+            <map to='#c5b0d5'>
+              <bucket>&quot;ru&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;79&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;ColumbiaX&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;Ethics&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;HarvardX&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;KyotoX&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;PennX&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;TsinghuaX&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;UTMBx&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;250&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;39&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;4&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;BAx&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;Computer Science&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;EdinburghX&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;IMFx&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;Introductory&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;Laura Ingison&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;NewcastleX&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;Physics&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;SmithX&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;UPValenciaX&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;WestonHS&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;ko&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;88&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;90&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;CornellX&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;HKPolyUx&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;Health &amp; Safety&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;LouvainX&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;PurdueX&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;UAMx&quot;</bucket>
+            </map>
+            <map to='#dbdb8d'>
+              <bucket>&quot;UTPermianBasin&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;375&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;69&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;7&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;CatalystX&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;Energy &amp; Earth Sciences&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;GeorgetownX&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;KTHx&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;MITProfessionalX&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;OxfordX&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;TenarisUniversityX&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;UTAx&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;70&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;ChalmersX&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;Engineering&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;GTx&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;ImperialBusinessX&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;KULeuvenX&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;Peking&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;TokyoTechX&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;UTennesseeX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;150&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;2&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;25&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Advanced&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;AmnestyInternationalX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Audra Longert&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Biology &amp; Life Sciences&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;DavidsonX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;IEEEx&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;Math&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;MichiganX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;SaveALifeX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;UCSDx&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;USMx&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;WageningenX&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;es-es&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;self_paced&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;300&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;40&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;BerkeleyX&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;Data Analysis &amp; Statistics&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;IMTx&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;Melanie MacFarlane&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;NotreDameX&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;SNUx&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;Science&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;UPValenciax&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;WitsX&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;edX&quot;</bucket>
+            </map>
+            <map to='#ff9896'>
+              <bucket>&quot;nl-nl&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;129&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;199&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;29&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;ANUx&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;Business &amp; Management&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;DelftWageningenX&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;IIMBx&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;Kate Venier&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;Medicine&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;Microsoft&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;SchoolYourself&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;University_of_TorontoX&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;WasedaX&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;Wharton&quot;</bucket>
+            </map>
+            <map to='#ffbb78'>
+              <bucket>&quot;fr-fr&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Breakdown_Parameter' datatype='string' name='[Color_Parameter (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+          <calculation class='tableau' formula='&quot;PM&quot;' />
+          <aliases>
+            <alias key='&quot;Partner&quot;' value='Course Partner' />
+          </aliases>
+        </column>
+        <column caption='Color_Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+          <calculation class='tableau' formula='&quot;PM&quot;' />
+          <aliases>
+            <alias key='&quot;Partner&quot;' value='Course Partner' />
+          </aliases>
+        </column>
+        <column caption='Agg_Parameter' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Raw&quot;'>
+          <calculation class='tableau' formula='&quot;Raw&quot;' />
+        </column>
+        <column caption='Date_Paramter' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;Month&quot;'>
+          <calculation class='tableau' formula='&quot;Month&quot;' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='FY18_verifiable_courses_dashboard' type='sheet' worksheet='verifiable' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='FY18_verifiable_courses_dashboard' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='breakdown'>
+      <repository-location id='breakdown' path='/workbooks/FY18_Verifiable_Courses' revision='' />
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Verifiable Course Exploratory</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='course_availability (ahemphill.course_availability) (ahemphill)' name='vertica.1yh5vra0dxiixo107tyrm09qrwkz' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Breakdown_Parameter' datatype='string' name='[Color_Parameter (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+              <calculation class='tableau' formula='&quot;PM&quot;' />
+              <aliases>
+                <alias key='&quot;Partner&quot;' value='Course Partner' />
+              </aliases>
+            </column>
+            <column caption='Color_Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+              <calculation class='tableau' formula='&quot;PM&quot;' />
+              <aliases>
+                <alias key='&quot;Partner&quot;' value='Course Partner' />
+              </aliases>
+            </column>
+            <column caption='Agg_Parameter' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Raw&quot;'>
+              <calculation class='tableau' formula='&quot;Raw&quot;' />
+            </column>
+            <column caption='Date_Paramter' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;Month&quot;'>
+              <calculation class='tableau' formula='&quot;Month&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='vertica.1yh5vra0dxiixo107tyrm09qrwkz'>
+            <column caption='count_distinct_course_ids' datatype='integer' name='[Calculation_4196651177815388160]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([course_id])' />
+            </column>
+            <column caption='Date_Selector' datatype='datetime' name='[Calculation_6237485506040631297]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 3]&#10;WHEN &quot;Day&quot; THEN DATETRUNC(&apos;day&apos;,[date])&#10;WHEN &quot;Week&quot; THEN DATETRUNC(&apos;week&apos;,[date])&#10;WHEN &quot;Month&quot; THEN DATETRUNC(&apos;month&apos;,[date])&#10;WHEN &quot;Quarter&quot; THEN DATETRUNC(&apos;quarter&apos;,[date])&#10;END' />
+            </column>
+            <column caption='Color' datatype='string' name='[Calculation_6993879174418550785]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#10;WHEN  &apos;Content Language&apos;&#10;THEN [course_content_language]&#10;WHEN &apos;Course Run&apos;&#10;THEN [course_run_number]&#10;WHEN  &apos;Partner&apos;&#10;THEN [course_partner]&#10;WHEN  &apos;Seat Price&apos;&#10;THEN [course_seat_price]&#10;WHEN  &apos;Level&apos;&#10;THEN [course_level_type]&#10;WHEN  &apos;Pacing&apos;&#10;THEN [course_pacing_type]&#10;WHEN  &apos;Subject&apos;&#10;THEN [course_subject]&#10;WHEN  &apos;PM&apos;&#10;THEN [pm]&#10;END' />
+            </column>
+            <column caption='pct_courses' datatype='real' name='[Calculation_6993879174424977410]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Number of Records]) / TOTAL(SUM([Number of Records]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Aggregation' datatype='real' name='[Calculation_6993879174425083907]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 2]&#10;WHEN &apos;Raw&apos; THEN ([Calculation_4196651177815388160]) &#10;WHEN &apos;Percent&apos; THEN [Calculation_6993879174424977410]&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Breakdown' datatype='string' name='[Color (copy)]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Color_Parameter (copy)]&#10;WHEN  &apos;Content Language&apos;&#10;THEN [course_content_language]&#10;WHEN &apos;Course Run&apos;&#10;THEN [course_run_number]&#10;WHEN  &apos;Partner&apos;&#10;THEN [course_partner]&#10;WHEN  &apos;Seat Price&apos;&#10;THEN [course_seat_price]&#10;WHEN  &apos;Level&apos;&#10;THEN [course_level_type]&#10;WHEN  &apos;Pacing&apos;&#10;THEN [course_pacing_type]&#10;WHEN  &apos;Subject&apos;&#10;THEN [course_subject]&#10;WHEN  &apos;PM&apos;&#10;THEN [pm]&#10;WHEN  &apos;Course_id&apos;&#10;THEN [course_id (course_master)]&#10;END' />
+            </column>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column caption='Course Content Language' datatype='string' name='[course_content_language]' role='dimension' type='nominal' />
+            <column caption='Course Id (Course Master)' datatype='string' name='[course_id (course_master)]' role='dimension' type='nominal' />
+            <column datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column caption='Course Level Type' datatype='string' name='[course_level_type]' role='dimension' type='nominal' />
+            <column caption='Course Pacing Type' datatype='string' name='[course_pacing_type]' role='dimension' type='nominal' />
+            <column caption='Course Partner' datatype='string' name='[course_partner]' role='dimension' type='nominal' />
+            <column caption='Course Reporting Type' datatype='string' name='[course_reporting_type]' role='dimension' type='nominal' />
+            <column caption='Course Run Number' datatype='string' datatype-customized='true' name='[course_run_number]' role='dimension' type='nominal' />
+            <column caption='Course Seat Price' datatype='string' datatype-customized='true' name='[course_seat_price]' role='dimension' type='nominal' />
+            <column caption='Course Subject' datatype='string' name='[course_subject]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' caption='Is Course Verifiable' datatype='integer' name='[is_course_verifiable]' role='dimension' type='ordinal' />
+            <column-instance column='[Color (copy)]' derivation='None' name='[none:Color (copy):nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_reporting_type]' derivation='None' name='[none:course_reporting_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[is_course_verifiable]' derivation='None' name='[none:is_course_verifiable:ok]' pivot='key' type='ordinal' />
+            <column caption='Pm' datatype='string' name='[pm]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_6237485506040631297]' derivation='Day-Trunc' name='[tdy:Calculation_6237485506040631297:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_6993879174425083907]' derivation='User' name='[usr:Calculation_6993879174425083907:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[Calculation_6993879174424977410]' ordering-type='Rows' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[Action (DAY(Date_Selector),Color)]'>
+            <groupfilter function='crossjoin' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Calculation_6237485506040631297:ok]' />
+              <groupfilter function='level-members' level='[Calculation_6993879174418550785]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_reporting_type:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:course_reporting_type:nk]' member='&quot;mooc&quot;' />
+              <groupfilter function='member' level='[none:course_reporting_type:nk]' member='&quot;spoc&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]' filter-group='3' included-values='in-range'>
+            <min>#2016-07-01#</min>
+            <max>#2017-08-01#</max>
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:is_course_verifiable:ok]'>
+            <groupfilter function='member' level='[none:is_course_verifiable:ok]' member='1' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_reporting_type:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:is_course_verifiable:ok]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[Action (DAY(Date_Selector),Color)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='width' field='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Color (copy):nk]' value='320' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[usr:Calculation_6993879174425083907:qk:2]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Color (copy):nk]</rows>
+        <cols>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[tdy:Calculation_6237485506040631297:ok]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='verifiable'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Unique Verifiable Courses by Month</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <repository-location derived-from='https://tableau.analytics.edx.org/workbooks/BI_Course_Availability/verifiable?rev=' id='verifiable' path='/workbooks/FY18_Verifiable_Courses' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='course_availability (ahemphill.course_availability) (ahemphill)' name='vertica.1yh5vra0dxiixo107tyrm09qrwkz' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Color_Parameter' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;PM&quot;'>
+              <calculation class='tableau' formula='&quot;PM&quot;' />
+              <aliases>
+                <alias key='&quot;Partner&quot;' value='Course Partner' />
+              </aliases>
+            </column>
+            <column caption='Agg_Parameter' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;Raw&quot;'>
+              <calculation class='tableau' formula='&quot;Raw&quot;' />
+            </column>
+            <column caption='Date_Paramter' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;Month&quot;'>
+              <calculation class='tableau' formula='&quot;Month&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='vertica.1yh5vra0dxiixo107tyrm09qrwkz'>
+            <column caption='count_distinct_course_ids' datatype='integer' name='[Calculation_4196651177815388160]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([course_id])' />
+            </column>
+            <column caption='Date_Selector' datatype='datetime' name='[Calculation_6237485506040631297]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 3]&#10;WHEN &quot;Day&quot; THEN DATETRUNC(&apos;day&apos;,[date])&#10;WHEN &quot;Week&quot; THEN DATETRUNC(&apos;week&apos;,[date])&#10;WHEN &quot;Month&quot; THEN DATETRUNC(&apos;month&apos;,[date])&#10;WHEN &quot;Quarter&quot; THEN DATETRUNC(&apos;quarter&apos;,[date])&#10;END' />
+            </column>
+            <column caption='Color' datatype='string' name='[Calculation_6993879174418550785]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#10;WHEN  &apos;Content Language&apos;&#10;THEN [course_content_language]&#10;WHEN &apos;Course Run&apos;&#10;THEN [course_run_number]&#10;WHEN  &apos;Partner&apos;&#10;THEN [course_partner]&#10;WHEN  &apos;Seat Price&apos;&#10;THEN [course_seat_price]&#10;WHEN  &apos;Level&apos;&#10;THEN [course_level_type]&#10;WHEN  &apos;Pacing&apos;&#10;THEN [course_pacing_type]&#10;WHEN  &apos;Subject&apos;&#10;THEN [course_subject]&#10;WHEN  &apos;PM&apos;&#10;THEN [pm]&#10;END' />
+            </column>
+            <column caption='pct_courses' datatype='real' name='[Calculation_6993879174424977410]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Number of Records]) / TOTAL(SUM([Number of Records]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Aggregation' datatype='real' name='[Calculation_6993879174425083907]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 2]&#10;WHEN &apos;Raw&apos; THEN ([Calculation_4196651177815388160]) &#10;WHEN &apos;Percent&apos; THEN [Calculation_6993879174424977410]&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column caption='Course Content Language' datatype='string' name='[course_content_language]' role='dimension' type='nominal' />
+            <column datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column caption='Course Level Type' datatype='string' name='[course_level_type]' role='dimension' type='nominal' />
+            <column caption='Course Pacing Type' datatype='string' name='[course_pacing_type]' role='dimension' type='nominal' />
+            <column caption='Course Partner' datatype='string' name='[course_partner]' role='dimension' type='nominal' />
+            <column caption='Course Reporting Type' datatype='string' name='[course_reporting_type]' role='dimension' type='nominal' />
+            <column caption='Course Run Number' datatype='string' datatype-customized='true' name='[course_run_number]' role='dimension' type='nominal' />
+            <column caption='Course Seat Price' datatype='string' datatype-customized='true' name='[course_seat_price]' role='dimension' type='nominal' />
+            <column caption='Course Subject' datatype='string' name='[course_subject]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' caption='Is Course Verifiable' datatype='integer' name='[is_course_verifiable]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_6993879174418550785]' derivation='None' name='[none:Calculation_6993879174418550785:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_content_language]' derivation='None' name='[none:course_content_language:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_level_type]' derivation='None' name='[none:course_level_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_pacing_type]' derivation='None' name='[none:course_pacing_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_partner]' derivation='None' name='[none:course_partner:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_reporting_type]' derivation='None' name='[none:course_reporting_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[course_subject]' derivation='None' name='[none:course_subject:nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[is_course_verifiable]' derivation='None' name='[none:is_course_verifiable:ok]' pivot='key' type='ordinal' />
+            <column caption='Pm' datatype='string' name='[pm]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_6237485506040631297]' derivation='Day-Trunc' name='[tdy:Calculation_6237485506040631297:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_6993879174425083907]' derivation='User' name='[usr:Calculation_6993879174425083907:qk:1]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[Calculation_6993879174424977410]' ordering-field='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]' ordering-type='Field' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_content_language:nk]'>
+            <groupfilter function='level-members' level='[none:course_content_language:nk]' />
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_level_type:nk]'>
+            <groupfilter function='level-members' level='[none:course_level_type:nk]' />
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_pacing_type:nk]'>
+            <groupfilter function='level-members' level='[none:course_pacing_type:nk]' />
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_partner:nk]'>
+            <groupfilter function='level-members' level='[none:course_partner:nk]' />
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_reporting_type:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:course_reporting_type:nk]' member='&quot;mooc&quot;' />
+              <groupfilter function='member' level='[none:course_reporting_type:nk]' member='&quot;spoc&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_subject:nk]'>
+            <groupfilter function='level-members' level='[none:course_subject:nk]' />
+          </filter>
+          <filter class='quantitative' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]' filter-group='3' included-values='in-range'>
+            <min>#2016-07-01#</min>
+            <max>#2017-08-01#</max>
+          </filter>
+          <filter class='categorical' column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:is_course_verifiable:ok]'>
+            <groupfilter function='member' level='[none:is_course_verifiable:ok]' member='1' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_reporting_type:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:is_course_verifiable:ok]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_pacing_type:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_partner:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_level_type:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_subject:nk]</column>
+            <column>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_content_language:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[usr:Calculation_6993879174425083907:qk:1]</rows>
+        <cols>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[tdy:Calculation_6237485506040631297:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='FY18_verifiable_courses_dashboard'>
+      <repository-location derived-from='https://tableau.analytics.edx.org/workbooks/BI_Course_Availability/course_availability?rev=' id='FY18_verifiable_courses_dashboard' path='/workbooks/FY18_Verifiable_Courses' revision='' />
+      <style />
+      <datasources>
+        <datasource caption='course_availability (ahemphill.course_availability) (ahemphill)' name='vertica.1yh5vra0dxiixo107tyrm09qrwkz' />
+      </datasources>
+      <datasource-dependencies datasource='vertica.1yh5vra0dxiixo107tyrm09qrwkz'>
+        <column caption='Course Content Language' datatype='string' name='[course_content_language]' role='dimension' type='nominal' />
+        <column caption='Course Level Type' datatype='string' name='[course_level_type]' role='dimension' type='nominal' />
+        <column caption='Course Pacing Type' datatype='string' name='[course_pacing_type]' role='dimension' type='nominal' />
+        <column caption='Course Partner' datatype='string' name='[course_partner]' role='dimension' type='nominal' />
+        <column caption='Course Subject' datatype='string' name='[course_subject]' role='dimension' type='nominal' />
+        <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+        <column-instance column='[course_content_language]' derivation='None' name='[none:course_content_language:nk]' pivot='key' type='nominal' />
+        <column-instance column='[course_level_type]' derivation='None' name='[none:course_level_type:nk]' pivot='key' type='nominal' />
+        <column-instance column='[course_pacing_type]' derivation='None' name='[none:course_pacing_type:nk]' pivot='key' type='nominal' />
+        <column-instance column='[course_partner]' derivation='None' name='[none:course_partner:nk]' pivot='key' type='nominal' />
+        <column-instance column='[course_subject]' derivation='None' name='[none:course_subject:nk]' pivot='key' type='nominal' />
+        <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='16' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='19' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='33' name='verifiable' pane-specification-id='0' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]' type='color' w='7608' x='0' y='0' />
+            <zone h='100000' id='17' type='layout-basic' w='85315' x='7608' y='0'>
+              <zone h='50000' id='27' name='verifiable' show-title='true' w='85315' x='7608' y='0' />
+              <zone h='50000' id='36' name='breakdown' show-title='true' w='85315' x='7608' y='50000' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='18' is-fixed='true' param='vert' type='layout-flow' w='7077' x='92923' y='0'>
+              <zone forceUpdate='true' h='7268' id='34' type='text' w='7077' x='92923' y='0'>
+                <formatted-text>
+                  <run bold='true' fontsize='18' underline='true'>Color and Aggregation Control</run>
+                </formatted-text>
+              </zone>
+              <zone custom-title='true' h='3902' id='22' mode='compact' param='[Parameters].[Parameter 1]' type='paramctrl' w='7077' x='92923' y='7268'>
+                <formatted-text>
+                  <run>Color Control</run>
+                </formatted-text>
+              </zone>
+              <zone custom-title='true' h='3902' id='37' mode='compact' param='[Parameters].[Color_Parameter (copy)]' type='paramctrl' w='7077' x='92923' y='11170'>
+                <formatted-text>
+                  <run>Breakdown Control</run>
+                </formatted-text>
+              </zone>
+              <zone custom-title='true' h='3902' id='24' mode='compact' param='[Parameters].[Parameter 3]' type='paramctrl' w='7077' x='92923' y='15072'>
+                <formatted-text>
+                  <run>Date Aggregation Control</run>
+                </formatted-text>
+              </zone>
+              <zone custom-title='true' h='4897' id='23' mode='list' param='[Parameters].[Parameter 2]' type='paramctrl' w='7077' x='92923' y='18974'>
+                <formatted-text>
+                  <run>Aggregation Control</run>
+                </formatted-text>
+              </zone>
+              <zone h='2678' id='35' type='text' w='7077' x='92923' y='23871'>
+                <formatted-text>
+                  <run bold='true' fontsize='18' underline='true'>Filters</run>
+                </formatted-text>
+              </zone>
+              <zone h='5050' id='20' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]' show-domain='false' show-null-ctrls='false' type='filter' w='7077' x='92923' y='26549' />
+              <zone h='3749' id='28' mode='checkdropdown' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_partner:nk]' type='filter' w='7077' x='92923' y='31599' />
+              <zone h='3749' id='29' mode='checkdropdown' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_subject:nk]' type='filter' w='7077' x='92923' y='35348' />
+              <zone h='3749' id='30' mode='checkdropdown' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_level_type:nk]' type='filter' w='7077' x='92923' y='39097' />
+              <zone h='3749' id='31' mode='checkdropdown' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_pacing_type:nk]' type='filter' w='7077' x='92923' y='42846' />
+              <zone h='3749' id='32' mode='checkdropdown' name='verifiable' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_content_language:nk]' type='filter' w='7077' x='92923' y='46595' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='28'>
+    <window class='dashboard' maximized='true' name='FY18_verifiable_courses_dashboard'>
+      <viewpoints>
+        <viewpoint name='breakdown'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='verifiable'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='18' />
+    </window>
+    <window class='worksheet' name='verifiable'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='list' param='[Parameters].[Parameter 1]' type='parameter' />
+            <card param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card mode='compact' param='[Parameters].[Parameter 3]' type='parameter' />
+            <card mode='checkdropdown' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_partner:nk]' type='filter' />
+            <card mode='checkdropdown' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_subject:nk]' type='filter' />
+            <card mode='checkdropdown' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_level_type:nk]' type='filter' />
+            <card mode='checkdropdown' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_pacing_type:nk]' type='filter' />
+            <card mode='checkdropdown' param='[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_content_language:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Calculation_6993879174418550785:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:content_language:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_is_enrollable:ok]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_is_verifiable:ok]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_reporting_type:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:course_subject:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:date:qk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:is_course_verifiable:ok]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:level_type:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:pacing_type:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:subject_name:nk]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[yr:Calculation_6237485506040631297:ok]</field>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[yr:date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='breakdown'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='list' param='[Parameters].[Parameter 1]' type='parameter' />
+            <card mode='compact' param='[Parameters].[Parameter 3]' type='parameter' />
+            <card mode='compact' param='[Parameters].[Color_Parameter (copy)]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.1yh5vra0dxiixo107tyrm09qrwkz].[none:Color (copy):nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='FY18_verifiable_courses_dashboard' width='192'>&#10;      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&#10;      SvD/Dwo9O8dJkumnAAAAAElFTkSuQmCC&#10;    </thumbnail>
+    <thumbnail height='192' name='verifiable' width='192'>&#10;      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&#10;    </thumbnail>
+    <thumbnail height='192' name='breakdown' width='192'>&#10;      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAAsTAAALEwEAmpwY&#10;      AAAgAElEQVR4nOy9d3Qc15mn/VRVR+TQyDkDJAiSYBSTJFIkReVsmbI0DmPPrNcee8J+szvf&#10;      eD97Zj2fd8eTbI8clAMpSmIQc84JAEECRM5AIzeARufcVbV/gKSY5LFsWfKI/ZyDg3NudVXd&#10;      uve+dUO9v/sKqqqqRIhwByIIgiB+1pmIEOGzJGIAEe5oIgYQ4Y4mYgAR7mgiBhDhjiZiABHu&#10;      aCIGEOGOJmIAEe5oIgYQ4Y4mYgAR/sBRkeUQgWAIWfnkr6755C8Z4U5CDjnY+eO/5cSYAICq&#10;      Gqm+/yk2rqtGr5V+5+s7J8d55yc/pC9pMc8+9QTzc2IIOrv5yf/7EwaFK/c0ZrHhC19k3bwc&#10;      NKJwyzXCAT/mzjbiyqtJ0d14LGIAEX4nVEVhYjxM1po/4WvLM7GbG3hryyu8oonjT+4rwudy&#10;      4PYFUQUNsQkJGIQADq9AYmI0ghzA4QwSFRuFViMhoBIO+nE6XQRCMlpjHD5fgAE1mxeefYzy&#10;      9BgAFMXLpCxy3zf+gmWZGgYuHeSdX/wIzX/7B9YUROFyOPAFw4gaPfEJ8Xgn+jmx7TB3fbuM&#10;      pORopOtsJGIAEX5nJEkiKSEJkykVk2k93/D08sP367DMDnNo+04G7DIBp4+i9c/xYLaZlz6Y&#10;      5mt/sZE4y0Ve3m7m0Y0PUpwahxLy0HnhGPtOXMYTCiAaCrlrdRljo2M0Xuomd/0CYq+02LBG&#10;      S7wpDVOqAdP9z+Hp6GXH+W5mBVxs31WDXQnj82q470tfId18iotDw4inm8l6eCnx17X6yBwg&#10;      wieOKTcfURbw+R3oM4p55MlHWZovcbF9GL2phBS5nYtdFjqbWpFTE0iINiIA3qlh6i+2kLP4&#10;      cf7qL7/L8qg+3tszSWFhISvurrrW+GdQQb06KdCTVxKLqMr4HA4ySpby5GMbyBHttA1bya5e&#10;      w7KiIlasqb6h8UPEACL8HrCPj6LoJARVxD45SVNzBxanD51WxBiVRuXsdNpPHeFCn0xlXgHx&#10;      xplWGfL78QhaEjMziIk1UbU0D1f3GDpJh1anvekuAghXxzIhJka9SJIIWoHJiXZa2nqw+YJo&#10;      RBFBY8Cg16HT3zQBIGIAET4BZEXG6XbicDoY6qhh84Emiu8uwTXQisWewNKVi8k3xRPwelG1&#10;      BvJL5hJqP85gOJqCvCy0VyauOoOeqGAY+6iVQMBNe00futm5ANwsWpFkGbfDgdMxRUfNHvY1&#10;      TbN0dgr9zXU442ezYkkVGQlR+L1BVFXB57YyNe3BMz3JhM1FWJGByBwgwu+KAHrJxtntP+Vv&#10;      9mmQ0TN71SN88b5ZeDqG8XTs4Wc/ukCsPojHk4xbFUjJyqO0PJfJ1Awy0mK4+h43puSxeHEp&#10;      W3f9jL/cJeOPLuOrz8+hdtf4DW9qAQnJOs72n/wd+zSA3sSKx/6YdWVpdA5n0PPBu/yoPhZD&#10;      0Io7zoK4Mh2RYXZvf59erYgvo5TH1s2ZuVZEERbh94dKOBxCVgW0Wi0ioIQDDLc3cOhcHTlL&#10;      nmb9vIxbzlKCQYIK6PRaROHWZc1ff0uFcCiEKkhotZrrklUUWUG6bmlWEAQh0gNE+D0ioNHo&#10;      bhhm+N2j7N+6H13VIuaXp932LFGnw/Bb31JEo9PfJllAEm/9LhHpASJ8qqiKgtflQjDEEKX/&#10;      3T+U/S4IgiBEDCDCHUtEFB/hjidiABHuaCIGEOGOJmIAEe5oIgYQ4Y4mYgARfg8oBINBQqHw&#10;      Z52R/5DIh7AInyjWvgZ27TvO8LQbQRtDSfXdrF01jyTj7df8g84Rai5NsfjuKgy3+eo7OTnN&#10;      vmMXePiJ9STd7A/3CRDpASJ8Qqi4hy7y3rubOHyml/isPIzBQfZsfo0PDp3DEVZR1Zv+QlPs&#10;      ePNt3tx+EVm5zXFVxe8P0tM/Qki4/fFf//cf5zrSA0T4ZFA9NNc20NQQ5rm/+e+sn5uD4lzP&#10;      gS0/Y/elVuZXVWCyN/CrX21iOGwgvWQZ91cZaOntxDF2iR++lMd3Hsnh0PubOXO5n6Ahhwee&#10;      2Uh1QSyD3af4X3/dgM2hZ/Xjz/H03QXU73qTbQcbCZuyWf3oF3hwaT5H/+X7bGufRoqKZ/VD&#10;      X+LJ+6sx/geuRJEeIMIngyzjDgXxRpnIjtMjCaCLiSWjoBy9rBBydPLym9txp67m+S88SIZv&#10;      Aps3gCE6FkGfwerqdNpOvs+JnjCrHn6GVcUadr/8Ik1WGcGYzqJ7Hua+ylhObtpGS9Mhfnmw&#10;      mbQV97MwU8u+9/bSPWbDbZ9C1CVTfe/9VM/Kx/AbtO5IDxDhk0EQkEQRKeTGGQijqKAG/Tin&#10;      LchCFGGXDU84RNVDG7h7bixzKxcgGENMd3bSmljIorJUjp8cp7DiLlbf/yCxQxrqO99lZCpI&#10;      ZlYeq9evQ6mborn9NCPmflRUAkEvosZIliGEPxxGRENq9kq+/PQ6Yn7DbEcMIMIng2gkLzeL&#10;      9PgGDuzch+BdiDzeypFzXaSWrSU9IwWtJNF7vpZWyUTT2TrSqssJKCr4xugetqJLiGW8f4S2&#10;      1ibEznb8fomkeC3NkxNcvnQZtXsMhyeOxOQEREEk2hhPPB50iYnEG/UIgoBoMHDzXHm09QxN&#10;      4zFUz0ul93IXccWVlOWYgIgBRPikELTkzl3OEx43b717nE0jTajhIDH5S3hmwypycqJ4Yv0S&#10;      fvHOLl7pMaAxpvL46nwq85up72xm154e/ujh+2ka3MnWN15BccnMXf8F5qVq+MDSw853XkF1&#10;      BShb8wRz5peyvmWYmsYzWMIyGdXrSIo1zigkb1U9Mnb5CKd6csjLmkP9yUPkGNMozp4xgIg3&#10;      aIRPkKvbmkzjdIcQRC2xCYnExRjRiAJywIN1yopXBmNsPImxMRBwM2m1IxiSSUvS43HacLi9&#10;      CBoj8UlJGDUCVqsVORwijER8YhKxRi1+pw273UlY0hOXkEhstB6fzUpAiiYpPorr575+lxVP&#10;      SENsjB6v2402Ko4ovQ5RjLhDR7iDibhDR7jjiRhAhDuaiAFEuKOJGECEO5qPXAYNBAIMDw9/&#10;      mnmJEOFTJ7IKFOGOJbIKFOGOJ2IAEe5opO9///vf/6wz8UkiB720nztI45CX1Kx09LeYuMJE&#10;      Rx37Dx7GHEyhJDPulmsE3IPs3XYEd0wGmYnGm04PMtBWz/F6M/EpqcQabppGyQ5OHzhArUXL&#10;      7Nyk69LtnNm7j0aHkbKshFvuOdlxnHf3X8AjJJCVpqPrzBEOHDmJJns2KdG3n6qpYQ9tl86y&#10;      Z189WlMayXFR3BwgZbrjNB8caiK9rIzoa5qUEB1Hd3H4sgdT7DQHDjcgJqSTEnsbP4LPGCXk&#10;      xtzfhNmXRHrcdeWgKlgHOzi6exdnGkdIzMwgIUpH0GWl/uguDp6qx6+PJzU5AUJemo59wN4T&#10;      dThkHSmpKegkgR/84Ac/+Hz1ALKX5lM7eOntXTS29hG4XUypkIOL586wb88Bdmw6iv02PwkH&#10;      7Zw9foa2Uc+tB9UgY+YOjte2MuUK3u5s3FYLNvtN56oB2mrPc6pt4rZZ18UkMl67k/3HjtDc&#10;      3Mihw/s40Rcm2SiCEsDcUsP+IzVMOAPXzvFax6g/tosDB3ex70IPvpB8y3U9o62cPFGD84ZD&#10;      KuOXz3HyfA/+gJvpyUl8gdBt8/XZojI17eCV7acYdIZvSPdPj3N+/0EshiIKdH28t6UOn9eL&#10;      uWE/F7tgdkkctYcPMDQxjbVtD4drfcwuT6Prwkk6ewdRrsx8P5YznKqqBNxWTu7azOHzXYim&#10;      Mp740kYW5EZx+ei77DhUj8eQxT0PPs66xaX0HnqJ/UOZfOVrG3Bc2Mu2phAbv7iay2/8jFMj&#10;      bhQxlruWVeMbvMjF7kk0Uenc//Tz3DM3kZbj+9h6qBa3nMDjX/8mK8uSEa5I5uwdh/jXN2u5&#10;      7+t/wV0mB/u3vc+ArooV+nP8fF8nNpdIFhoEIDjRxE9/so1F3/gfrMrV4xruprO/j7BGxT95&#10;      inM9T7KhOBrZZeHYjm0cudRJVGYyFgTmqTJjnTVs3rqXgXE71Q/8MRvXFaGizrj7qjJ9Z3fw&#10;      7+8cJayNpmzxOh5fP4uw10k4TkEJ+eiuPcJ7HxzFHx+DZXyKpCIIee1c2L+V3ccbkbPnsPG5&#10;      p5mTUc7DT2zg3149yE9bTuL3mnj+fzxASrQGRfEwMtTN4XqZnLLZmGJ0CEKY8eEemi5PoBUU&#10;      mo7VYV1dRbTWgGO0iw/ef596sx8T4wRCqaAGGWqv5f339jJMDAxOIWeoqKEgYZ8bVQXVM8b+&#10;      bZs4cGGIuLRSHvvi0ywoTLlW7p82qqqisZ4kLuxFvn6pRgWrw0K/R+GxF1aQIRRz6u82M+aq&#10;      pPVUF/kb/5rF+Rp8dT+lZcKBdnst2V/8PovL9IhdbzMwPklZycy26x+rB1DlIK1HX2fTmSFK&#10;      7lpBisHK228fp/PcW/zTO+eJKV7MrFSFnS/+G8faR3FP9DBlGcGvqjgnLAw1D+EPBBnraWHc&#10;      HiCxZBae1gbOnZ+g+t6HKE8KUnv2POeO7eHd9/eQXLWCpfke3nnpx1wcdeOwTWGxWAgnZaFa&#10;      zRw8XMdQVyuNDS2kZCeTufAJvvu9/5/nV6YCM28MAQWvRkYUQFW8tDW30jWUwte+/S1KogSO&#10;      7jqFV/bReGQ/u480UrhiHeWiCxXwjLaxa+tmxvQ5PLR6Lse3/jvvnBu9tle94uhh08EakqvX&#10;      snxOEjXHT1Lf3s/g2BTt425sY21s+eV7hDLKqc5NwaiGEJQw/Q17+enBNjKW3kOmp4d//NlO&#10;      7CGJknmrWL/YhMvpZu7jG1hSkonH0sQ///f/yeadJxlqOsYr//tv+bftlwh7nfQ0nIaqu/jy&#10;      8xvIUus51DpO2GOl5uAmTvUrrFgxH1VnQFZVXBYzh956iSEpk5VVmYj6Gdmgz++ic2iaKY+d&#10;      w6+/zPtH+1l+/zpy6ODkqWMMeX4PoRl/QwRBJD7nXpbOiSd4g75eRVZFRCmeBKMGjSGOKCGM&#10;      oqjoZIXUlChESU+iUURGRfCHycyMRpR0xBk0iIJyTS758XoARWHKPER+URUPPfksce4pvIKW&#10;      gZ3/QGpWPk+98ALZjgtYp95gwOIkSVURAElQr0U4kABJMFJcuoHvfm0tkzUSY+5JTh84QEpm&#10;      FksW5+AfacNh05Hi8xIU49HpZLqaLtLcdoS6rnFSl32JtXelsunSYfb4E5mMruKh3GxS8pJI&#10;      cFvpCYevucVqU+fxve/PA1R8U71097YzqRXp6x1EUoM4+0/RZJ6Hy+8jWLiCtSvvJW2ViTN/&#10;      +y4uq4PA+BSaLD8uv5G46FhsAyOEk69UkDGN++9ZSUO/heFRO2pARfaFrhlI0OdgMjaXu5c/&#10;      zJPzw5i7zFgUBetgP4IoEwz6idJFYbKOMBkIEbSY6RmYRhBExrt7mHAsJFtrwJRhYhoFezBI&#10;      XHoKpkQjbusgtee7CKdpGZ2Q8coCZw+d5fHyNTgnHMyet5r7Hn6MBXozP945RdDvZWoygeqH&#10;      VvLgo2Xo2tvYbbuuckMehp1BhNkP8uT6dQRXLMEZ0pP8EWL2TwtVhfBtN5dQUNUgM+apoiCj&#10;      AooKsqwCAqoCsjqTdvUaqgqy8mHAjY83BxAEDLHR2O3T9PZ0Ul93moOHWiAqGp/HQ193F729&#10;      gzgcYWKj9KiKis9vZ2ign37LFB4FEABRRDIa0ahhVG0ySemV3L1yPlpnJ0ePHWXED1qtDDot&#10;      MTHxpCanUpSTRemc+Sy/awULijMoW3U/ems3J8+2kl9ZRnZ6PLfrqGXvBPUnzzHiDDAxNEBn&#10;      p53i7CS8dhdJc2Yh2W1crOsEQYPGPsrQ2CgDba2EAa1Og96gQxa16KKjyUhOpKAo7dpbI2Rt&#10;      5a2t2zHLiRSX5BMlgShwLR+SxkCU38X02AA9XV24PW4QBPQxUaCIaCQ9sYlxpBSXEBOa5MSu&#10;      XfQrady1bDGhgQts318PCSV8+Tvf4dG755NdsJBnv/pdvrS6guGWUwyQREpyMt6gjvzMVJT+&#10;      89QOe9FF6ZmanGDQ3EXbkIuwDJJGizE6wIR1BHNPF4MuH8r1bVvUEC1KqOM9dA0O0VxzmJrG&#10;      Jvr7uqhr6MDp99HbWEtTr4VbZxqfHmo4gC+sYhB1aIIBzNYAwal+PAEdBo2EPknDSPcUSsiO&#10;      2RfAqBGJzzVgbhlDDrsZ9XkQJOlapMiP1QOIkpaCRfdi6j7A9rdeI+AMUrDgUdbcs57S9vfY&#10;      9fZrRMsBjNkLWVKcihSaTfjMGba9tRnf1AgeYc5MXCfh6p0FQp5peju7iM1PR9UYScmuZNHi&#10;      HOThHvr7e/CGJglkrCC7sJCsyhKWX8lL0Gvinupsdg7EM7u8gkTD1doUQPqwZkO2Hra9v4UV&#10;      KfnEdjUyHVPEM49vZGFxEkpgmm2jf0dbTytzVs0mX2hj73tvIXn6cAupxGXnkRM9j6mWMdpb&#10;      RhhyRnNfVjKqHbQiaA1xZOokJsb6aR2yERbC+AN+VBV0kkBsch6LK5I5fWQr5togI1N20rQS&#10;      WRVLmdtgZbyvgzHrNMlLFjB6fjcn2x1UP/YCz9xdxOn3fsX2kzs5sXgOD1bEU1i5hGcyITNB&#10;      D4qNc4eaSSlYyrNf/gJZURq8oxf40Y9ep+58H4/OX0TtB2d5941+rMPDBNU8ohNTmbuoiJ01&#10;      B3m9J4rhYTva/Jmq0IogaeNYtHwRbW/v5I3Xp1FdExSvepKk1vPsq/Pxp3/xBLU7NjNW+AXK&#10;      itL41PoFQUCUPmym3u69bLMv49nKdEpy4tj76iucUS3kLVyDKS6O0rsWsnPva7x8UYs9MZcn&#10;      05OJX7+e+tdf55XOGFxCHGvycjBcWS77mF+CZwQP44P9jE27kHSxZBUUYIrRYB3pZ3jCjizo&#10;      Sc3KJSslAcU/TU9nP15VRKfVomriKSlOw9bfTSA6k/zsJBSfg6HBISYdXgStkbTMXDJNRuxj&#10;      wwyOWwmjJTWngJy0+BsKXVVk7BNmxlwimVnZJETNFJISDjE12o9HiCcrKw0pOE1X3yiJ2UVI&#10;      jiGsISNZmZnEGiRURWF6qJOJkIGMtBS8k0OMWt1o9FokjRFTZg5xuDCbR3D5ZaKTMygqSCc4&#10;      bcHiVMlMj8c+PMCoI4jRGIUkCiSkJBN22vAbUyjJiMU5NcrAkAVZlJBECWNKPkUpeiaGBxid&#10;      dKBqosjIL0DvGmbMI5CamUdagg6nZYjhCTvRmaXkJd+4FKuqPvqaelDj08jLT52RAMpeejv7&#10;      CemTyc0wMjYwwLRXRquRkKRoiioKUF1TDAwM41MlNJKANjqVvFQNo2MukrOySdSFGB7oY8zm&#10;      Q2uMJyc3G13Axui0TF5h+ky9RWWSn5v0qX1AUsMB7LZJAoZ00mM1hKZ76AlkUJFuxGWbZGhw&#10;      jBAasoqKSI4xEPZ7GOnvwR6E+PRcslMSEZUgoz3tWAMQY8ogOz0Vg0b47eMDqKo6M5gShA9X&#10;      CFQVlZmxF4JwZRjw4d4sv34lQUVRZq53fUgcRZkZM4m3if79+2EmH8L1zwXX9pm5Of3Dc/g1&#10;      eZw5F24698o1Z3pE4bbDt9/pSdSrtSFw422vVchH3PNqXYi3fFP4Q+Tq89xcX1cSrz3j7dIi&#10;      ATIi3NFEfIEi3PFEDCDCHU3EACLc0XzkMqiiKIRv/wUiQoTPDb/2O8DMKkyECJ9fIkOgCHc0&#10;      EQP4T456ZaiqXFn3j/Dx+NztDaqEAgx2NmAlhVkVRdzqy6ViG+qkpcuMIaeaRaUpt1wj5Jvg&#10;      Qk0npor5lKbftM+wGmLc3EvvRJjyWaUkx9wkIlHctNRfxhpVwN2VmTem1zXiSijmrvL0W+7p&#10;      GGzkfJeD7MLZzCqMY6TlMl0jUxQvuY+8hNuERlFlXNYRWprbmXD6kbRxlMydf1uxza2EGWqs&#10;      pceTysrlJR/RCFSclgHauyfJrZhNenL0J/6x7jdBDfuwTAzh0eVTZLqurFUF5+QwbU1t2JUE&#10;      5i2uIi3eSNjnpKelAfN0kNyKKkpy0hDlAANNtXRP+kkvKKOsKA+jZuZpPl89gBKgp+Eob731&#10;      HqdqW7mtJ2/YRdPZY7y7eTNb3jmF6zY/Cfks7Nu+h4sDjlsPqkEGuy6y8/AFxh3+2+TBj7m9&#10;      iZa+yZvS3dQe2s+e+tvvtCGHvVzYs4ndR0/T09vBkb3b2X66C1BBCTLe18L5uhZsniCg4nWO&#10;      cODNN9lx4AjNrU0c3r2DzZs3YXb9JvM2hf7T+/jgQBO3k8GoqoLT0suJve/y9vZjDE46P6Pe&#10;      RcVut7NlzzE6p4I3pAedVi4eOUzTqB/vcB279lzGHwgw0nqSszVmlICFk4ePMDrtxN57ikNH&#10;      u1HCdurPnqB32PLbCWIAgl4Hl07up6bJjJCQz5oH76c8zUj3hYMcO9+GX5/CwpVrWDo7h6Ga&#10;      Dzg7nsIjj96Fu+0Mx7pl7l+/kK6979Mw4UURjMyZW0FwvJ02sw3JaGLZ2gdZWBJLb/1Zjpxv&#10;      xivHcu8Tz1CdH38tD67+82ze18qSx7/EnAQX548dZVgqZp62gTf3NzI0EWJBqYQAhKe72bLl&#10;      GLOf+DLz0/V4LQN09A/gVxW8Q2e4NPwAd2cbkb1W6o8fo6Z9AF2ygWkERFVhytzCgSOnGZly&#10;      MmvFE2y4KwMVFVmdaSgjTSd4f38tIY2Rgsql3HNXPhpBxqAVUcMBhlrrOHS8jkCMjn6rHUMB&#10;      hP1u2s8d4cSFTpS0YjY8sJbCnHlsWLuI1/cc5bW+GuxTImu//hA58VpQfQz3t3HgskJSTgEJ&#10;      UVos7Wc4M+Bi4QPPsLoqE2v7GfbVW3AHw/idDi6eOUx92xBybB7rHnqAyswoLOYWjhw+jUUx&#10;      4uu1oyRB2Oug4cxRzjR0o6aX8tBD68iQ3Ox/8RVOjY3h1Ffwmbz6mXFfUKz1BGxOlBv8OcBm&#10;      t9Az6ebeP/oSuaqZf/zXw0w4i+k420Lamm+wrkzLsRdfo2PCju7AaeLv/Rbr5sVQu/ldBkbG&#10;      KcxJAz62ICZEb+0O3j7YSDg6lqnhS/zi1aOYm3fzs81HsAQNKHYz7//yZeoGrEz3N9Ld3YNX&#10;      UbEOD9Bc24nb76e34QyNbZ2MBzUM1tRw/EgXWRVzifUOcPTIaS7WnWDnBx8QSMgkTWNm++aX&#10;      6baHURQFWZYxJMUy1HKZI+famR7s4eK504S1AjGZlTzw3J/yyEITXPUUD9hp7mnD5pdR1QD9&#10;      nd30D8Xw1PMbyTYEOXm4iZAaoPP8CfbsPkY4KQPNUA9BIDTVx9F922i3i5TlxXNox2scaP3Q&#10;      iV629/D61n044wvJTQ5z/MhJLvcMMTI2SfeEB+dUL7tefYcBj4rB5ybo8yKoMqNdp/jVvguo&#10;      Kdkog5d5cdMJfIqOWUvWsKIimpGRMQruXc3K2bn4prt4819fZM/ROswt59j28s/YdKSNsbZm&#10;      pOQkZs2tJCszi8pVj/DN//JViqN8XD73AW/tv4xijMHWVcer//oSrUOjnN7+GhdHvSToPUyF&#10;      giiEMbed5NVDjYjp2YT6LvKTt08ia43MXv8gzz62jgK9erUoPwME4tMqWTIrhuANXZVKUFFR&#10;      NAmkxevRJ6QTLXgJKTJ4wqTnJaLRxZFmFPHLCkGrn6xiExptFKYoPYoqX3Pp/lg9gCKHGWlv&#10;      I72gko1ff4F4rw2foKV/1/8hOjmHF771HTKdF3nx5c20mq3MV2QEVUEABEWFsIyogqToKCl7&#10;      lG//+RrGT21leKqfY/uPU1RSzPLlFQR66hkZEigul9Doo3CMuqmrOU9dzyku9k6Qsvhp1s6P&#10;      ZvfFAxz0JjMoVLCyMJ+swmTS3NMcPqdyVfKgzVjE//7nRTOFZh+kraeFEY1EIKSSKIXpbz9A&#10;      61gB01YrjuwVfPWhx0ihjPa/34rNMkGwz4wmIx1JY0AJ+Om41EV8xkx5iLG5bHzyMera+xnp&#10;      nsTr0OJzeAkpCiFZweeaoF9IZcXaL/L4XIWf/OjfmZJlxrua8ITCiAYtOklE7mxgxLeWFLcD&#10;      66QdEHDZbPiDIQxKCIdjEpc3gCCGsHumSPSHZt7KV3wSAZRwALfXRxCZ4dYOShesZOOzj2E0&#10;      7+Nv/30fl7tGGe/TsWjD/Tz5YClHJ/+evZNBJnp68cphRJ0WoygQbq9nQlxP5bKl9Jx3zBTj&#10;      ZzS7FgQBJCMi4m2yoCAQuq5zUj/8p1xxdUaYSVVBuGLEwtUy+62GQIKA1qDH43BjGR9jYqSL&#10;      cW8iyXo9wUCIKcsYWpcVn08hRa9BVVWCIS/TVgvjNic+RfpQEBNtRKsqxGZWMGtOmNyAm462&#10;      enbvnaIyOx2NNkhIDqGNSqEk30BJRjJ2dzr5QSMJSbGUL1zH9vOvcXDUQPX6Jz9SEKMEnAz0&#10;      jZOQl49/ZJC+DgvpMSm0XWpCTU1DHrRxsb6XfFFCE7BjtdsQvMOAgKSR0GgkgopMSNJTUpBH&#10;      aXkmGscYAKHJy7y4aQfaklXcVV7G8FjfNbkDgChq0YcDeJxWLON+QoEACKDR61FkhVBAJSkl&#10;      leLkDOIUB7WH99DsiqOsPIfx5lPsPV3Ilx9awLf/v/9J3aGd7GwM8fwLT1KWEU3f+WbCl5pp&#10;      a2wiXclk7OJeXj/QzMNf/3O0ej0el5vpKQvS2DSKIhFlNKAzhHG5bUxZxpj2h0ASkHR6ZNlJ&#10;      OKiSmJZGcXoOCZoZ6xK4boigylgG+wkYUkiPExgfmyYpNY2YGOMtZf77RJVDhFQRraBBCIWY&#10;      cIUwYsETFtCKIkKMyOSYEyVGy4Q/hIiALlnL2KAdJSEKayCAogrXPF0/piBGQ07VIrQ7avhg&#10;      y5v4pmzE5azmS2vuIrX1IB9seps42Uk4upB5+SZ0nlz8da3sfncrrtE+XGL5TOsQmNFGqjKT&#10;      /V3UX+okv7qU9JQE3EmFzJ6Vhb+/C4fLzVRgCKuugrTCMhbPncW6K3kJeiZZWWbi0HgiFSXl&#10;      JF3RA8zU2oemEJruYNOr21n6x39OXG8rY1I+Dz/1DItKTSj+Sd7/Pz9msKuNkrlI9pIAACAA&#10;      SURBVAW5pLkPcGDXdnT2FpxCEnFpGSSLpdhH/TimxjGPe1mYHI/kAI0AkkZPkkYgpAYZHRrH&#10;      i0wwHERVQSNCdEI2lelamo9ux3IhQM/kNKZZEunF8yhpdBBy2xgaH0EpKmWq6RhH60aZs+5J&#10;      nrqnlFNbX+fg/t3MqSpmeW4UWfnlrDWqpMTqEICMilWsKhqk/sT7DDXEYRmdJr1sKVWlGVjd&#10;      86jdf5kdWybwDY+QU76U+SUZxMw2caThMO8MR9MzbEPI0pJRUkVxyzkCLhtDwyMIFZXEXJFL&#10;      qcLMH4CqBjj97qtM5D3GU4sE9mw5xponn6WsLO+3bcu/GQII4odLeYGhc5xwV3JvVgq5SToO&#10;      7NhLltqHqXAeppgYihaVcXjPdvaX6eiOSmJDWjwJ65bS9MFW9g/HMxhSWZSV9h8LYhRlJtr3&#10;      jaiE/G5625oZmLAjahMonTOH7CQ9I12X6RyyoggGcoorKMlNQfGMcbGuBTcSOkmDqk9hYXUh&#10;      Y5fr8CaWUlWWgeyaoL21kzGbG0EXTXZRBaXZMYz3dNBlthAStWQVV1FRkHKDtapyCIu5hd5p&#10;      iZLSclLjZpbI5FCA4a7L2MVUysry0XhHqW3sIaN8PprJdkb8MZSVlpAUrUVVZEbaahn0R1NU&#10;      mItjsIuBcTuiQULSxJBbMguTaqWtoxe7N0x0WgHVVYV4x/vpn1QoLUrF0tFC/3QAozEajSSQ&#10;      lpNF0DqOJyaXRcXJTA330NppJihJSIJIbM4cqnOjMXe10DtiRRVjKKicg9HaTq9DJK90DgWp&#10;      RqYG2mgfsJBQspg5WbG3VpAq47aO0NbahdUTRGOIp2h2FYVpMQQ8dno72hiadIIUS9m8+eSb&#10;      DDjGB2lt68Ila5AkAV1CPotnpzDU2Urf6DRIMRRVzaUoLQ5BUHFahujss5JbXkZqgo6umnN4&#10;      40spy1Tp7hwkt7SCxMT4W/P2CaKEvFjGBvHFFFGYpCUwepGLvmKWFcYwPT5Ee2svfrSUVs8n&#10;      KzGGkNtG1+VLWAJgKphFRW4Gkuyj++I5RryQmF1EWWEeMToRo9H40XqA2xvAlbJXlWvCEVEU&#10;      ryaiqDMCFkEUrxPEzIhirv3u9ldElhUQRKTr3t6yLF+LPvjpoCDLM+IW4SZhjqqqiKJ4W0GM&#10;      LKtI0kfl8YrA5GZhz5UyRLi+vD4+qqKg3C5vqjrjynIl/eqRq+4tN9zzal5u+u1/Bn4XQcxv&#10;      bQARInweMBqNEUFMhDubiAFEuKOJGECEO5qPXAYVBAGN5nPnKxchwg1EdoWIcMcS2RUiwh1P&#10;      ZIzznxz1ug22/rOt4f8h8LkzACUcZHK4Dyfx5OZm3CZCjIp7cpiBkQl0KcWUZt36JTMcsNPV&#10;      MUxcbhHZN0eIUcPYJsYYtSvk5GYSZ7xJrKL4Gejuw6VPZ07+dRFiFB/mzj68sZlUZCfeck/P&#10;      ZB/twx5MGXnkpkdhHehjxOoks3weqbeLEKMq+FxT9PcNYnX70ehiyCkqITs5+tafqgquKTND&#10;      NoWcvALibi2UP1hUOYjdPolfm0pG3HVlrSp4HVMM9g/iVqMpKi0gIVqPHPQyOtDLhCtMSk4B&#10;      WSkJiEoIS38nI44gSenZZGekopM+l4KYIINtNbz5q5+z4+B5XLfbxjjsofHYLn76T//Iz984&#10;      hfc2Pwm4B3jj31/hRLv1NvcI0HnxOC+/cxCz1Xeb404uHN3H3rr+m9LtHNz0Gq8d7b5t1t0T&#10;      XWz55b/wzt5TDA33sP/dV/jpG7uZ8oZBDWEd6aW5rRenLwSo+N0Wjm95i1dff42duz7g5Z/9&#10;      nNfe2caY9za+y0oY8+V9vPLeLgZvWyh/qKi4HFbe37WLC0P+G9JDHjsNR/Zx4PgF6o7uYteh&#10;      VoLBIOPtZ9m/8xiN9SfZve8wFocHh7mOne8dovHSOQ4cOEj/mPW3F8SEfC5aL5yisXMUMS6L&#10;      pXevpNBkwNx8hpqGHgK6JCoX3sW84nTGGo9waSqJNffNx9N9kRqzzMqVlQycOECb1YcqGCgt&#10;      LyI41UvviAPJkEj1snuYnR/DYMtFzjV24ZejWbpuA7Ou84fxDDey+2Q389Y+Qmmsh0s155mQ&#10;      cqnQtPLWztM097lZnHdFEOMYYO/eGkrWPcEskw7f1ACt3X14wjKutmNcHl/LXekGZL+dlprz&#10;      NPaOoIlVsQEoCrbRbk6fu4DF5qFo4TpWVSWjoBBSQFFVLB117D99mbCkJ7t0HkvmphMbbcAU&#10;      rUWVg4x1N3G2tomgUaDb7p7Zsz7goafhPHXN/ajJeay6exnZxct5aGUT75w+yOsjtYwOBFj2&#10;      xecpS9aD6qW/vZ7dlxU2PpdOrEHDeOcZ9tX2UbH2Ue6dl81482mONJoZGBugpbmR2NLFLJiV&#10;      hvncMWoseopiwGUd5eiud6kJK5QsvpsVc7Lx2gY5f/Ic5ukw+XOWsKK6hMmmY5xoG0NVNWTP&#10;      mseSeeXEaD/9d6Wqgn+qiUGzlfSlNwlirKM0909wz5e+RQlt/MO/1TC5Mpe2UzUkrPgKj8/X&#10;      s+ffXqNtzIrh6AHExV/lhVWJnHxjC90DQ+RmzgR5+HgBMuQQA5f28fr2C8SnJOHqaKdhQOY7&#10;      D2p48Y0DCMYkjPTQWN+B+p0/RW09wXlzIYvunctUTzMnjnuprC6k6ehOjtp0JObPIzg6SFfP&#10;      MCV3L8XRfYG9LgllaRwnd+zAlTKHBGcr771r5ctf/xPyY2cqQWeUuXD0CGPRFaTO9nD20G6i&#10;      lv8R5WnxVK1+kvSY3TiuqDgUzzjHTx/DsPQRZpnA3NFF76COB556jIv7jnH0WBuLNlbSX3ea&#10;      HVt2I5TOIbavDS9GwrZBTuw/xblxPbOSw+zY8gZK1NeIulIeirOPN7duZdJQQpHRzK6dkxhi&#10;      1jAyMka34sFtHWDPK2/QpUkkO17F7nKQpCqM99bw0rajJGVmIw+c5BcWle99bTXz732Irv4X&#10;      OdLUSfk9z7J+cTEBRz/7tx+mc7CXHnOQPZttFC5aS3pPPUpKGtXLljMrN5rSnHSKl/oxaPzs&#10;      aznGhFMiP2sBB44coTn6bmZVgXPcylTiGC7XKI0tHUT/1bexHniR4+YoslKjObbzNcT47xLd&#10;      cop9R4aITS5iQ8FshM9wl9z4xEyWVUTjuSlCjD8cJqxJoCA9imhKiBUP4Q2F8VsD5FRkojOK&#10;      5EVr6A+FCZidFH4xD51eJCsmio5wiPCVjvJjmbUihzE3XiAqrYjn/uTb/NWf/Rn/5dklTDac&#10;      JaBJYuN//XP+6wsbSNKN0tA3iRKeCQkkAIRlFH8YUVUhJFBQuIG//u4LVJcaCcoT1JxvRkku&#10;      YdmyWfj6BunuDBAXl0RCnIH+3l5Ona9l+2s/4fvf/x4/P+VjVQkM1x/lbEs3PZ4cKgrzyJ23&#10;      hrVLq8iIvaIWAbSp8/ne//oHVuUYCLun6OhrZ1CKITUrhxy9wljDfvqmPQyODjOWOJ8nnniW&#10;      5778JDGo2MdG6W5pR6czkpKcxPSYmZrT7Vz1kBKjs3n6scdYmBeFfWIK68QUdqsTXzCMJyjj&#10;      cYzS6jQyd+1GvvbHX6QoPRXkMCNt9Yy5A0SnmogjwMiZEwx6ZQRBQgxdGVbpdOglkZDfyuWa&#10;      s3T2jxPyjtPSfI5m8xRBnw9JI6HXz7zDJGMs6ZmpJCWZKJxbQW//EC0XLzBktXP3PZVoBTAV&#10;      lnL/xq/wjefvQxe20NzTx8UTo4SJIzU5noBjkoMX+5HDHtJyS/nT/+fP2LBkFlHSZ2MAgiAg&#10;      GUxE6TXcbrFeEJQrDVhA5EMve80VxzhJ5Jqm4YoGfiaAyXWP8/H7NWEmQJyiKvgc00xPOJlx&#10;      atQiSTM3F69tya0iy0G8Xic2t5+gckUsImkwJqWSGhdLydL7uX/DQ1QXRNPRcJxt29+leToE&#10;      oh+3xwbROSyqmk9xgpaQ34HX4SYQEFn4yENM9ZzhzXf2kT5/NoW5qWi0OrSScJOCSYWQgqoq&#10;      TA3209nQRbQ8zM7NW+kV9Xiso5w+34usgkYjgSCgEkbHhyssHr8PW1DLoup5zJ+d8WGEmKkG&#10;      /vmXr3Cq30PRrCrSJBXxSlgorlaMOCOsUZHRXtMWKoRDQVw2LwnZ+SxeuZBY3NQf2crxQYn0&#10;      9AwGj+9gb203xrSF/N0vfs6fPLOGzNn38Zd//3O+99xSUsvK8U3b6W7rxW630XnkDb71jW9w&#10;      uDdMSdE8CiYuseXlrViCc1lVnHS16mbUUtKMakfQgqqRCQYd+FQDhaXVLC1IRRBEDLokMkzx&#10;      GHUCbtsU004fcsjH9NQUnsCnuGPgdao3mIkLIasgCSKqHMbhl5EDTrxyCFEUCOtEbHYfqhLE&#10;      4VOQFQGiJaasPlQlhDsQJhj+sIY+tiAmq3Iu3h2XefetV/EMDxKOWc43HqpGd+kEW159jaTQ&#10;      BPaQifvyTUTZUnCNd/DB5nex9bdjE8o+FKuIgBqg4/xp9h/tYfH9i1koT2PWZlJSlI29PRlR&#10;      E4Xi7GTAncm60nksW7yQL1zJS8A1xpqCnRycNDG7qIKUmOse5bouOzjZxM9+9D7LvvXfiO9r&#10;      pT+cz+Nf3siyWWkovjHe+P4/0t/cSMHcTBLH9rN7F0SNn2NaSGJeaiqxoXzcbh1GwUtPzzAV&#10;      a2KRbFfakCoQK0F0WgoeawcOFMLqTOOQRIGouExKDT4aD2zBWuujY2yCxHKJ1KJZ5Ca7iNZL&#10;      WM1DTJpycXaeYueBTuaufYxn11ZyePMrHNq0larZf0l1qoa0tBxWVEJyjBYByK66j0VHf8G5&#10;      XS9hvpDCYM8gMRlzmFWQRHIoj5KqfJqOtDN39SKS9DpsgKW7m33vvEV8aICAJo2q3HwSZufh&#10;      cRoRQ27MI6PkrTZww3sxPM2BN39FV+pa/nSZwkuvHGfBM19nbeWt28n8XhBmXLev1ed4Ixd9&#10;      xcyPM5GlV9i37wzl6mWiTHNIiYmmZHEeR7btJX6JgTqtnnWpsZgemMdb7+yg9j4TlwJe5mQk&#10;      YbzSq32sQNmCKBJnyiXNCMGAQmp2BQ88fg+lxRXkJmoIBENEJWazYsODLCjOIDEtHcEvI+qN&#10;      ZGTmU1pWwZzyHLSopJSUU5iTRkpaEtF6mWmrDU1iAUuW3cOS6jJSk6Jw26cJGdNYes865uQl&#10;      3hAhRpT0xKfFkpBTyoL5lR8qwlSQVYH4jELystPQKD7sikBOQQlRIQdJxZUsmjeb1IRoDFGJ&#10;      pCSCJjmDWfPmk5seQ8Drw5BZSHlpBXMWLqSqNBfF42TaK1Cy8B5WLSpCr6rExKdSXlFKml6H&#10;      z+vGEJfFrLI88gvyMMXHkZlfxOyibDLyTIQDAaQ4E/lFZZRXVjG/opy0aHDYnRiS87ln7XL0&#10;      thE0ebNZtvxeSnPSSY0zEBsrojUVkWeKJSmrgFmzCmYCcwsCemM8ReV56AVQJCNZxXNY//ij&#10;      lCXrUcI+Bnu66RwWePDxtRSmxoEqo4lKIDnegDExjSVrH2FpWTYZhTngdeIMaymct4IV84sw&#10;      CmBMyaekKAe9KONyBzGk5FGaGYUroCOnsIC0eP0n0bx/I1RBQ0xS1kyEGEszl12pzCk0kWCK&#10;      wdrbwWQontWPryEjKZ6YxCxkeyd9E37Kl6xhbkEmcSlF6FwddI97yJl9F9UVpURpZwJl/3YR&#10;      YhQFWZERRelGQYwioyIgStI1QcyMmAQk6ddFlVIIh2UQJDTXCUvC4TAqIlrNp7UCIRMOq0iS&#10;      dIPAQpZlFEVFo5FuI4hRCIdnjt0eBVlWEATxRlHQlTLkShn+tqNsRVFQZBlRmrlOyD3FxYOv&#10;      se1UL1LB3XzzhcfISTJ+KAxRZGRFQJLEa2NhRVGQFRVJFD/FaDyfDJEIMRFuIBxwY26rZ8Cp&#10;      JbekjPy05Jl5UYRbiBjA5xD1+p5YFG+IuRbhRiIGEOGOJuINGuGO5yOXQVVVndmVIUKEzzG/&#10;      1gAiIZIifN6JDIEi3NFEDCDCHc3nThCjKjIexzQBDMQnxF5zgrruFwQ8TuxON1JUMqZ4wy3X&#10;      UMI+piad6BOSiL9Z8KIq+DwunD6FhIQ49NqbPoCpIWxTNgKaGNITo25KnyakiyM1/tYNZYOe&#10;      aSYdQaJiE0iI1eG1TePw+olLySRGd+N7SlVVQj4HkzbPtTRJayAhMRHDR7gtq4qM3+9H0Bgw&#10;      6D76o2TIY2PKJZOcakL3B/B6VJUwfr+HsBhDrOG6fKsqQb8Hh81BEB1JpkQMWglVDuG0TeMJ&#10;      ykTHJxEXbUBQFdy2SZx+GWNMPHGx0WjE/8AV4j/lJFgJM2FuZcebL1NnDlM2p4yom+taCXD5&#10;      4Hu8+NJrNFiSWb644Ja3gM/exo///le40iqpzI678aDqpfHkbl7b00pOSTEpcTe5BMhT7Hrz&#10;      TY6OxrDq+hBJ8gSb/+UnHLaauHdOJjcz0XqAH//kDQYDcRRmSBzf9Cte332e/AUryYgRcNkm&#10;      sUx50BmNaCSBwYvv87c/epVztfXUnTvBmQsdBLXpFBWauPmRVVXBPtrOwRMX8OnTyU6+zY7O&#10;      qozXbqFm7+v86r0GZt+7nMTP/PWo4nNZ2XdoD6NSMaUp+mvpcsBNy6mD7Np/kkv1l3Fioign&#10;      gem+S+x+bxd1TZfom/STk5eDOt3Jzre2UtPcSM+ojdTMHOKj9Pzwhz/8wcd+xHDAi7mrmd4h&#10;      K0JUMhVzq8iI02Lpb6G9Z5SQJpb8sgqKMpOZ7r1EjyOWedVFBEa6aZ9QqKzMx3L5AmZnEFXQ&#10;      kZ2TQdgxxqjVg6iNpXh2FQXpRib6u2ntHSaoGKhYsIg804dvU99kD7VNoxRW30V2lJ+e9jZs&#10;      Uiq5Qh/b9xympnWaBffMuBfIbgu1de1kLVhOXryWgG2Ilu4BXAEZR8NxOqaXMzdJhxJ009/e&#10;      Tt/YFGg9uBFQFQWXdZiW1i5sbj+ZJQuYUxSNgkLwiiDGNtTBheY+ZFFLSlYRZUVxpJgSCSYa&#10;      UeUw06N9tLb3EdKFGXX7CMsgh/yMdbfRMTCOGpfKnKrZmCpWc//8VvZdPMx70ykMdLmZve6L&#10;      VKXpQfXR23SOw20KTzy1gcIUIxBGE21i7sp1VGcLtNWe4OCWLZQv/BtylSnaWzqYdPnRRadR&#10;      Na+IloPvsfeSn6XaTApTirD2ddBvcSLp4ygsn02aOMapI/vYfboDTVT5H8TYWFXBNdVNY5uF&#10;      ZZXX5UgFx+QIl9vMLHvum1SojfzTqzUsmZtG19nTGKqf5NtLDOz8+RY6x+YQVbMbT+ljfHtt&#10;      Csc2b6Or10xGciXwcQUxSpjR9tNs2n4GWdLh9fu50OvnK/doeGvzfmx+Ca2gcL62jae/8iz+&#10;      +v0cGMqjoKoAa9sFdp31kZFvom73Zk5MScRmlDI3uZXBvgESy8sIjJ6j2xJg3cI4zu3ZxYiY&#10;      itE9TufoBM984Ukyoq54f8vTHNi2nWIlk6dL3Zzc/T7q3CdIMjmIL1rMIv+5a47HsmuQ3bt2&#10;      cF/hYvLiYaS7m/5hhbtWr6TjfAMnzvRS+UgxIy0X2PXuHhzJmcT5RnCjQ3GOU3vsAid7vGRE&#10;      BThzuZ/QxqeulYfiGeWDg9vpdMWSabBzvK6Pp55ZwfjoGP2yB69jhCObN3HZoZIcLzJmd5Cs&#10;      KlgHL/P2tkPI+mgU7yWaRoN88/FFLFz7EF3Dr1FXM0Tu/A08sKKckGeU08drae9po7s/xKkD&#10;      CsNzl5IDaKNiyC2rYml1GiXxfi6b99LcM4Z38hD7LlhIitPQN+hgQnoezcgYYTdYhgfprjdz&#10;      8kg9xsJCvANddFnsrJuXhphUzKoqB+d7/3C+HsdH6VhSZLglQownHMSvTaA8J5Y4YS5xYg3u&#10;      UBDXqJe8x/PRR4uURGsxB8K4O2wU/UUpeqNEfkwsXaEgwSuffz+2IGag4RwBYwaP/9HX+OrG&#10;      p1m9MI/xhtOMenQ8+PzXeeHx5YjOTi71TSKHfCDPyEfUUBjZHQBFRfaHychexle/8jRlqeB0&#10;      TzM4YiMqLZ/S4jSmu7tpbbWRmJZLVoqOtuYGzl1q4diuLfzylz/ngzaozpLpv3Saho5eeh0J&#10;      lBXmkDtvLQ/dt5LiFB1X4/poksr46je/yfw0PbLPRld/F0NKHCWzKsk1CAxeOsqw04u5v48B&#10;      KZ8HHnmaxx6+ByPgGB+hrfEyojGBorwsLP2tnD7XdS2wnKBLYOGCJcwvzUQM+pkYHWNywobb&#10;      H8ThD+OxDdM4HKBs1WNsfOZBck0JoIQZaa+le8pDUl4eSYKPtqPHGfUp/5e99wyv4zzPde+Z&#10;      1St67wABAgR7AXsvoiiRkkh1usiy48TbSZyzc5ydc+1zsrd9Lic7OduJ7bjbalalSIqk2Htv&#10;      IECC6L33snpfU84PgE2knVCRS0zc//AN1qyvzDuzZuZ93ge90Uascbzf5qQE7HodEf8QF48f&#10;      5WZjN0FXF9cuHeVyQ/9dx8L4Stri4hBFEZ9fIT1/LmUzi7HrIeIboqXby5R50zEmZDFzznyK&#10;      S2excMlismKNBL0OBgZ6icZPZeXax1k0JQHh9+eJdA+CIKC1ZBFr1yM/IF9BFG5lvgvcSr/U&#10;      CgL6id/3Ws144ptGAOOt9Gfxnmz5h7wJVlUiwRBGk4XElBRMmggGxcxoIIjRGEd6VhrpriGs&#10;      ZpHghGhCHbeUIxxRkCcEMaJGhy0pm6KsdBTLkwT1sVy/2UjVjRaGQwHy46xElTBe9wg2YyZz&#10;      pltJEv20t1Rxs2GUJH0Jr2xYypGfHOf9di2Z89aRm5mM3mxAVKL3KCgEvZX8/AIEjYCro4+O&#10;      ugYkr8rOX/US9YeQo92UV/eRoMho7IkkxseTFJ+MGRUpKhGNRAkGvQz545k9ayZ5WXbECSW9&#10;      5Gnn4LETuCy5LMgqILG7i7tXSlWiSDoTsUmppKRHiDHoCagQDQWJRiM4Rz1kpmUzPzUeAxHa&#10;      bpziXFsYvd5Ex9kjXJ1ZwoZppXz9f/w/VJw7xsHqCC88/zglOamMVdehIqAK49mq/R3tyJJM&#10;      UqxIw7WjnGmCWaVZ2M29KJKKwWJC1Iew2swM1pzm1NkK0uasY0pxFo0hFbQGzEbDPWZE6q0S&#10;      68K4o4osq4ia331+kXpXPN7O/mRclBVVVFRBIqyOi+bDQCCqoKoikYhKWBoPACWioKoCUhTC&#10;      dx0iDxUAgkZDStEUhg43sev9X+HpaGIkPJM/3VJEsLKSHW+8Q1K0l75RHVuy4tGMmHANN3Fo&#10;      925GmuoYFfPvXHNEAVQ/148fY9+FYTa89DhZ1YeoDuhJSU4kJS6G2IRM4gI1VPcEWPn0s6xY&#10;      sphXJj4e8vSzPPEkZ90JTC+aTlqs4U5K8V3rEx2+yff/eS9lf/oXxHbUU+9MZ9srz7J4ehpK&#10;      oJe3vv0jmiuus6QwAVPraQ4d1WLtPc2YYKckPgZ9RgpBTTzZiXoOlNeTt+QxNIFxWZ0a9hHy&#10;      usmdMw2T9wYuVBRRAXV8eEZrClnhUa4f3YWvwk9j/wD2PJHEnHwSY4KkpSYhtVbSpUki0nuN&#10;      He9fpmDZBp5bP4PjO97hw5/tpOjv/wtT4hPITE5hdr5KZkoydrOeMQRCzgEuHfqA7vN+mtoG&#10;      0NsXsyBHT/mZMSxxhcSaQVGiSICoNaC6+rl5oxKv14U7mMbawgTqDwwjxKTfUdHdnQbu7WXf&#10;      B3sJ5C5n0xQv3//5RbZ84xvMT/vd2iLd3SfJ2UF7JJUsUxyJcpCjF5uYq1xB0UwhyWwmb24i&#10;      F3efI2uNiQuKxPJEE4kb8/ngrRMUb0vmatBBXqL1tszzoZ4CCaJITGI2NtlJ/8AoBnsOm1/c&#10;      SGnJTFL1PvoGhwgTw+JNz7B0WiZxyQm4eoZwByKYLAmkZU5hzsxcIo4RzLklTM3PIDnFjhoa&#10;      oaWpFZ+YxPwl61m5uIRYo0RXWwtDYSPzVj7BvMLEe6JV1Ogw2wWE+FzKFswhyTr+uFJVZHwe&#10;      J9r4HKbkZaCNOmgddpCWX4LG0YEmcyqLy2aTHm/DbInHrnfgM8RROm8BKVaVgd5egpZEMjJy&#10;      KF2whDlT0nD0dtDa4yJ15nI2LCtBDHiQRDvTpk/FHg7Q19NDULaTk5FIZnYmZg3EpBcwrziP&#10;      pDQLw339uFQd8Ulp5E6bzcKZpcSqLlpbOwhqkli1cRV03sAVn8/ilRuZkZ9Jgk5CkpxEY6dS&#10;      mBpDYnYRs2cVYTePjzMacDPmlbDqQUFPTkkZz3/hSTIsRlQE+noGGInoyEyKx5qQzYIZeSij&#10;      wwTNKUwtzkEneujqHMSWUUhCXDI5ObkkWvVEAg6csp0Zs0owKQGGHENoErPJiZXocgYpKJn5&#10;      4DpFvy1UiWAojC42h6xYLaH2ExwZSKGsJBmrXUfT+dPUDQqsf3kT2UlxWGPTcLac5mJtL3ll&#10;      G1lQmENMchHRzpOcre4iceoiFs2ajlUn8p3vfOfXC2J+o0OMIiPJEqKovSN0UVVkWUIVxHFB&#10;      yXgjiiKjKPwbhXYVIhEJQdTeI36JRqOogoj+14pNPmtkotH7hS9yNIqsgE6vfaAgJhJR0Ot/&#10;      3fjGBTEg3usio8jj8zUxh5/pjwpVueO4c/s7x09oCgJajQZViqKgRXv/i5L/VEw6xEwyyadk&#10;      0iFmkkeeyQCY5JFmMgAmeaT5jQ4xv9nadJJJ/vMzqQme5JFlUhM8ySPPZABM8kjze8/4/qxR&#10;      VRVFHq+LM17h7b7/GK+EJisI4r2V6O7sQ0GWZASNFs0nK6VN5MfIKmgelBejqkiyhCpo0N29&#10;      79svCh/8nYoiIcsqgqhBoxFQJRlZVREf0Ifxor23XrDdjYhW9+CXaretlCYK9v5n4dZYVcR7&#10;      5+GuOfjkWiuyhKIyUblQuKdNEEU0onj7xdkfVwCoMp6hTg6+8wt6bGW8+upWkj4h6EKJUnv4&#10;      bX6x6wQxi/+c//nVpfdNQmCsim//97eZ+cpfs31x5ic+H+Da0d3svBbilS+/eL9gRhri7X/+&#10;      CY0pj/OPryy6q72f1771z7RPfYH/9fmy+7ree/kdvvX6FWZt+CJffDKfVTdNlQAAIABJREFU&#10;      s6/9mL03+nn1W99jWZaJUMBHIAJWmxWdRqDj0lv87Q+OoTcYMehFUEGXuYHvfftFPpmpo6oq&#10;      /tFOzpfXklC4lLKi+Pu+/w8TlYh/hFNnDhPOeYanZ9hvtytSiIYLR9mz/zTDUhxPbP88a+fn&#10;      4umuYc+7H1A7EqR4xRaee3wFRn83e375GhVDAfLmrmDblsdJn1DlPXQAyNEww70d9I94EAx2&#10;      svPziLdocQ520tM/hqQxk5KZTVqCDW9/K/0BEwUF6UTH+uh2KeTmpuJsb2I4IKEKWpKSEpD9&#10;      Y4x5QghaExk5+aTE6XEN9tE1MIqk6MkunEryXcVYI+5+GtpHSSucRpIhQl93Nz4xlmR62Lfn&#10;      Iw5d7adsnYgIKCEnjY3dJBROJ8WiIerp5UZ9O86AhOP8MVpeWkiJTYsSDTLU083AmAeZEQLq&#10;      ePZj0DNKR1cvvmCEhMxC8lJ0yCiEZJBVFd9ID00dAyiilpjEdLJSdWTnZKOJs6EqMt6xAbq6&#10;      B5G1AUZDUaLSuI/ZWH83vYMOVHMcefk5pM7dzKYrNzlVcYjdwUzqm0bJW/tFFmWYQA3RVH6C&#10;      E40qT2+7JYiR0VgSmLlkFQsKE0BSEO05KP4xmtr7kESRSDCA1pZGQU4sN478ircv+lj3TA55&#10;      tiDDIyNEZNDozaRnJOEc6MXpDWJLyqEoNxnNH0BFOVUFx3A3Ry73sG7KJwQxg11cvVrH4q/+&#10;      T+YoF/nHt84xtzCOpnNHEEq38/drzLz3ww9pnFGE9cYHDKY9w9//RRqH3tpFXUMLSQtnAA8t&#10;      iJEZbLnK2zsOM+KLElK0TCl7mu1LDXzw7m7aBnwIGj0JmTN44XNP4zrzLrs78/jGN19mtOIk&#10;      b14I8fX/upWLb36f40Mq5qQCynLi6WttguQ0oo5RMuc/yeMLY7n48W5qHVq0ARcpc9fz/NOP&#10;      kWgcn4Sou5U3frSD2Z/7Js9O8XLo3dcJTX2KdfHtuPTZlGa5uZUSKjmaeeNnb7Lum9/lsXw9&#10;      /c1NtHcHmblwLh3VzZy81EnRY7kMN91g57u76BbM2AU3TnQI/lEqzlznYEU3FiFIyFbMi9s3&#10;      35mP4DAHD+7iQluYRGMQn34KL724nMHeHjqUGYQ8g5x69w3Od4xhi9XTNTJGsqri7Kvn3Xf3&#10;      MeSVkNGQt2QzX9o4k2VbnqfhJ7/kyKEmUqeu5bkNs5BDY1RVVlFd10htY5SMFCuu6bOJBURR&#10;      RZGi+Dw+AHJLkvANVPPGD95CSUlFF3TgElJ5+Wuv0FnXQtSp0lxXQ1MU9h4+xahkJze7gHmz&#10;      47hW3oigRgloUnju1a9QlmX75PL/XrBrPSzOMxD5hEOMNxLEb4hjblEcccJyYjQ/xBkKM9Lm&#10;      ZcpfTsMUIzDTqqcrEEF/bYiSb87BZNUwNSaWxlCI8KdxiFHlKG1XjzMgxbPlC6/y4lPryE82&#10;      01txhJq+KOte/Arbn5iHp+MyV1uHkSJ+VCmICsjhCFFXEFVWiPiDJKbM5cXtW8kxBxkecxFS&#10;      TKRkZJEYb6C35ibXrvWSkl9KcZaRiounuFjdzJWTB/jgg/c402tiRnKEhivnudnYQuuokamF&#10;      2eSUPcX2F7YyL8cMjGeyamJyeXr7S5Qm6pFDLppam+gMx7Ng2XLyTSLNl04w6AvQ0lBLgz+e&#10;      x7e+zJY18zGi4h7opOLyJbCnMW9mIV01lzh+vpXbayHoSMrIZ87saSRaBHo7OunpG8HlCzLi&#10;      jeB1dHKpZoj8ZU/z0tMbyIy1giLRU3uBa91u0qbPIEP0cfHjYwwEFawxyeQk6gFIKsolyWok&#10;      7Onm0Ps7uFjZhG+oiVMHP+BIxbgBXzTgo7elntq6Wqqrq+l1BpGVKD7FTP6cdby4bQ2GYBet&#10;      ozIFc4rRx2UxY9YcUiwy0YjMoi3P8cTKmfRXnsMn2pk9sxhv7032Ha0j+snF/z0gCAKGuBLS&#10;      kozcd7uDgChoJ4oeCGgZT3LTC2DSCYCAbrySPFoBLLo7Ipm7b8Ee7gqgqgQ9HmLicpkydRoW&#10;      hx2PamTgqBuLPYHSWdPJcIU4eeYCbn8YJtxSBEFFllQUZTziRFFPQvo0Fs8qJpoEfq2Jiuo2&#10;      bnT58RqMhAwq4YiE3zOCXZ/OtCITJv8w1VdPcqluiNSVX+aL6+Zz5s0zvN+jxzZlMflZqZhj&#10;      zOh8Y6DcmS2NJYWly1IAFVdXH231tQT8Cvt2OAh4/ISVZsrrBrFIEkJSLnnZOSQLHqw7qogE&#10;      w4R9QcJmL8O+OEqnlZARq0OYiAA5NEx1fSMDagLFcWnEqQPcNp9i/OdiyBRLau5UppZGSLJa&#10;      6FNVgh4XkhTB5fCQnpzBrNg4BDVKV91FLrT60Ig62s+f5OaCWSzLLWT7n3+NyivnONEY5akn&#10;      V1FSVITaVoMhLp2FT36Ox0rjUFUVU0w8/h7QmePIyC1hanonRpMeFQF7Yjw6MySlJGN2C4Cd&#10;      BWVzyQ92ctXjI6IPMOpTyC8sJi7xd1f7/99EvWc579mgqDKSCggKEcKoQESFkDx+sy9FICKB&#10;      RgVxIrNfliAs3ZE/PJwgRhSJzUyl63Qrhw/txdt0nebBKby6IZWxi63s/+hj0oPNdHWH2Zhs&#10;      R+0Cp6OD8ydO0N/YzKiQyUREIGg0CIqf66fPc7LczebPv8jolR1cHXaQX5iBzWQkMbOILP91&#10;      qmq9rNn2AkvmzmBbVEZjtKIN5zBbf5KrzmTKCkvISDA9UBATGa3ltR8dZu6rf4K1q5mavhg2&#10;      bdvMwtI0lEAPb//jOzRcvcH8NAuaxoucvZJKXOcBHIiU2MwY420EYlIpzrNQe7WagmV2NO6J&#10;      yfQO0tHZyZQnNpLuK8cL47M9PkT0pljiHb3UXTyCqc1L29AQhnyRmNRkTEYfOTk5aFou0etP&#10;      RuNu5MO3jhFXUsaX1szkxO5dvPXTj5n+T69SUFyMu6uBdofK1OJS8pLNtLdBxOuk9cYlrJ5x&#10;      qaViyWN+3rgYVL7lFKXemZSIZ5jmhgZSrGFAi1YEg8lAQnIcZjmBKTmJnL5eQexMI60X9nGh&#10;      VWDdmqlc2HOchFVb2TTr/moWv2vkoAOnbCVGZ8Pq93CxwcFS5TR+fyrxJgPpJWZuHKpl/mYz&#10;      V8I+ZsboSV6eyJ4dFaz4YhpVgRFirLO5VWHlIR1iNMSn5aNztFBZWYsnmsDTrzzFgvmLSZR6&#10;      KK+4Qc8oLN76eR6fP4WElDjar92kqauPYESLLTGPJYum4myph+wZzC3NJTnBwGh3HZcvlzMQ&#10;      srFg5TNseWwuNpxUXr5Ew2CE2WufY/XsTMxGE2azGaNei1ZnwmT24TZnsWr1SjInbpIVKcpQ&#10;      TzsRazbTSvLR+ro4eaOGhCkzibZfxptUzGMb1lKck0piUia2aBNdYT1zli0nHgfXr12jIyQS&#10;      m5DKzBXrWTI1mY7qci7faMdavJJtm+Yij/bjCBqYM286+sFeqm9W0T8mkpJgJj07C03Qgza1&#10;      iNXziklKEqi5VkHjsBuN0UZ66UI2LJ6Pxd/JpUvX6PcaWbN1E5HK/TSK6ax5cjsr5xaThJP+&#10;      3nrG7DOYlZ1AWuFMli2dRbx1/CeS39FDQ9sgUe8IPd099PT0MeiwUjY3kYEuNwUzZ5JlCdHQ&#10;      1kdW6RKKU2046mrpUWykxZrw+mRmLFlEWkIsScmJDDbc4NL1ZqIpc3hp6xKCA9U0OBXys2Jo&#10;      aa5FzJzO9PT7TcV/26hyGKdzDCWuiCkJOnxVb/CThlTWz8vEapE4+fbrHKtysOVr2ynMSMae&#10;      kE77qdd4/2gF6UufYc2sqSRmT2f0/M94+/BVzEXLWbtkITEG8T/iECMTjUbRaHV3CWIUZCmK&#10;      ImjQarW3BTGyLKEooNN98nnk3ciEwxKI2nsKTUUiEVQ0GH5DIafPFolIREGn090jsJAiESQF&#10;      DAbdAwQxMuGwgsHw68anIEkSgqC51yVHkZGiUVStDu1nLYh5IONrIasCutvrcwc5GkWSFXR6&#10;      /X+u9wSKOu4j9u8SxKgg3HHjmfQHmOSRZjIXaJJHnskAmOSRZjIAJnmk+Y0GGZO3B5P8sfMb&#10;      A2CyKsQkf+xM/gSa5JFmMgAmeaSZDIBJHmn+uBxiVJWI38nZnT/jRL2XvKkFmO6zS5Fpv7iP&#10;      H//sl9T4M1kwNfm+t6JBZy3f+4df4owtpCjNeu9GJcjNc4f41YGbJGfnkjCRmnAbaYgdP/kZ&#10;      +zqNrChNu6t9kA9+8EOODdlYXJx6X9d7Lr/Dt3+8FyfJTM01cvmD1/jpW+9jLF5Otl2LoirI&#10;      inr7jefAzf1895eH0SYXkn2XechngapE6Kw5xy/fPIEmNZ/M+N9xMdw7PUEOuaiqPEGdP4P8&#10;      RP3tdlWV6am+wJs//Fd2HWsgIS+f1DgzgZEuDrzxr7z24WHc+nhyM1Ig6ODEm//CT98/yGBY&#10;      R1ZOFkaN+OkcYhRZwud24PGHEbQGYuPjMetEgj4nLk8ARdBhjYnFbjEQ9ozhiehISLAjB9y4&#10;      gipx8TaCYyP4ouMyN4vVjBoJEAhJCKIOe1w8VpOGkM+D0+NHUTXEJiZhNd7pqhTyMOLwY0tI&#10;      waKV8bichAUTVnWE4/veZ9fpTuatKkAF1GiQ4REXlsQUrHoR2T/AtRv1dPQMow4dovuxEnIM&#10;      Iqocxet24Q2EiIQ8jDo9eEIS0ZAfh8tNJCpjticSb5MJhb0MuaKEJYWwz8WI04sqiBjNdmKt&#10;      etIyUsBuQlUVwn4vTpcXVXAz4nAxkhBFVWQCHicubxB0JuLiY0me9RgLTn+LiosHMAZyqLrR&#10;      jFjyFAszjKAGabh0kvMt8PjmtWQnmAgFR+l3unH57yQuq6qKFPHjGHMRkUFrsBAfb0cNunF4&#10;      o2g0KtGogtkeS4zVBFKA0REnkiCiEQREg4V4u47aS4f56L09jCTMY4n0+/MKUFUYGh7irUMN&#10;      bPzcmrs2gG+gk/PHL1P0wv/Fy/JpvvfmafL/eiNt5/biTNzEt7dbeOfn+2nMTsXetIMaZQXf&#10;      +h/ZHHx3Hzdrk1k2rwR46HRoBUdPLbt3fUxLn5OoLpb5a59l8xwjh3bvpLJpAEVrI2/6YrY+&#10;      tYah46+zryuL//KXzzJ2+RDvXQ3zla89ydWf/C9ODUTQx2RQVpzFaHsdDtGMGopSsnIrj82P&#10;      pfzQXi63uVBCUUrXPsPmNWXY9eNnv+BAJf/y3QOUffH/5IlsDx+/8w7OjLWsttdTM6wlK8HE&#10;      rZTQ6GgdP/ynd1n1V99hba6B4fYWOvpc5BTnMdTVyulrA3xhWSqu7gY+/mAXda4INrPMGBrE&#10;      kIfay5fZd7YWKezDmreMl55deWc+Ii7OHdjPwWt9WPQy+uTZPLdtISO9PXSnlhDxj3Hpox0c&#10;      v9GGPtbI4NAoyVNUvMPt7Nu5h/ruMRRzPPPXP8VTiwpY+czzNP78XT7aVUNsehlffWIuquSl&#10;      rbWdpvYuapui5OanIxcW/JoFkmm5uIsdh2sIixoEYwpPf2E71sbd/OhwH0lpZjxDDlJnb+CV&#10;      Z5cyevUA7318ETU+Fnwe9IXr+fq2Io6eaUCfloUuovL7fhBulzspy9Te5xDjCvvxGGPZVJpA&#10;      nLCemL0/ZzQUpL/BTdHXZmGOE5lrNdDtC6M/38/0v1yMxaahNDaBlkCQ0KcSxEhRWq8cptFl&#10;      ZN1zL7Fh2XRkv4+eyoOca3RTtulFtiwvoqfyBFdah5GCbpRoABmQQmFCYz4UWSHk9WCNK2T9&#10;      kxtJkp30DviIS8snLysZQfLRev0al660kD5tPnMLDFw+tZ9rzT003LjKmTOnqPfFUWAPU3Pl&#10;      Ck0trbQNShROySRn4TN86ZVXWFZk45ZDjMaSwsI1K8m261AiXppbm+n2JbByw0ZyjVrqL55l&#10;      LBig+eZ1bg5pWLXledbNLkAP+AbbuXL+HHJsNisWzaD1+kmOXOlCvj0fIfyKidL5ZRRmWOlq&#10;      aaGzZ5Axb4BBTxjvaDtnL7eQvmADW9YsJtViAFWip/4cp1scZM9fSLbGw5HdxxkJq8QkZVOS&#10;      bQEgc840MmIshFwdfPT6m5y+Uou7r5Yju95g78XWB6+PqhAOKWQXzmBGYTqR4Vqqu4cJ+5wo&#10;      GoEZS9azcm42PdVNjDp6OLbvHJrCpWzbvJ7sRCO+gISiSeFzX/oS255YhhH4ff4IFgQBU9Js&#10;      cjPM3H8hEtEI+glBjIh+QhBjEAXMehEQMOjGjT10AlgN4ydEnYb/iCBGwedwkpA0nZnzyrC6&#10;      svCqRvqOHSQmLpkFSxeT7jZw/WY1o54gWXBbEKPIKqo6HnEaUU9K5hw2LJ9LMEPAo0JtayN9&#10;      isDUxBEGvUECQZWQz0lYm0Rmup7IaDdXrx+mvHGY5KXb2baihB99fI49Iybk1BLys1KxJVgx&#10;      +Rz3CmLsWTy5JQtQ8fYN0N7ciDescv7kWVzBIN6BWm60LEYbiaCmFjGtqJjkqTJ7TnQQ9AeJ&#10;      eP1IRj+OgJ3cnGysQvT2WVGVwwRDIcYCoyRrrFgVJ2rkziEjRYP4TQnMnTqbeTMkrp6+xKCi&#10;      4neMoCjjUsaE2EQKdUYiUpSBtiqud/gQRS0918tpLpvJ7JQM1jz1BDW1NynviLJo+VyKpmXB&#10;      SPX47N6TuakQDvjw+hVEmw6dyUA4IqOqCjZ7CgsXz8MndXC1egAiAZyqltj82cybncRAYxUd&#10;      w4BoJCPTTGBE+YMwSlJVePCtqIKiyigTgpgoEVQgqqpEJgQxsgRRGXQqhCb2ocgQlbitk3ho&#10;      QYw1KY7+im4uXzpLoPUmrUOZbJ4Vh3N0kItnzpMWbKK/P8TSOAtyl4LH0091RTn9nV24SLoj&#10;      iNFpEZUg7XWtNPVoWbb5CQYrPqa2rYPYvDTMei0xSVmkhhtpGAySkjeN2fmpLPJH0cekkqhJ&#10;      JnfPFeq641m7rYj0BPMDU4olZxt7d16ieMvTGHrbaejSsmTlcmYUJKGWFXPwrWPUV9QxI8aI&#10;      pvMmN+oKiO8/jg8Bo8mA1mrEaEkgO8NKY1Uz5thYNN6Jfbt7uF5dQ+aaz5Mt1VEuOLnbo1Sn&#10;      t2F3DdJefYVLY376xxwIOQKWuDi0Wh8pKWkYeobwinYMwS52fXgcIXUqL28p4sqJk+x47zRT&#10;      /9tW5i1bihAYZSCgMH/hcgqSzXSMQNjnpLHyIhZPHERlzGnZ1F6qxpW2glmZejrq5Al/AOEu&#10;      F60JwY7eSqIUpqtiP7sD6dTfbCKSlv3ghZfGOLnrY5TSTZQl+bl8tY70mYsozUu6z5L1t40S&#10;      9uFXjVg1ZowBH1Xdfhao1/D5Y7HrdcTn6Gm92MGCdSZuhnzkmDUkzLZx5lgTq7Yl0RR0YDBp&#10;      b3sgP6RFko7iZVtZ0PUuJ3d9iCzEs/6FxymesYSNA7/k2MEdaFQjM1Y/y8qpKUim1Zgv72L/&#10;      hx8hRCNoLJkIgoBGr0dr1iAIJvKKc7BevcHhXW2oopZpK1awbmUGtuAAp8/so0YVKFjxEoWZ&#10;      cdg08dx6riKHdSxbO4ORJiPTpk3FestYQxDQGIzjJheAFBzkRusNjKOrMbfWoM2bytIVKynN&#10;      sKJEgwTqrnBupAvb/BXMbuvk7K63kTRBMKQRX1BCSVaEXYcv82FzBCFlHrOmpeK8psFqUDAn&#10;      ZFISY6bixG56tSYsRoFgIIQo6rAZNMSkTGH9k/PYfewY7xlUwkGZLJOenFmPsbbpXS4e348a&#10;      NbLo+cdpObKbFjWWVaueYXVZGnG+Ht47cYZ9FUv44sI0pq96msKlYDKPG3sLohGt7KOl4gQd&#10;      VePyr7Qln2fxjHwqyss57rIRUUy4RrwgGsY1AAIIGi06ixZRl8S2rz3PG2/v42rVGAJ3WUwh&#10;      IIo6rHoteo0Aqo+66nqiMcuZqXfQVFGLNnU6pXlJ/9Hj+d8+5kQRrcHEhKMRvptv8cPRJ/jb&#10;      9ZnMWZDHru/9HR+jZd32LxMfE4tmyUZqXv8hf3tGIHvxZkoz0jDHf56K732Pv72uIW3WCp4t&#10;      mop+4mnapzLIUGSJaDSCRqu/4/yiKkjRyLggRqebuLmYEGHIKnq9/oH7GkcmGIogaPQY7xLE&#10;      hEIhVFGL6de6r3zWSIRCyn3CFykcJiqD0aR/oCAmFFIwGn+9ICYaHRfEaO92upmYQ1Wrf6BA&#10;      5dOiKgqSFEUQDfxGUx5C7P/+P1ItZbJyaSFV50/RaV3A32xfR/Inzb//gPn1gph7xS8Papt0&#10;      iHmkkWk4s4OD5T1EZRWNLp4lGzdSVpI1ftZ/BJgMgEccVVUI+X2EIjI6k3ncJvXROPaB8QD4&#10;      4yqNOMlDIQgiJqv9vlKKjxKTuUCTPNJMBsAkjzSTVSEmeWSZrAoxySPPZABM8kgzGQCTPNL8&#10;      0T0GlUJeKo5+SLtQyKZNK4i9b4QKPZXH2XeyHPu8l/jC2in37SPkauKt144z5fEXWDvtE6/7&#10;      lRAN5ec40xRm46Y15CVZPtGBUfa9s5vOhCV8Y/OMu9pH2P/mTgazV/MnG0ru+87+yl384lgf&#10;      c1Y8yRNL06j6eDcnqlpZ/eW/pSzj3geVqqoyUHuEn+++ervNHFPAk9ufYVqy9ZO7fsAkDfPh&#10;      Lz7AUbiJP1t3//j/kFDCbpoaKxi1LmJ5wV1zrcoMNF3n0N6D9MiZPPfFrZRkxBF2DnDm4x1c&#10;      7fSz4PGtrJlXgjbq5fKeNzjV7GH6svWsX7GQmInU+oe+AqiqihSNEg6HCUeiyMp4+RRZmmgL&#10;      R5Bk5XZbJCpN+HZJRKISiqoiRSN3/lcaTwm49bd8+7MSkVttyr336aoiEZloV1UFKRolGpWR&#10;      w04uHXiDn+y8QN/AKLIKqioTidzZhxoa5drV65RX1nDy/SMM32qf2E84HCYUCdLa1EavI4yi&#10;      jH8+HA4TlWRUVcLp6Ke+fQBvSEaRpYm+j29XELGaDcTpxTvjDocJR8P0drTT0Oe9d74m5jA2&#10;      bx7xo+WcO3uYixcucOziZTr005mWqAclSPPV47zz4TH6nEEAgu5e6lu68Ys2Ei0qbdUn+d4P&#10;      jxBQ5Il5G9+3oii35zsSiSIrCqoCJoNIrE64ry/KxHqOjzt817h/989KVFVlcNTJj3Zdwx1V&#10;      795AYKiHcwdOYCp7mRfLFN577Rx+r4/Wy3toC5Ty5c+tounUQdr6hxiseI/znTl8+ZVNuBsu&#10;      U1PfgjwxnodOh3YPtrH3/Xe4VNONastm4wtf4LFSC6c++hVHLtQTNiSxYPWTbNu0mM79/5vd&#10;      HTl846+fx3H2A966EuHPvr6ZK9//Fsd6gojmZJYvKMXZVkHrWBRBMLPimS+yqSye8gO72H+5&#10;      mXBYx9rPfZUnl5RgHE/+xt18jL/77hHWfv3v2Jjp5sM3X6c/YSXrreXsvDCCQau5PbToQCX/&#10;      4/99i1Xf/P94LN/IaFs9TR29xKbF43GUc+z682yfn4h/sIW9b7/LhdZBbEkWBhCYLQVounKI&#10;      d/adZszpIm/JC7z67KJba4Aq+bn68fu8tr8SrV5Laskqtj+7EOdgL8PiDKSQi2sHdrLz2FWI&#10;      szE2PEZaAQQcPRze8R5nKtuQE/PY/MLLbJiZyZbPf55//t7b/LDqHKaYWfzFn6/FKEYYGRqg&#10;      pbOVCzcksgsLMOSPlynXx6Uxf91zbCyJ8sF3f8rFUS9DHRf45XdeZzAqYixcwqubS7l+aD8X&#10;      2kaJjU1l7dYXWTM7Fs/wIM7UCL6RTg7teJ/zNzuQEwt45uXPsaY4lsYL+/lg/2n6nSq581fz&#10;      6vanyYz7bKWX/44jDouvnJkJKhH53vZRv4NBjYXPrSoiQUjGdPpHDPgW0nSln5I//1OyUkSW&#10;      GK/S4PCj3VvP9P/6ZbIyNCyIqaHJ4SIwsb+HdohpOr+Ti90Ka557iaWzUmmqbqf96k52Xeph&#10;      5obn2LQwm5uHP+Bc4wBS0IkS8SIDYX+QwKAHWVLwO8fQWTNYvGE9NlcfbR0hSspWMSs/ntH+&#10;      bm5eOsOxk9fJK1vLyhlGju95i/KOYbpaG6iqusGANoMsU5DyC1doa2mipcdD0dRMcpdt5//4&#10;      5t+yeW4cTPi4iMZYCuaUkmLRoER9NDY10eFIYevL25li0lN54iyucIDayxe43OxlxdbtrJmS&#10;      iBYVX38zp44dJpo0lac3LqH23C4+utR1O09eDY5S0+OmdMVGlsxMo7W2hob2XoYcXjrHgriH&#10;      Wzh88CrJ89axefkckgwaUCW6qk/y0c1hilZvYKrOybu/OsRoWCU5q5jFMxIAKF67iPxEO4Gx&#10;      Rl77p3/hwIlrjLVd5cOff5c3jtQCEHYOUXliN2+/9jaVg16yClMRZAlHWCS9dDab1pZS9/Eu&#10;      rgyJbHv5ZeZlw5G9R6jtGGJwzEPXqJfWqhPsq3Mybe0GpjDEm28cpG+ojY/eO4Y+bxkvP7ua&#10;      +HA3LWP+T30Yf1oEQcSavpziAivSfZoADVrBjP4TghiTBuym8RRwo35cLmEQIdY83qbXCdyd&#10;      k/iQHmEKroEh0jJnsnzNBmyeIXzo6TlwkvikDNY9+QQZrms0tzYz4PCTNuEQIwrqeNaeOp4u&#10;      rxGMZOeuYPtTq3HXiIxGAjRUXkFjtjF7CjhHAvi8IlG/m4g2gYR4kdGORlqrDnO5cYiUZV/g&#10;      qeV5/OzkST5y2vAnTKcwO4O4tBisvjHq7lJQaOOL+MpXiwAV/0AHrc31OBWByvLreCMhPD3X&#10;      uNG2ECkcRs6aw6K580nGwKHLO/C7fYTHXKj6AK6gjbTkVPB4UCZOhKpGT0ZqMo0jo3gCKvpo&#10;      FDUs3RbMREM+XJZUZs1ZwZo5EtVXbjKgKLgH+1BViUAgQKw1lpxoGG80SqirnpoON4Kgobe6&#10;      iq4lcyiOSWT2ovloW1sI9kYonltC0ZQkCIJGK6I3GbClFLAmZxFlq5eid5Sji81g7ppneWKW&#10;      wg8OqBiK1rNl3TLaLCEa6i7g8fpQAFWW8A71oyIR8Acw2+PJcQdx+N0Mi4mUzVrJusUJlMzx&#10;      YY2Le5hD5TNDVcddXe5HQVWjEycjFZnxeZdUiE4IYhRp3LBHVrm39O0kAAAfrUlEQVR9BVEU&#10;      kORP6xAjCJjjYxiqHuDGjWuE227SPprOyiw7bpeD6+UVDPnrGR4OkxtjQu1S8fmGaaippq+n&#10;      HzexTEQEokGPRgkzOuzFHUlm1cYyuq4dpvL6DeblpWMwCJhiEkiQvGjGVDLzplCStIX8eUFM&#10;      6UUU2Gyk7P9HbtbFsnrbGjKTbQ8WxHi6OXH4Ovlr16Ppaae+TWLunHnkZcaTk2Tm7MdXuVle&#10;      R6lJj6a/ifrWFoaGLhAEDEY9osWI1mAjMdGOCYXEtEQ07nFJouRs5eiZc6QsfYGSRJkbDV0I&#10;      4h2DGq3ejNU7Rm9LNdcjfkbcLhAEzLE2RNFJbEw81uAgAqmYQn0c2HkQty2PLUtzqbp4hQ92&#10;      XuC/f+NJNj77LPGHd+FGYf2Tz1GUaqH9IuisicxZuYWn5qejEQQEVPodIGhENDoNaA3EGbSE&#10;      O8q5WpPIcFM9YxYbJpMJkfFce2OMDY0YIDYmHr2nD0GTToLZit3vpL/5BtdELderGslf9xKJ&#10;      A9fxxE+nOD5MdfMos+bOJjn+33HT/RmiRAIEVD1mjQl9MEB9X4DZajXegBWrXktMuo6Oyl4W&#10;      LjfSEAqSYNCQUGKl/Hw7a55IoD3oRqvXovtUghitnqIlT1DUsoN9b7+BFDGyaNMcChZvY0nr&#10;      6xzZ8QZ6WSR37gaWFqWCsBDxzH52/updFJ+LiD5h3DtIAHSAoCM2zkRgpJULZ3uQQ5C5YCEr&#10;      V2ahH+2gvPwMbVKA+NlPk5+TRqI+g1vPT6SgheVLpzDUbGVaSQn2WxIfBNDcVUHC08WJc0dZ&#10;      Pm0e1sbrhJILWL1xM3NyY1AiXtTmSq50NbFg4yJKEho5/O7rqPIIISENe+4UipIWs+dMHUf6&#10;      JDz6Ap6dkkygEgwaMNiSyTNqaSw/jUdQ0IgS/kAAVQWjViAmqYCVywrYf+ojWswyLoePDL2W&#10;      7BlrWHLzA6ovnkL1S0x7chXtJ3ZSMQLLnn+Gp5dlkxod4N1TBzhQtYCX5yVTsvgxUmdCUsKt&#10;      J0IaNKKIQaNDK06MfeKKqxfGpxlNLBu2baLjZ2/x1i/60Gj0LFi3lWlTkqgSQNAayJ+5mrLa&#10;      ndy4cArZIzFz60aSE/PYuGk2e84c4I1KFVPabJbGiFz/1WEGp9hJKnJx7mgLGblFv/0AEARE&#10;      7R2thb/mXX429hh/tTyd6aWpHPj+33NQDTHj8ZdIiImlcMkqqt7+V759VsQ8ZQkrM1Kwrn+W&#10;      Kz/4Md+6bsCcNZ2npxRg+LcEMQ9m3IU94HXjDQTR6MzYYuwYdSIhvwevb7wsisVux2LUo8ph&#10;      3E43EQX0Oj2IOuw2E2GfB0VrxmoxoEoR/H4vXn8IQWPEZrdhNmqIBAK4PD5kQUtMTAwWk/6e&#10;      M7yqKkRCfoJRAbPZjH5CEaYqCuGAl6igx2I2IShh3N4ABrMNIeonrGgxm03oNONPacJ+NyFF&#10;      g9lkRAp5cHsj6I16RFGLwWxBr0Zxuz2EIgpmux2b1YQSCRGMqJjNeiJ+D25/FJPJiICA3mhA&#10;      iYaRNUbsZh3RkB+3x4cqatFqNGiMVuxGDUGfG68vgKo1YouJQRP1E5QEjGYrJr1IJOgnEIqg&#10;      NduxGu49T6mqihwJ4A3KmMwWjLccdFQVWY7g84cxmC0YdRpUJYrPMz6/GoMJu03PYP15fvDz&#10;      nehXfJ1/eGEmIa8Hrz+AqjNht8dg0muQIgE8bi9BScRssRJjMxLyulG0ZoxahUBQwmw1o9P+&#10;      dkWRqiITiYRQNCZMOhEl7MEjm4k1aYhGQvh9ARREzHYbBq0GVZbw+zxEZNCbrViMegRVIeBx&#10;      EZJVdEYLFpMRjShMOsQ8ikjOBt5+7yOqWkZZ8cp/Y9vs+4t0PSpMBsCjiCLhc3sIqjoS4qyI&#10;      fwCO8L8vJgNgkkeayWzQSR55JgNgkkeaX/sYdFIUP8mjwOQVYJJHmskAmOSRZjIAJnmk+eNy&#10;      iAHkSID6S0eo6g6SnJmK4b4QVxhqKOfw0WN0R5IoTLfft4+wr4v9u07gt6SRHveJqjlKmI66&#10;      Sk5f6yQmKQmb6RMlEWUX5w8f5sqQnuk58Xe1Ozl/4BBVLjPFmbH3fedIwyk+OFxOQIgjI0VP&#10;      8/njHD55Fl1mKUmWT7wJlh0cemMnrV4TublWOq+d5+ixkzjNWWTaoKniJJcau+hoaKCyJ8KU&#10;      rAS0moc416kyIz0NHDtZhRibQqLtN5W1/O2iRH10dlTTFYwn1X7XPKgyo92NnPh4H+dv9BKX&#10;      nkasWU/EO0bFiX0cOVdB0BBLSkIsRANUn9zLgTNXcck6kpKT0GsEvvOd73zrj+sKIAepOb+X&#10;      Nz88Sl1zN5EH1feOuqkqv8Kpk2c4+OFpXA/aTdRLxeVrNA8FHrBVYqS/lctVLTj80QdsVwj5&#10;      XPh9wU+0R2iuus7VltEHdt0Qm4zr5lFOnDtNTc1NTp49yZV+LclmDShhumqvcPj4FYY9YRD1&#10;      OFrPcK3yBk6vi6qqa5w8fZaDV1qIBj3UXzlBU0cX/oAHv288N+lhGO2+yd633uB0ZR0j7vDD&#10;      ffgzRWXM4eHNfZcY8En3tIccQ5QfO4UztpQSex+7P7xGMBCku+oYNzuNzJuRzI1Tx+gZdjDW&#10;      cIjTVTLzZufQeeMiTe3d3NJYPaQgRiXkGeHs/h2crmhDjCvgyRdfZEGOmRsnd3LgdBVBYypL&#10;      N2xm/cJiOk68xpGedF559THc1w6xpybKiy+u5ubbP+FCnw9VY2PhwlkEuqu42elAa0xmzTMv&#10;      sWpmLLVnDrPv9A38ko0nvvgnrJiWfPutpavpBD94+wqrv/RXLE5yc+Sj3XQZZ7LMUM7rJ9vx&#10;      +iBzonB3dKiaf/3RHhb8yd+wPMuIp7eV5q4uVIOGoOMSF1ueZlOhFck9wKm9ezhT0445NYYR&#10;      BLSqRF/DZT7ce5SeYTcz132BFx4rREVFUUFVJZov7OG1XeeQdSYK5qzhqcdKifpchC0ySjRA&#10;      0+XjfHTwPJEYCyODoyTkQcTnoPzIRxy5WIeSVsy2F7YxO6OQJ7Zu4kdvHOGnteeJRlP53Dcf&#10;      I94kEI0G6ett4/R1mcyiqcSZ7RTPyKa6vZeOzh5Gx0aRRZHR6w2MrUugr1UhcWkGFrWH4UiU&#10;      aNjJ0Z+/Rm1AjyY0hFtN5anPb2d+hoWak7vZe+w6keQ8Nj2zlUU5Yb77L2/i8HoRUzM/s6K9&#10;      nwZVVdE6L5IohJHUu3qiwph3hO4QbNlQRoqQx7m/f48B33QaL7aR//JfMytLg//qT6kf9aDb&#10;      V0nOy/83swoMqI199AyNMXXKeCn4hxTERGg4+x57KocpWbaSjLgg+z++Qmv5+/zs4xsklCxh&#10;      VqaO42/9gnPNgwRHu3E7hoio4HM4GGwaIBKRGOlqxhkUSC2ZRaS1nsrrY8xa/hjFiTI1169T&#10;      fu4Y+z4+SdLMpSzKj7D3nR9xvc+Lc3SI/v4+wjHp6L2DnD5bQU9rE7V1raRlJZEx/2n+/G/+&#10;      jucWJnLb20Qjotr06DUCqhygqb6RtoFEtn/lKxSYNVw4fBG/FKT63EmOXWqmaMVjTDeOn20C&#10;      /Y0c2b+LUVM2j6+exaWDr7P7Sv/tXHLF08n+89WkzFvLoukJXL98hZstXfQNO2gd9uMabGTP&#10;      OwchazoL8jOwCDIoEl01x3jtbCsZC1eQEerhx784iCsqkjttIavnJhIIBCl9Yg1zcpPxj9bx&#10;      42/9A7sPXWKg4TzvfO87/HT/TdKmzyLkclBx+RoDnjgeX7sAk1TH1doaevRxJOWl4Xc4aRny&#10;      IUkSwx31jHij5M6YgznYwa4TdQw3neQHH1cSM3c5hUYv77x1gC63iS9+5S/5yz97HjsqD0zF&#10;      /x0hCCL2zOXMK7ERuacjKooqIoo2bAYNGr0FkzAupdUrKvHxRkRRT4xRRAU0EZnkJBOiqMVq&#10;      0CCK6qfTA6iKgqO3n6zc6WzY/Ax23yh+9HQf/N8kpmaz+YXnSXdXMjT0Ht3DXhJQbzvEjGsI&#10;      xyNOK5jIK1jLVz+3GkelhqGAk2unTxOXnMK8OckEB1twu3XEB/1ERBtGI3Q23KSh4RQVLcMk&#10;      LXqBdWUpvH/jNIcDMThtpRRmZZCQFUuMz0HrXfcuusTp/PU3pwMqwdF2WtsbGRMF2lo7UJUw&#10;      3u7L1HbPJBAMIuUsZNWipSQvjuPCt3fhdXmIjDgRU0P4QmbsNjuevkGkCW2IYExgedk8qnvH&#10;      GBzyIURk5GD0tmIsEvLgsGSwdOEGnpwl09nUzrCi4OzrBEEhHA5hNppJ9AzjiESJDHbS2u1E&#10;      EESGWlsZcs0h02AhNTsd78AgHjlCfFY6aYlWrEkFpPn2U1k+SkzRCqYvLaKmop5Txy9ijMsl&#10;      MyOetqo7a6cVbRTkL2PrlkI+6m3nqiQz1tMx7q4SDSFqDCRGnbglA/OmJdJa1fh7tUe6haqC&#10;      9OsEMdxy61GRJ3orqyDfEsTI438rKrcVZaoKssJtRczD3QMIAkabBadrjNaWRq5dPc+xYzVg&#10;      sRDw+2htaqa1tRu3W8JuMaAoKsGQi57OdjqGRvEj3BHEGA1oVYmoasEaV8jSpXMxBjs4d+EC&#10;      gxEBvU5BYzBitdqJj4kjJzOT4lnzWbFsBQsK05mydB0mVzuXr7WQU1JI+q8RxMj+Ya6duUiv&#10;      O8RIbxfNrV4Kc1JQQhKps6ajdTmoqmhGFXVonL109/fRUVeLhIBOr0Nv0KFq9BitFpLtNrJy&#10;      km+fNaKORnYeOMSAGk9+fhZGkXsEMRqtEVPIw1h/B62NjXj9fhAEDBYLAiIGnQmb3Up8dj6W&#10;      6AjnDh6mlxSWLC1D6a1i79FKsOfxwle/wsbFM0jPnsXTL32VZ5cXYjAlUZBlIhqOkJWVTGJq&#10;      IbMTDbiHvcTa00lP+ESNf0FA0IgIt+rkA0arBRDRaYzY7FZis3KINxm4byJlH/VXzlPX6ybg&#10;      HqH6+g16Rjy/FwslRQoRlFSMogFtOETnaJjwaDv+sB6jRoMxUUNf8why1EVXOIRJKxKTbaSz&#10;      ZgBZ8tIf8o8LhibG+FBXAFGjI2/eKpLbjrD//XcI+ySmLNhC5tz1FDfv4vCOtzErUWzZ81mQ&#10;      n4QoTUO+fIF97+8k7BgkIJZOWCTd+mYBNeqjp70VQyiJKAaSM6ezoCwDdaCdtrZGPJITJWMZ&#10;      Wbk5pJbksWCiL9FAPMtmZ3Kwy05x0VRijRN56QL3uKBJ7nb279/D4pQ8bK3VuG15bH1yG3Pz&#10;      4lDCLox9/0BDRxPTl5eSq23k6EfvIwa78QtJ2DOyybTO5lR1P7XVvfQF7KzLTECqB50IOmMM&#10;      6XqRwd4WamQvsigRCodQFdCLArb4HBZMS+L86b10X4syMOYmVachvXgRs6oP0tdaT6/TTfKi&#10;      efRdOsSlVh+zNr/MtmX5XNL9/+2deXAb133HP7uLGwQJgrgI3rdE0bpPx7Eb25Hlo3GTOLbr&#10;      TNqZOpk0bdJM03b6X//LTKedTjKTup2MI8eSbEtOLMmWLFOyLuqWSIkSRfESSPACCBAkQQIE&#10;      iHu3f5AyJZlybMWV3JrfP9/uvv2+t+/hvV38vr/va7x37gNOrHuAp5aaqWjYwHeKwWXWAQIa&#10;      nQFXbQX0BSixO8jV5dKwroJ9Q70UlFRh0QiIzPK8PeBTAjQSFNRsZEPVMIP9XUQSMUxLHiF3&#10;      zuhDQER9w4IsO0nT+/tIP+zixfIQTfuPUf/UC7hsH/+C9rlDEBBuEjjF3Y3smdrEiw84qCk1&#10;      c3DbVs4oE1Sse4yC3Fyq16/h/QPb2dqqIpZfxjedBeQ+vpnW7TvY2mMgrrbwWFkJOvGuHGIU&#10;      sukkY34vY1NRRHUOzuJi8g0qpoJe/OMRZEFDgdOF3WJCSYYZ7PcSVwS0KjWKKoeyUith7yAp&#10;      g50iRx5yYpqAP8BEZAZBrcfmcGE3a4mMBRgZmyQjqLE6i3FaTbf4USlylunQCGMxEbvDgWnO&#10;      R1jOppkK+ogLJuz2AqR0mAFvkFxHCWI0wFRai8Nux6iVUGSZcGCAUEaDtcBCYtLPaGgGtU6N&#10;      KGnJtzvJUWL4fKPEkjIGi53SIiupyDgT0wp2m4nIqI/RcBqDXo8oCpjy88jGIiS1FspsRqKT&#10;      wdkULdKsgkuXX0SJRUMo4GM0FEGRDNiLi9FEA4wlBCx2F1aThuiEn0BoGoOtbG7Q3/Yk5CzR&#10;      qVF84ylsDgeWPD3p6VH6A1HyrC6cZhXj/gDTgpESWw7jQ0NkjXYK7TomRgJERROldhPhoBf/&#10;      2BSyqMNaWIQ9PwdJUIjHphgdnyHf4SBPm2V4wIuS58KpzzAamMRotZOfq/9ff0lWsiki4RBp&#10;      rQ2rUSITHmIoZaPSqiUWmSQwMkZakHCUlGA2aMkk4wR9Q0ynFXKsLpyWXEQ5TXDIw1RKwWC2&#10;      47Ba0KqEuzfI+MhuBmHemka5yVNWED4yZLtR+8ethW6pccHzblD75Gs/T3wCj9nmLsBl9po7&#10;      c7xDHygKynyl9+9ryxeFx11ioTGizHf4bRZJt5bdtUHG7M2E2wsX6DzhY8vvHWpc8Lx7N/A/&#10;      BY87UvlDbbzDcUHgCzHcvig87hILjZFPWwaLoRCL+JJjcQIs4kuNxQmwiC817vgSrCjKfUmI&#10;      uohF3CtIknTnl2BBEO7DS+giFnFvsbgFWsSXGosTYBFfavy/c4jJphMMtDcTFBysWF6H4WOZ&#10;      +xRC/de41OVBX7aRh5Y57hm3mfFBBqIm6sstHzsmZ1IMXDmDX3GwanX9AryBbILhPi+6ohJs&#10;      Ru0CJ/wRyCbxerxoC4vIkcc4fbaXogfWUl9k+nzv8xmhpGfw+/uZ1lVTZ7+pzYrMVGCAtktt&#10;      hGQL6x9agyvfSHomTHfrefrGU1QuX8PSchdSNkHvpVN0BuIU1zawrK4Sg+ouHWK+0Mgm6Gk+&#10;      yNbXd3KquYOZBQUxEVpPHeXtN99i5xvHidwjapkpD+/teZs9zd4Fj8uZJO5zB2g6e5XYgmGY&#10;      WYZaTvPOtjfxhKY/Z3Yy3taz7N72Ju7xMKnEJN3XOghMJj7n+3xWKISmptj+7hGuj6duKU+G&#10;      x2g+dJDOcQGCl9i9p5VEIoG37Qinm/3opCmaDh7CNxFm0n2UxqP96NRxLp06intw5O4EMQDJ&#10;      2BTNh9/lZKsH0VLFk996loZCPd1n36fxxBXiWiebHn+Sry4vZ/DULo6POHj+hUeItB3nYHeG&#10;      Z7+xia7d27kQiCGLBlavWU5i5CrtfRNIBjtfe+bbbFyaR8+5Y3xw8jKxTC5bXvoL1lfN56cP&#10;      957ktb1X+OqLP2CVZZoTjQcYVi9hrbqFV9+/gm8sy/plKgQgPd7F668fZMVLP2K9S0cs0Ee3&#10;      x0MCmZnhE7QMfoPHyrR4285ysmMIJeKlfzxF9cpNqEJdtA0rPLTlaR6pz2H/b95gzGghE/CQ&#10;      tjTwzLNPUGOXObR9B+f6w7hq1vD0U49SkhPj+Lu/43hHAH2unQe/voU83ynOnb/CpG6c1zSP&#10;      kA2Msvbrz7KqRKFxx1sMW9ZSNhdfmYkMsXf/UcIaDWPX3SiWKh772mp6L53jYm8X/b/ajetf&#10;      vsfU+Q9oPNFGxlHDM88+w9JCLSe2b6VlNIYsGGmoceLzT5NrBrfbT+mS9Tzx9MNo/G3s3neM&#10;      QDSFo3ItWx5toPXSOVrcnfS9soe//vFGNEoalXR/P4IoioIyfo5sZBr55n+rFQhNBnCPz7D5&#10;      B09RyiA//9f9BCJL6DjVjuvpn7K5ToXwi1/TMTqJZt9JLFv+ka+vNHJ+21v0ewNUl8+67Hxm&#10;      Qcz107t4/dBVNI5CYmPt/NerH9LXupv/2H6YsMqKPunn7V+9wpm+IJODbXh6e5mRFUK+ATou&#10;      XCeaSOK5cpZr7gHCqlx8F85x/IiHylWbsGZHOHr4BM1nDrH793tQHNWUG33sev0VOidSpFNJ&#10;      EokE2oJ8RrvbOXiinbH+bi6eO4Ng0GCu2MgLP/wnvrPRzg1BjJKZ5rqvj+mUgqIkcHd00zuU&#10;      x3e//zLl+jRHGi+SVBTCQS+Xjx2kT87DMDPI/r17uRqUkJLD7D16hYnwOBdbLtN+rROV1crI&#10;      1UYOX+rg1Bv/xt5zfZTXVzPV9QH7m05zrWkfe46cp2j5BgpV45w6eZpgLIUkgZzRUmDSM97a&#10;      zKXLHQQHr3CyrZ2saX6Cy8lJ3INXOfJhB0XLSghcPkbTydNMKiIoMlpXHlOeJn65+wxKcS36&#10;      iR7+87VGxiJR+q6c5VrvIGGNBU08RF/HaZq60lQUS5w+eowzTafZe+gw1zMO1i2303ryCIdb&#10;      +siKAigymsI8hGyMnsEggen7nRdKwOxaw4MNJpK3CWLSMqAy48jVoM11kCMkSGezCDMZCkvy&#10;      kNQmHAaRpCyTmUpQUlWASmWgwKBBJnt3K4CczTLS3UVR1XJeevll8mYmmBHU9O/9Obm2Mv7y&#10;      xz+lKNLCL/97G11DIVbLWQSUWTOG7KwSQVIUREVL3ZI/42f/sJnAid8xPDHAkQMfUlFdxUNf&#10;      WUKi7yJ+n0jtAyBqcpiZSXLx/Flaeo7R7B7FtukltqzL5Z3WDzgQL2BYauCxyjJcVVZs0QnG&#10;      j2W5EfOuca7n33+xHlBIhgbo6r2GTy0xHUuQJ6bxdB3kWmA1BgUUbQPfefI5lJYAPefTPPnS&#10;      nzPZ9BYHBmfN/RS1kbrHf8gPvwI7EqME4wHazk+RypjRiAKiWkevN8Ta5UZyc020NO6nqHoJ&#10;      Gx5Zx+riaU62tFG8/Dme2uBCO3yGU/1tHAuGCKdKeWyljf6umx6xorD2u9/lWw8WYvF3cFky&#10;      s9wp0al38uy3HyfT/CrxTBo0IjpJQuXpxBf7KpKiZ1nDt/jp328mcn4nR04Z+P5PXqI2Ncx4&#10;      +1ZSmHn88SewdvQx1DdAIpEgGdNRWVKI1TDCn37zUeyqXrJZeVY4ch8xG4OlBWWh32kZlHlN&#10;      tnKzOkGeXy3kG1qs7Ecn3qKR/mxbIEFAY9AR9UXw+YYZ8XYzEi3AqdOTTCbxjwwjRoLMxLI4&#10;      derZ/PupKMHREXyhMDOyak4QIyIZDagVGYO9lrr6BGVKgq6rzex7f5IVpU5UmjRpJYs2x0pV&#10;      qZbaIjuReBl1mMl35rOk4knkk7/moE/P+mdepKTQvGBIl5yYxN3tw1JTQ3J4gOudoxTnueht&#10;      70IpLkHuHaf5Qg8PztkeZZlVICnMOlWizHesAKgkCVnOzg4OQY0hR0BJJpAlNfkFxVhLCzHb&#10;      taxcFiYsp+m71s6u/aB7cgkoCsnIKFGlkvK6lXx4Zg/vRdOUb/4rXFo1/bdxl6R5TiIKZBQU&#10;      Oc7E6DhGnQ5ZVpBTAiarjQqTDZteA5KIZDAwn6tCy+xmcLYdcriP3XuauZ6p4PlNK3B3HEYQ&#10;      FYS5ukPBCZI3MqYracaGPUzJRsqcBobcA+iLqim6PVPGPYSSTZFSJDSiGiGdwh9Oo8dHLC2i&#10;      kUSkXInA8BSySY0/nkYliujtGnyeCeT8HMYTCWTEjwIUP9MWSJRUlK16EN2Ml907XmPHO41c&#10;      cY/hWPEwRbowe7b9lm2/b0LOW8KaShuW4iqS/h72vLmTY21upgVx3iFGBZAlNNxHa2s304oK&#10;      qyWPfEcNK1bUU1dhJx6awDfcz2RWS2F1HZufe5m/+9nP+N7m5VhcK/iTZQ4MBWUsq12KxXDT&#10;      XBbnm5UO9bBj62+4OBxisPcqo5pKnn7hZX78k5/wtz96mTUFGYY6W/BG0iDNhgSLonRjniKi&#10;      oJqjLQHyTT0mCrmsemQDdlWGoNeHNziByqAnHRrkysUrTGU05FoKcNic2Aud2LUaJjuOc+ha&#10;      hOLSapaW55ER8/jK6krUKvFjj2N2/Atz5SL5Vgt6Y4amvR+gVK6joSiX+OQoHs8wcY2JHLU0&#10;      Jwi6tYZ5wiCqtZjVavKEFJ5ODzEVpFNJjJZ8DMYsJ95rxJ+UUQkgEaX1xAF2NF4iMu1l56u/&#10;      5XjnxGcZMn88BBCl+XYkBppovBYiP99OpU3HgV3v8M7Od3HUrcWWa6JmQwMD+3ayZ/cuOnJs&#10;      1DvNLNvyMKP73mLP7rdpTQuUlxSi/0OCmIWhkE5E6e/uYHB0ClFjprphGcX5Wnzuq7i9IbKC&#10;      juKqOqpLbcjRAJcvdhBFQiOpULRW1qyqIHD1EjPmahpqnWSjY/R0Xsc/GUXQGCmuXEJ1UQ6j&#10;      fT24h0ZJC2pc1Q+wpNx6y3KlZNMEhzrxTEpU19Rim8tdI6eTeN3thCUbNTVlqON+Wtr6cNat&#10;      QBrrYSSZQ211FflGNYqcxd/dwlBCj82kJzSZorq+BsZ66BpLU71sGelAPyNxHfVVZq63dqGv&#10;      eIDaAoXeXjdpYzHVTh3dFy/hj2XQ5dqoXVKLw5Dhens7w+MxUBtwVdRQXWrG33GV3mCE/Oq1&#10;      VEvD/H7XG1yI1fLPf/M8VVYd/uttjCsWqsvNeHrcqB211NgMjLjbmRKtlDl0uLt7GJ8WWPvw&#10;      eqKeDtzDYyiSkdKl9VQ6cuhvbSGZX0N9jYPk2ADX3EEqV63ClI3i7nRjcBYjRgN4vBOIGhN6&#10;      rYzBXEpFoRp3dzfBiMCK9bV4u7xYq6sQJn2MJE2srDZx9WI3uVXLWeq6d75gcjpOMDBE3FhJ&#10;      hUVNyn+Z1nglGytymBz10t3pISGoqVm5Apc5h3Rsit72ywQTUFBeT12JA0mO09d6gZG4gtlV&#10;      SW1FKUaNePf+AIqioMgygijeIoiRFRkQZstnC+diikAUP2mxUchmZRBEJHF+I5PNZkEQkD7x&#10;      2vuPWWNpGUEQEef4z5cJN7V9tp0Rv4d3fvkKF8ZkNj33PZ5/Yg0mzadroyLLyDDbJ3P3QLi5&#10;      zz9VLWSzCqJ4a7jLjbrF/0NhMH+MIGbRIOO+QCGdiDMyOEBaa8bptGHUqj+lcGgRnycEQRD+&#10;      B3/RUpCPA5p4AAAAAElFTkSuQmCC&#10;    </thumbnail>
+  </thumbnails>
+</workbook>

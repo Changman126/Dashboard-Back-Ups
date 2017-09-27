@@ -1,0 +1,539 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.1103.2331                                -->
+<workbook source-build='9.3.9 (9300.16.1103.2331)' source-platform='mac' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='custom_sql_query (ahemphill)' inline='true' name='vertica.13l6tqh0ft92va11mox0u05w9o96' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='' one-time-sql='' port='5433' schema='ahemphill' server='warehouse.analytics.edx.org' username='ahemphill'>
+        <relation name='custom_sql_query' type='text'>select&#10;a.user_id,&#10;c.email,&#10;c.first_email,&#10;c.second_email,&#10;a.first_verified_enrollment_time,&#10;a.current_enrollment_mode,&#10;SUM(CASE WHEN d.date &lt;&lt;= &apos;2017-02-15&apos; THEN 1 ELSE 0 END) AS cnt_active_before_first_email,&#10;SUM(CASE WHEN d.date &lt;&lt;= &apos;2017-02-16&apos; THEN 1 ELSE 0 END) AS cnt_active_before_second_email,&#10;SUM(CASE WHEN d.date &lt;&lt;= &apos;2017-02-15&apos; AND activity_type != &apos;ACTIVE&apos; THEN 1 ELSE 0 END) AS cnt_engaged_before_first_email,&#10;SUM(CASE WHEN d.date &lt;&lt;= &apos;2017-02-16&apos; AND activity_type != &apos;ACTIVE&apos; THEN 1 ELSE 0 END) AS cnt_engaged_before_second_email&#10;from production.d_user_course a &#10;join production.d_user b&#10;on a.user_id = b.user_id&#10;and a.course_id = &apos;course-v1:RITx+PM9001x+1T2017&apos;&#10;join ahemphill.bisupport99 c&#10;on b.user_email = c.email&#10;left join production.f_user_activity d&#10;on a.user_id = d.user_id&#10;and a.course_id = d.course_id&#10;group by 1,2,3,4,5,6</relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>email</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[first_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>first_email</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>second_email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[second_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>second_email</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_verified_enrollment_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[first_verified_enrollment_time]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>first_verified_enrollment_time</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_enrollment_mode</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[current_enrollment_mode]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>current_enrollment_mode</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_active_before_first_email</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_active_before_first_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>cnt_active_before_first_email</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_active_before_second_email</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_active_before_second_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>cnt_active_before_second_email</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_engaged_before_first_email</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_engaged_before_first_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>cnt_engaged_before_first_email</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_engaged_before_second_email</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_engaged_before_second_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>cnt_engaged_before_second_email</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='string' name='[first_email]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;0&quot;' value='No HPA Email' />
+          <alias key='&quot;1&quot;' value='HPA Email' />
+        </aliases>
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.493004' measure-ordering='alphabetic' measure-percentage='0.506996' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='custom_sql_query (ahemphill)' name='vertica.13l6tqh0ft92va11mox0u05w9o96' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.13l6tqh0ft92va11mox0u05w9o96'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='integer' name='[cnt_engaged_before_first_email]' role='measure' type='quantitative' />
+            <column datatype='string' name='[first_email]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;0&quot;' value='No HPA Email' />
+                <alias key='&quot;1&quot;' value='HPA Email' />
+              </aliases>
+            </column>
+            <column datatype='datetime' name='[first_verified_enrollment_time]' role='dimension' type='ordinal' />
+            <column-instance column='[cnt_engaged_before_first_email]' derivation='None' name='[none:cnt_engaged_before_first_email:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[first_email]' derivation='None' name='[none:first_email:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[first_verified_enrollment_time]' derivation='Day-Trunc' name='[tdy:first_verified_enrollment_time:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_first_email:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>54</max>
+          </filter>
+          <slices>
+            <column>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_first_email:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:first_email:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[vertica.13l6tqh0ft92va11mox0u05w9o96].[sum:Number of Records:qk]</rows>
+        <cols>[vertica.13l6tqh0ft92va11mox0u05w9o96].[tdy:first_verified_enrollment_time:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='custom_sql_query (ahemphill)' name='vertica.13l6tqh0ft92va11mox0u05w9o96' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.13l6tqh0ft92va11mox0u05w9o96'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='integer' name='[cnt_engaged_before_second_email]' role='measure' type='quantitative' />
+            <column datatype='string' name='[current_enrollment_mode]' role='dimension' type='nominal' />
+            <column datatype='string' name='[first_email]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;0&quot;' value='No HPA Email' />
+                <alias key='&quot;1&quot;' value='HPA Email' />
+              </aliases>
+            </column>
+            <column-instance column='[cnt_engaged_before_second_email]' derivation='None' name='[none:cnt_engaged_before_second_email:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[current_enrollment_mode]' derivation='None' name='[none:current_enrollment_mode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[first_email]' derivation='None' name='[none:first_email:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[pcto:sum:Number of Records:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:current_enrollment_mode:nk]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='quantitative' column='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_second_email:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>55</max>
+          </filter>
+          <slices>
+            <column>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_second_email:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:current_enrollment_mode:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[vertica.13l6tqh0ft92va11mox0u05w9o96].[pcto:sum:Number of Records:qk:3]</rows>
+        <cols>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:first_email:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='28'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:first_email:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_first_email:qk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:first_email:nk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:second_email:nk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[yr:first_verified_enrollment_time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:current_enrollment_mode:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_first_email:qk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:cnt_engaged_before_second_email:qk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:current_enrollment_mode:nk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:first_email:nk]</field>
+            <field>[vertica.13l6tqh0ft92va11mox0u05w9o96].[none:second_email:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 2' width='178'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

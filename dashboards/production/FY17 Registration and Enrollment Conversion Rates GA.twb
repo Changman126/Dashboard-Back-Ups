@@ -1,0 +1,2231 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xml:base='https://tableau.analytics.edx.org' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location id='FY17GoogleAnalyticsRegistrationandEnrollmentConversionRates' path='/workbooks' revision='1.1' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='9.3'>
+      <aliases enabled='yes' />
+      <column caption='Line 2' datatype='string' name='[Line 1 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Cumulative Registration Conversion Rate&quot;'>
+        <calculation class='tableau' formula='&quot;Cumulative Registration Conversion Rate&quot;' />
+        <members>
+          <member value='&quot;Rolling 7 Day Registration Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Registration Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Enrollment (8) Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Enrollment (8) Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Enrollment (9) Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Enrollment (9) Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Verification Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Verification Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Revenue Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Revenue Conversion Rate&quot;' />
+        </members>
+      </column>
+      <column caption='Goal Line' datatype='real' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='0.037999999999999999'>
+        <calculation class='tableau' formula='0.037999999999999999' />
+      </column>
+      <column caption='Line 1' datatype='string' name='[Parameter 5]' param-domain-type='list' role='measure' type='nominal' value='&quot;Rolling 7 Day Registration Conversion Rate&quot;'>
+        <calculation class='tableau' formula='&quot;Rolling 7 Day Registration Conversion Rate&quot;' />
+        <members>
+          <member value='&quot;Rolling 7 Day Registration Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Registration Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Enrollment (8) Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Enrollment (8) Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Enrollment (9) Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Enrollment (9) Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Verification Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Verification Conversion Rate&quot;' />
+          <member value='&quot;Rolling 7 Day Revenue Conversion Rate&quot;' />
+          <member value='&quot;Cumulative Revenue Conversion Rate&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='daily_stats (business_intelligence.daily_stats) (business_intelligence)' inline='true' name='vertica.0k79i9z07e70dy1g2pn8f1unilxn' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='business_intelligence' server='10.5.3.246' server-oauth='' server-userid='58' username='ojchang' workgroup-auth-mode='prompt'>
+        <relation name='daily_stats' table='[business_intelligence].[daily_stats]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_registrations</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_registrations]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cnt_registrations</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_enrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_enrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cnt_enrolls</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_enrolls_vtr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_enrolls_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cnt_enrolls_vtr</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_verifications</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_verifications]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cnt_verifications</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_unenrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_unenrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cnt_unenrolls</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_registrations</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cum_sum_registrations]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_registrations</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_enrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cum_sum_enrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_enrolls</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_unenrolls</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cum_sum_unenrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_unenrolls</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_enrolls_vtr</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cum_sum_enrolls_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_enrolls_vtr</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_verifications</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cum_sum_verifications]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_verifications</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>daily_vtr</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[daily_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>daily_vtr</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>36</precision>
+            <scale>18</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_vtr</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[cum_sum_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_vtr</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>36</precision>
+            <scale>18</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_verifications</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_verifications]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_verifications</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_enrolls_vtr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_enrolls_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_enrolls_vtr</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_registrations</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_registrations]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_registrations</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_enrolls</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_enrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_enrolls</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_unenrolls</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_unenrolls]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_unenrolls</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_vtr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_vtr]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_vtr</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>sum_bookings</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>12</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_seat_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_seat_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>sum_seat_bookings</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_donations_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_donations_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>sum_donations_bookings</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sum_reg_code_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[sum_reg_code_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>sum_reg_code_bookings</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[cum_sum_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_bookings</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>12</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_seat_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[cum_sum_seat_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_seat_bookings</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_donations_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[cum_sum_donations_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_donations_bookings</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cum_sum_reg_code_bookings</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[cum_sum_reg_code_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>cum_sum_reg_code_bookings</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>20</precision>
+            <scale>2</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_bookings</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_seat_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_seat_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_seat_bookings</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_donations_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_donations_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_donations_bookings</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_avg_reg_code_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_avg_reg_code_bookings]</local-name>
+            <parent-name>[daily_stats]</parent-name>
+            <remote-alias>weekly_avg_reg_code_bookings</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Cnt Enrolls' datatype='integer' name='[cnt_enrolls]' role='measure' type='quantitative' />
+      <column caption='Cnt Enrolls Vtr' datatype='integer' name='[cnt_enrolls_vtr]' role='measure' type='quantitative' />
+      <column caption='Cnt Registrations' datatype='integer' name='[cnt_registrations]' role='measure' type='quantitative' />
+      <column caption='Cnt Unenrolls' datatype='integer' name='[cnt_unenrolls]' role='measure' type='quantitative' />
+      <column caption='Cnt Verifications' datatype='integer' name='[cnt_verifications]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Bookings' datatype='real' name='[cum_sum_bookings]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Donations Bookings' datatype='real' name='[cum_sum_donations_bookings]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Enrolls' datatype='integer' name='[cum_sum_enrolls]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Enrolls Vtr' datatype='integer' name='[cum_sum_enrolls_vtr]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Reg Code Bookings' datatype='real' name='[cum_sum_reg_code_bookings]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Registrations' datatype='integer' name='[cum_sum_registrations]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Seat Bookings' datatype='real' name='[cum_sum_seat_bookings]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Unenrolls' datatype='integer' name='[cum_sum_unenrolls]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Verifications' datatype='integer' name='[cum_sum_verifications]' role='measure' type='quantitative' />
+      <column caption='Cum Sum Vtr' datatype='real' name='[cum_sum_vtr]' role='measure' type='quantitative' />
+      <column caption='Daily Vtr' datatype='real' name='[daily_vtr]' role='measure' type='quantitative' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Sum Bookings' datatype='real' name='[sum_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Donations Bookings' datatype='real' name='[sum_donations_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Reg Code Bookings' datatype='real' name='[sum_reg_code_bookings]' role='measure' type='quantitative' />
+      <column caption='Sum Seat Bookings' datatype='real' name='[sum_seat_bookings]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Bookings' datatype='real' name='[weekly_avg_bookings]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Donations Bookings' datatype='real' name='[weekly_avg_donations_bookings]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Enrolls' datatype='real' name='[weekly_avg_enrolls]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Enrolls Vtr' datatype='real' name='[weekly_avg_enrolls_vtr]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Reg Code Bookings' datatype='real' name='[weekly_avg_reg_code_bookings]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Registrations' datatype='real' name='[weekly_avg_registrations]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Seat Bookings' datatype='real' name='[weekly_avg_seat_bookings]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Unenrolls' datatype='real' name='[weekly_avg_unenrolls]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Verifications' datatype='real' name='[weekly_avg_verifications]' role='measure' type='quantitative' />
+      <column caption='Weekly Avg Vtr' datatype='real' name='[weekly_avg_vtr]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.0608575' measure-ordering='alphabetic' measure-percentage='0.847856' parameter-percentage='0.0912863' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='Google Analytics (edX    (35248639))' inline='true' name='google-analytics.1exgri219b7s3f18sf2br09xf3e9' version='9.3'>
+      <connection REDIRECT_URI='urn:ietf:wg:oauth:2.0:oob' SCOPE='https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile' account-id='35248639' account-name='edX    (35248639)' can-partition='yes' class='google-analytics' currency='' date-type='13' dimensions='ga:channelGrouping,ga:date' end-date='2017-03-19' goal-name-ids='' incremental-refresh-enabled='true' metrics='ga:goal10Completions,ga:goal4Completions,ga:goal8Completions,ga:goal9Completions,ga:sessions,ga:transactionRevenue' profile-id='86300562' profile-name='All Web Site Data    (86300562)' property-id='UA-35248639-2' property-name='edX.org    (UA-35248639-2)    https://www.edx.org' request-unsampling='yes' response-sampled='no' sample-size='-1' sample-space='-1' sampled-data='no' segment-id='-1' segment-name='All Visits    (-1)' server-oauth='' start-date='2016-07-01' total-results='2901' username='ojchang@edx.org'>
+        <refresh increment-key='[ga:date]' incremental-updates='true' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>ga:channelGrouping</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ga:channelGrouping]</local-name>
+            <remote-alias>ga:channelGrouping</remote-alias>
+            <caption>Default Channel Grouping</caption>
+            <local-type>string</local-type>
+            <aggregation>None</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The default channel grouping that is shared within the View (Profile).&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>true</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ga:date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[ga:date]</local-name>
+            <remote-alias>ga:date</remote-alias>
+            <caption>Date</caption>
+            <local-type>date</local-type>
+            <aggregation>None</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The date of the session formatted as YYYYMMDD.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>true</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:goal10Completions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:goal10Completions]</local-name>
+            <remote-alias>ga:goal10Completions</remote-alias>
+            <caption>Goal 10 Completions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of completions for the requested goal number.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:goal4Completions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:goal4Completions]</local-name>
+            <remote-alias>ga:goal4Completions</remote-alias>
+            <caption>Goal  4 Completions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of completions for the requested goal number.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:goal8Completions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:goal8Completions]</local-name>
+            <remote-alias>ga:goal8Completions</remote-alias>
+            <caption>Goal  8 Completions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of completions for the requested goal number.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:goal9Completions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:goal9Completions]</local-name>
+            <remote-alias>ga:goal9Completions</remote-alias>
+            <caption>Goal  9 Completions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of completions for the requested goal number.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:sessions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ga:sessions]</local-name>
+            <remote-alias>ga:sessions</remote-alias>
+            <caption>Sessions</caption>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total number of sessions.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='measure'>
+            <remote-name>ga:transactionRevenue</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ga:transactionRevenue]</local-name>
+            <remote-alias>ga:transactionRevenue</remote-alias>
+            <caption>Revenue</caption>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='comment'>&quot;The total sale revenue provided in the transaction excluding shipping and tax.&quot;</attribute>
+              <attribute datatype='boolean' name='dimension'>false</attribute>
+              <attribute datatype='string' name='geography'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='null_mapping'>&quot;(not set)&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='sampled-data'>
+            <remote-name>sampled-data</remote-name>
+            <remote-type>0</remote-type>
+            <remote-alias>sampled-data</remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='response-sampled'>&quot;FALSE&quot;</attribute>
+              <attribute datatype='string' name='sample-size'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='sample-space'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='total-results'>&quot;2901&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Rolling 7 Day Registration Conversion Rate' datatype='real' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564045844480], -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Rolling 7 Day Verification Conversion Rate' datatype='real' name='[Calculation2]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046696451], -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Rolling 7 Day Enrollment (9) Conversion Rate' datatype='real' name='[Calculation3]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046626818], -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Rolling 7 Day Enrollment (8) Conversion Rate' datatype='real' name='[Calculation4]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046520321], -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Sessions Goal per Day' datatype='real' name='[Calculation_454582142076739589]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='39852.3' />
+      </column>
+      <column caption='Difference' datatype='real' name='[Calculation_454582142077620230]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([Calculation_454582142076739589]))-RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Full Week?' datatype='boolean' name='[Calculation_664562469744820233]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[ga:date] &lt; DATETRUNC(&apos;week&apos;, TODAY())' />
+      </column>
+      <column caption='Sessions WoW %' datatype='real' name='[Calculation_664562469745471498]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(ZN(SUM([ga:sessions])) - LOOKUP(ZN(SUM([ga:sessions])), -1)) / ABS(LOOKUP(ZN(SUM([ga:sessions])), -1))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Revenue Conversion Rate' datatype='real' name='[Calculation_664562469754818571]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([ga:transactionRevenue])/SUM([ga:sessions])' />
+      </column>
+      <column caption='Cumulative Revenue Conversion Rate' datatype='real' name='[Calculation_664562469754933260]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:transactionRevenue]))/RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Rolling 7 Day Revenue Conversion Rate' datatype='real' name='[Calculation_664562469755076621]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG([Calculation_664562469754818571], -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Registration Conversion Rate' datatype='real' name='[Calculation_730990564045844480]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='Sum([ga:goal4Completions])/sum([ga:sessions])' />
+      </column>
+      <column caption='Enrollment Conversion Rate Old' datatype='real' name='[Calculation_730990564046520321]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([ga:goal8Completions])/sum([ga:sessions])' />
+      </column>
+      <column caption='Enrollment Conversion Rate New' datatype='real' name='[Calculation_730990564046626818]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([ga:goal9Completions])/sum([ga:sessions])' />
+      </column>
+      <column caption='Verification Conversion Rate' datatype='real' name='[Calculation_730990564046696451]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([ga:goal10Completions])/sum([ga:sessions])' />
+      </column>
+      <column caption='Cumulative Registration Conversion Rate' datatype='real' name='[Calculation_730990564048408580]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal4Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Cumulative Verification Conversion Rate' datatype='real' name='[Calculation_730990564048707589]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal10Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Cumulative Enrollment (9) Conversion Rate' datatype='real' name='[Calculation_730990564049137670]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal9Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Cumulative Enrollment (8) Conversion Rate' datatype='real' name='[Calculation_730990564049281031]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal8Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Line 1' datatype='real' name='[Calculation_730990564049895432]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 5]&#13;&#10;&#13;&#10;WHEN &apos;Rolling 7 Day Registration Conversion Rate&apos; THEN [Calculation1]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (8) Conversion Rate&apos; THEN [Calculation4]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (9) Conversion Rate&apos; THEN [Calculation3]&#13;&#10;WHEN &apos;Rolling 7 Day Verification Conversion Rate&apos; THEN [Calculation2]&#13;&#10;WHEN &apos;Cumulative Registration Conversion Rate&apos; THEN [Calculation_730990564048408580]&#13;&#10;WHEN &apos;Cumulative Enrollment (8) Conversion Rate&apos; THEN [Calculation_730990564049281031]&#13;&#10;WHEN &apos;Cumulative Enrollment (9) Conversion Rate&apos; THEN [Calculation_730990564049137670]&#13;&#10;WHEN &apos;Cumulative Verification Conversion Rate&apos; THEN [Calculation_730990564048707589]&#13;&#10;WHEN &apos;Cumulative Revenue Conversion Rate&apos; THEN [Calculation_664562469754933260]&#13;&#10;WHEN &apos;Rolling 7 Day Revenue Conversion Rate&apos; THEN [Calculation_664562469755076621]&#13;&#10;&#13;&#10;&#13;&#10;END'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Line 2' datatype='real' name='[Line 1 (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Line 1 (copy)]&#13;&#10;&#13;&#10;WHEN &apos;Rolling 7 Day Registration Conversion Rate&apos; THEN [Calculation1]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment(8) Conversion Rate&apos; THEN [Calculation4]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (9) Conversion Rate&apos; THEN [Calculation3]&#13;&#10;WHEN &apos;Rolling 7 Day Verification Conversion Rate&apos; THEN [Calculation2]&#13;&#10;WHEN &apos;Cumulative Registration Conversion Rate&apos; THEN [Calculation_730990564048408580]&#13;&#10;WHEN &apos;Cumulative Enrollment (8) Conversion Rate&apos; THEN [Calculation_730990564049281031]&#13;&#10;WHEN &apos;Cumulative Enrollment (9) Conversion Rate&apos; THEN [Calculation_730990564049137670]&#13;&#10;WHEN &apos;Cumulative Verification Conversion Rate&apos; THEN [Calculation_730990564048707589]&#13;&#10;WHEN &apos;Cumulative Revenue Conversion Rate&apos; THEN [Calculation_664562469754933260]&#13;&#10;WHEN &apos;Rolling 7 Day Revenue Conversion Rate&apos; THEN [Calculation_664562469755076621]&#13;&#10;&#13;&#10;END'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='None' caption='Default Channel Grouping' datatype='string' name='[ga:channelGrouping]' role='dimension' type='nominal'>
+        <desc>
+          <formatted-text>
+            <run>The default channel grouping that is shared within the View (Profile).</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The date of the session formatted as YYYYMMDD.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Verifications' datatype='integer' name='[ga:goal10Completions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of completions for the requested goal number.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Registrations' datatype='integer' name='[ga:goal4Completions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of completions for the requested goal number.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Enrollments Old' datatype='integer' name='[ga:goal8Completions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of completions for the requested goal number.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Enrollments New' datatype='integer' name='[ga:goal9Completions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of completions for the requested goal number.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total number of sessions.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column caption='Revenue' datatype='real' name='[ga:transactionRevenue]' role='measure' type='quantitative'>
+        <desc>
+          <formatted-text>
+            <run>The total sale revenue provided in the transaction excluding shipping and tax.</run>
+          </formatted-text>
+        </desc>
+      </column>
+      <column-instance column='[Calculation_454582142076739589]' derivation='Sum' name='[cum:sum:Calculation_454582142076739589:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[ga:sessions]' derivation='Sum' name='[cum:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[ga:channelGrouping]' derivation='None' name='[none:ga:channelGrouping:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_454582142077620230]' derivation='User' name='[usr:Calculation_454582142077620230:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_730990564049137670]' derivation='User' name='[usr:Calculation_730990564049137670:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_730990564049281031]' derivation='User' name='[usr:Calculation_730990564049281031:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_730990564049895432]' derivation='User' name='[usr:Calculation_730990564049895432:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation1]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation4]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049137670]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048408580]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation3]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048707589]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation2]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049281031]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469754933260]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469755076621]' ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Line 1 (copy)]' derivation='User' name='[usr:Line 1 (copy):qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation1]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation4]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049137670]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048408580]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation3]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048707589]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation2]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049281031]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469754933260]' ordering-type='Rows' />
+        <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469755076621]' ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[ga:sessions]' derivation='Avg' name='[win:avg:ga:sessions:qk:2]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-6' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[ga:sessions]' derivation='Avg' name='[win:avg:ga:sessions:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' from='-6' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[ga:sessions]' derivation='Sum' name='[win:sum:ga:sessions:qk:2]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-6' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[ga:sessions]' derivation='Sum' name='[win:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' from='-6' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='C:\Users\ochang\My Documents\My Tableau Repository\Datasources\google-analytics.1exgri219b7s3f18sf2br09xf3e9_1edd4k919yz6w019spxz30bsqhim.tde' schema='Extract' tablename='Extract' update-time='03/20/2017 02:46:42 PM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='[ga:date]' incremental-updates='true'>
+            <refresh-event add-from-file-path='' increment-value='#2017-03-15#' refresh-type='create' rows-inserted='2853' timestamp-start='2017-03-16 17:08:45.384' />
+            <refresh-event add-from-file-path='' increment-value='#2017-03-15#' refresh-type='increment' rows-inserted='0' timestamp-start='2017-03-16 17:14:29.846' />
+            <refresh-event add-from-file-path='' increment-value='#2017-03-19#' refresh-type='increment' rows-inserted='48' timestamp-start='2017-03-20 14:44:24.934' />
+            <refresh-event add-from-file-path='' increment-value='#2017-03-19#' refresh-type='increment' rows-inserted='0' timestamp-start='2017-03-20 14:46:40.430' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>ga:channelGrouping</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ga:channelGrouping]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:channelGrouping</remote-alias>
+              <ordinal>0</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LROOT' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;(Other)&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;Social&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+                <statistic aggregation='Median' datatype='string'>&quot;Email&quot;</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;root&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[ga:date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:date</remote-alias>
+              <ordinal>1</ordinal>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>262</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='date'>#2016-07-01#</statistic>
+                <statistic aggregation='Max' datatype='date'>#2017-03-19#</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+                <statistic aggregation='Median' datatype='date'>#2016-11-19#</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:goal10Completions</remote-name>
+              <remote-type>2</remote-type>
+              <local-name>[ga:goal10Completions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:goal10Completions</remote-alias>
+              <ordinal>2</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>283</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>547</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:goal4Completions</remote-name>
+              <remote-type>2</remote-type>
+              <local-name>[ga:goal4Completions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:goal4Completions</remote-alias>
+              <ordinal>3</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1385</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>10472</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:goal8Completions</remote-name>
+              <remote-type>2</remote-type>
+              <local-name>[ga:goal8Completions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:goal8Completions</remote-alias>
+              <ordinal>4</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1991</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>24258</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:goal9Completions</remote-name>
+              <remote-type>2</remote-type>
+              <local-name>[ga:goal9Completions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:goal9Completions</remote-alias>
+              <ordinal>5</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1139</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>0</statistic>
+                <statistic aggregation='Max' datatype='integer'>13525</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint16&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:sessions</remote-name>
+              <remote-type>3</remote-type>
+              <local-name>[ga:sessions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:sessions</remote-alias>
+              <ordinal>6</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2787</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Min' datatype='integer'>4</statistic>
+                <statistic aggregation='Max' datatype='integer'>355514</statistic>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint32&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ga:transactionRevenue</remote-name>
+              <remote-type>4</remote-type>
+              <local-name>[ga:transactionRevenue]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ga:transactionRevenue</remote-alias>
+              <ordinal>7</ordinal>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2202</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Count' datatype='integer'>2901</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;float&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.150868' measure-ordering='alphabetic' measure-percentage='0.815754' parameter-percentage='0.0333778' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:ga:channelGrouping:nk]&#10;[:Measure Names]' type='palette'>
+            <map-pri to='multiordinal_blue'>
+              <bucket>&quot;(Other)&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_blue'>
+              <bucket>&quot;Referral&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_brown'>
+              <bucket>&quot;Email&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_gold'>
+              <bucket>&quot;Paid Social&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_gray'>
+              <bucket>&quot;Paid Search&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_green'>
+              <bucket>&quot;Course Email Marketing&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_orange'>
+              <bucket>&quot;Affiliate&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_orange'>
+              <bucket>&quot;Social&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_pink'>
+              <bucket>&quot;Organic Search&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_purple'>
+              <bucket>&quot;Display&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_red'>
+              <bucket>&quot;Direct&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_teal'>
+              <bucket>&quot;Partner Marketing&quot;</bucket>
+            </map-pri>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049137670:qk]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[win:avg:ga:sessions:qk:2]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[win:avg:ga:sessions:qk]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[win:sum:ga:sessions:qk:2]&quot;</bucket>
+            </map>
+            <map to='#1f77b4'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[win:sum:ga:sessions:qk]&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_454582142077620230:qk]&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9]&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;[Parameters].[Parameter 4]&quot;</bucket>
+            </map>
+            <map to='#e377c2'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049281031:qk]&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Line 2' datatype='string' name='[Line 1 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Cumulative Registration Conversion Rate&quot;'>
+          <calculation class='tableau' formula='&quot;Cumulative Registration Conversion Rate&quot;' />
+        </column>
+        <column caption='Line 1' datatype='string' name='[Parameter 5]' param-domain-type='list' role='measure' type='nominal' value='&quot;Rolling 7 Day Registration Conversion Rate&quot;'>
+          <calculation class='tableau' formula='&quot;Rolling 7 Day Registration Conversion Rate&quot;' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='FY17 Conversion Rates'>
+      <layout-options>
+        <caption>
+          <formatted-text>
+            <run>*Use the Filters on the right to drill down to each specific Channel Grouping&#10;*Use the Line 1 and Line 2 Filters to view different metrics based on Goals set up in Google Analytics&#10;*Adjust the conversion goal line (Goal/Sessions) to view how we are tracking relative to a goal/forecasted conversion&#10;*Because Enrollment Goals are captured only once per user session in Google Analytics the enrollment numbers here will not match the enrollment numbers in the data warehouse, however, the trend should remain the same from a conversion standpoint.&#10;&#10;</run>
+          </formatted-text>
+        </caption>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1exgri219b7s3f18sf2br09xf3e9' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Line 2' datatype='string' name='[Line 1 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Cumulative Registration Conversion Rate&quot;'>
+              <calculation class='tableau' formula='&quot;Cumulative Registration Conversion Rate&quot;' />
+            </column>
+            <column caption='Goal Line' datatype='real' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='0.037999999999999999'>
+              <calculation class='tableau' formula='0.037999999999999999' />
+            </column>
+            <column caption='Line 1' datatype='string' name='[Parameter 5]' param-domain-type='list' role='measure' type='nominal' value='&quot;Rolling 7 Day Registration Conversion Rate&quot;'>
+              <calculation class='tableau' formula='&quot;Rolling 7 Day Registration Conversion Rate&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='google-analytics.1exgri219b7s3f18sf2br09xf3e9'>
+            <column caption='Rolling 7 Day Registration Conversion Rate' datatype='real' name='[Calculation1]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564045844480], -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Rolling 7 Day Verification Conversion Rate' datatype='real' name='[Calculation2]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046696451], -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Rolling 7 Day Enrollment (9) Conversion Rate' datatype='real' name='[Calculation3]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046626818], -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Rolling 7 Day Enrollment (8) Conversion Rate' datatype='real' name='[Calculation4]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG([Calculation_730990564046520321], -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Revenue Conversion Rate' datatype='real' name='[Calculation_664562469754818571]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([ga:transactionRevenue])/SUM([ga:sessions])' />
+            </column>
+            <column caption='Cumulative Revenue Conversion Rate' datatype='real' name='[Calculation_664562469754933260]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:transactionRevenue]))/RUNNING_SUM(SUM([ga:sessions]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Rolling 7 Day Revenue Conversion Rate' datatype='real' name='[Calculation_664562469755076621]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG([Calculation_664562469754818571], -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Registration Conversion Rate' datatype='real' name='[Calculation_730990564045844480]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='Sum([ga:goal4Completions])/sum([ga:sessions])' />
+            </column>
+            <column caption='Enrollment Conversion Rate Old' datatype='real' name='[Calculation_730990564046520321]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='sum([ga:goal8Completions])/sum([ga:sessions])' />
+            </column>
+            <column caption='Enrollment Conversion Rate New' datatype='real' name='[Calculation_730990564046626818]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='sum([ga:goal9Completions])/sum([ga:sessions])' />
+            </column>
+            <column caption='Verification Conversion Rate' datatype='real' name='[Calculation_730990564046696451]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='sum([ga:goal10Completions])/sum([ga:sessions])' />
+            </column>
+            <column caption='Cumulative Registration Conversion Rate' datatype='real' name='[Calculation_730990564048408580]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal4Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Cumulative Verification Conversion Rate' datatype='real' name='[Calculation_730990564048707589]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal10Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Cumulative Enrollment (9) Conversion Rate' datatype='real' name='[Calculation_730990564049137670]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal9Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Cumulative Enrollment (8) Conversion Rate' datatype='real' name='[Calculation_730990564049281031]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='RUNNING_SUM(SUM([ga:goal8Completions]))/RUNNING_SUM(SUM([ga:sessions]))'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Line 1' datatype='real' name='[Calculation_730990564049895432]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 5]&#13;&#10;&#13;&#10;WHEN &apos;Rolling 7 Day Registration Conversion Rate&apos; THEN [Calculation1]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (8) Conversion Rate&apos; THEN [Calculation4]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (9) Conversion Rate&apos; THEN [Calculation3]&#13;&#10;WHEN &apos;Rolling 7 Day Verification Conversion Rate&apos; THEN [Calculation2]&#13;&#10;WHEN &apos;Cumulative Registration Conversion Rate&apos; THEN [Calculation_730990564048408580]&#13;&#10;WHEN &apos;Cumulative Enrollment (8) Conversion Rate&apos; THEN [Calculation_730990564049281031]&#13;&#10;WHEN &apos;Cumulative Enrollment (9) Conversion Rate&apos; THEN [Calculation_730990564049137670]&#13;&#10;WHEN &apos;Cumulative Verification Conversion Rate&apos; THEN [Calculation_730990564048707589]&#13;&#10;WHEN &apos;Cumulative Revenue Conversion Rate&apos; THEN [Calculation_664562469754933260]&#13;&#10;WHEN &apos;Rolling 7 Day Revenue Conversion Rate&apos; THEN [Calculation_664562469755076621]&#13;&#10;&#13;&#10;&#13;&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='Line 2' datatype='real' name='[Line 1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Line 1 (copy)]&#13;&#10;&#13;&#10;WHEN &apos;Rolling 7 Day Registration Conversion Rate&apos; THEN [Calculation1]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment(8) Conversion Rate&apos; THEN [Calculation4]&#13;&#10;WHEN &apos;Rolling 7 Day Enrollment (9) Conversion Rate&apos; THEN [Calculation3]&#13;&#10;WHEN &apos;Rolling 7 Day Verification Conversion Rate&apos; THEN [Calculation2]&#13;&#10;WHEN &apos;Cumulative Registration Conversion Rate&apos; THEN [Calculation_730990564048408580]&#13;&#10;WHEN &apos;Cumulative Enrollment (8) Conversion Rate&apos; THEN [Calculation_730990564049281031]&#13;&#10;WHEN &apos;Cumulative Enrollment (9) Conversion Rate&apos; THEN [Calculation_730990564049137670]&#13;&#10;WHEN &apos;Cumulative Verification Conversion Rate&apos; THEN [Calculation_730990564048707589]&#13;&#10;WHEN &apos;Cumulative Revenue Conversion Rate&apos; THEN [Calculation_664562469754933260]&#13;&#10;WHEN &apos;Rolling 7 Day Revenue Conversion Rate&apos; THEN [Calculation_664562469755076621]&#13;&#10;&#13;&#10;END'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[cum:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column aggregation='None' caption='Default Channel Grouping' datatype='string' name='[ga:channelGrouping]' role='dimension' type='nominal'>
+              <desc>
+                <formatted-text>
+                  <run>The default channel grouping that is shared within the View (Profile).</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Verifications' datatype='integer' name='[ga:goal10Completions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of completions for the requested goal number.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Registrations' datatype='integer' name='[ga:goal4Completions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of completions for the requested goal number.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Enrollments Old' datatype='integer' name='[ga:goal8Completions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of completions for the requested goal number.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Enrollments New' datatype='integer' name='[ga:goal9Completions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of completions for the requested goal number.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Revenue' datatype='real' name='[ga:transactionRevenue]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total sale revenue provided in the transaction excluding shipping and tax.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[ga:channelGrouping]' derivation='None' name='[none:ga:channelGrouping:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ga:date]' derivation='None' name='[none:ga:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:goal8Completions]' derivation='Sum' name='[sum:ga:goal8Completions:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:goal9Completions]' derivation='Sum' name='[sum:ga:goal9Completions:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[sum:ga:sessions:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_730990564049895432]' derivation='User' name='[usr:Calculation_730990564049895432:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation1]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation4]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049137670]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048408580]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation3]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048707589]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation2]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049281031]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469754933260]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469755076621]' ordering-type='Rows' />
+            </column-instance>
+            <column-instance column='[Line 1 (copy)]' derivation='User' name='[usr:Line 1 (copy):qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation1]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation4]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049137670]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048408580]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation3]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564048707589]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation2]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_730990564049281031]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469754933260]' ordering-type='Rows' />
+              <table-calc field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[Calculation_664562469755076621]' ordering-type='Rows' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:channelGrouping:nk]'>
+            <groupfilter function='level-members' level='[none:ga:channelGrouping:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:channelGrouping:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk]' value='p0.00%' />
+            <format attr='text-format' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk]' value='p0.00%' />
+            <format attr='text-format' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='line-pattern' id='refline0' value='dashed' />
+            <format attr='stroke-color' id='refline0' value='#d8504c' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='3'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+            </encodings>
+            <reference-line axis-column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk]' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-pane' value-column='[Parameters].[Parameter 1]' z-order='1' />
+          </pane>
+          <pane id='4' y-axis-name='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+              <lod column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[sum:ga:goal8Completions:qk]' />
+              <lod column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[sum:ga:goal9Completions:qk]' />
+              <lod column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[sum:ga:sessions:qk]' />
+            </encodings>
+          </pane>
+          <pane id='5' y-axis-name='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+              <lod column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Calculation_730990564049895432:qk] + [google-analytics.1exgri219b7s3f18sf2br09xf3e9].[usr:Line 1 (copy):qk])</rows>
+        <cols>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='FY17 Sessions to Goal'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1exgri219b7s3f18sf2br09xf3e9' />
+          </datasources>
+          <datasource-dependencies datasource='google-analytics.1exgri219b7s3f18sf2br09xf3e9'>
+            <column caption='Sessions Goal per Day' datatype='real' name='[Calculation_454582142076739589]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='39852.3' />
+            </column>
+            <column-instance column='[Calculation_454582142076739589]' derivation='Sum' name='[cum:sum:Calculation_454582142076739589:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[ga:sessions]' derivation='Sum' name='[cum:sum:ga:sessions:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The date of the session formatted as YYYYMMDD.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column caption='Sessions' datatype='integer' name='[ga:sessions]' role='measure' type='quantitative'>
+              <desc>
+                <formatted-text>
+                  <run>The total number of sessions.</run>
+                </formatted-text>
+              </desc>
+            </column>
+            <column-instance column='[ga:date]' derivation='None' name='[none:ga:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ga:date]' derivation='Day-Trunc' name='[tdy:ga:date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]' included-values='in-range'>
+            <min>#2016-07-01#</min>
+            <max>#2017-03-19#</max>
+          </filter>
+          <slices>
+            <column>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]' field-type='quantitative' fold='true' max='150000000' min='0' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]' field-type='quantitative' max='150000000.0' min='0.0' range-type='fixed' scope='rows' type='space' />
+            <format attr='subtitle' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]' scope='rows' value='true' />
+            <format attr='subtitle' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]' scope='rows' value='true' />
+            <format attr='display' class='0' field='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='4'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='5' y-axis-name='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='6' y-axis-name='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk] + [google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:ga:sessions:qk])</rows>
+        <cols>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[tdy:ga:date:qk]</cols>
+        <annotations>
+          <annotation class='point' id='1' mark-position='1' pullback='0' text-width='180'>
+            <formatted-text>
+              <run bold='true'>January 1, 2017&#10;FY17 Q3 Start&#10;29% Behind Goal</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='axis'>
+                <x-coord axis-value='#2017-01-02 21:05:03.864#'>
+                  <node-reference>
+                    <axis>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[tdy:ga:date:qk]</axis>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='77321668.909825027'>
+                  <node-reference>
+                    <axis>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[cum:sum:Calculation_454582142076739589:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </point>
+            <body x='-62' y='-79' />
+          </annotation>
+        </annotations>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='FY17 Google Analytics Goal Conversion Rates'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' />
+      <datasources>
+        <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1exgri219b7s3f18sf2br09xf3e9' />
+      </datasources>
+      <datasource-dependencies datasource='google-analytics.1exgri219b7s3f18sf2br09xf3e9'>
+        <column aggregation='None' caption='Default Channel Grouping' datatype='string' name='[ga:channelGrouping]' role='dimension' type='nominal'>
+          <desc>
+            <formatted-text>
+              <run>The default channel grouping that is shared within the View (Profile).</run>
+            </formatted-text>
+          </desc>
+        </column>
+        <column-instance column='[ga:channelGrouping]' derivation='None' name='[none:ga:channelGrouping:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='100000' id='1' name='FY17 Conversion Rates' show-caption='true' show-title='true' w='86667' x='0' y='0' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='7000' id='6' mode='checkdropdown' name='FY17 Conversion Rates' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:channelGrouping:nk]' type='filter' w='13333' x='86667' y='0' />
+              <zone h='8250' id='7' name='FY17 Conversion Rates' pane-specification-id='4' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' type='color' w='13333' x='86667' y='7000' />
+              <zone h='6750' id='8' mode='compact' param='[Parameters].[Parameter 5]' type='paramctrl' w='13333' x='86667' y='15250' />
+              <zone h='6750' id='9' mode='compact' param='[Parameters].[Line 1 (copy)]' type='paramctrl' w='13333' x='86667' y='22000' />
+              <zone h='6375' id='10' mode='type_in' param='[Parameters].[Parameter 1]' type='paramctrl' w='13333' x='86667' y='28750' />
+              <zone forceUpdate='true' h='19750' id='11' type='text' w='13333' x='86667' y='35125'>
+                <formatted-text>
+                  <run fontsize='8'>Goals are based on the following in GA:</run>
+                  <run bold='true' fontsize='8'>&#10;Registrations</run>
+                  <run fontsize='8'> - Goal 4</run>
+                  <run bold='true' fontsize='8'>&#10;Enrollments</run>
+                  <run fontsize='8'>Æ </run>
+                  <run bold='true' fontsize='8'>Old</run>
+                  <run fontsize='8'> - Goal 8</run>
+                  <run bold='true' fontsize='8'>&#10;Enrollments</run>
+                  <run fontsize='8'>Æ </run>
+                  <run bold='true' fontsize='8'>New</run>
+                  <run fontsize='8'> - Goal 9</run>
+                  <run bold='true' fontsize='8'>&#10;Verifications</run>
+                  <run fontsize='8'> - Goal 10</run>
+                  <run bold='true' fontsize='8'>&#10;Revenue</run>
+                  <run fontsize='8'> - eCommerce Revenue</run>
+                </formatted-text>
+              </zone>
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+    <dashboard name='FY17 Sessions To Goal Tracking'>
+      <style />
+      <size maxheight='800' maxwidth='1200' minheight='800' minwidth='1200' />
+      <datasources>
+        <datasource caption='Google Analytics (edX    (35248639))' name='google-analytics.1exgri219b7s3f18sf2br09xf3e9' />
+      </datasources>
+      <datasource-dependencies datasource='google-analytics.1exgri219b7s3f18sf2br09xf3e9'>
+        <column caption='Date' datatype='date' fiscal-year-start='7' name='[ga:date]' role='dimension' type='quantitative'>
+          <desc>
+            <formatted-text>
+              <run>The date of the session formatted as YYYYMMDD.</run>
+            </formatted-text>
+          </desc>
+        </column>
+        <column-instance column='[ga:date]' derivation='None' name='[none:ga:date:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='86667' x='0' y='0'>
+              <zone h='100000' id='1' name='FY17 Sessions to Goal' show-title='true' w='86667' x='0' y='0' />
+            </zone>
+            <zone fixed-size='160' h='100000' id='4' is-fixed='true' param='vert' type='layout-flow' w='13333' x='86667' y='0'>
+              <zone h='9125' id='6' name='FY17 Sessions to Goal' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]' show-domain='false' show-null-ctrls='false' type='filter' w='13333' x='86667' y='0' />
+              <zone h='8250' id='7' name='FY17 Sessions to Goal' pane-specification-id='5' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' type='color' w='13333' x='86667' y='9125' />
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='56'>
+    <window class='dashboard' name='FY17 Sessions To Goal Tracking'>
+      <viewpoints>
+        <viewpoint name='FY17 Sessions to Goal'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='dashboard' maximized='true' name='FY17 Google Analytics Goal Conversion Rates'>
+      <viewpoints>
+        <viewpoint name='FY17 Conversion Rates'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+    </window>
+    <window class='worksheet' hidden='true' name='FY17 Conversion Rates'>
+      <cards>
+        <edge name='left'>
+          <strip size='158'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='4' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='checkdropdown' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:channelGrouping:nk]' type='filter' />
+            <card mode='compact' param='[Parameters].[Parameter 5]' type='parameter' />
+            <card mode='compact' param='[Parameters].[Line 1 (copy)]' type='parameter' />
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='bottom'>
+          <strip size='2147483647'>
+            <card type='caption' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:channelGrouping:nk]</field>
+            <field>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='FY17 Sessions to Goal'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='5' param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[none:ga:date:qk]</field>
+            <field>[google-analytics.1exgri219b7s3f18sf2br09xf3e9].[tyr:ga:date:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='FY17 Sessions To Goal Tracking' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='FY17 Google Analytics Goal Conversion Rates' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

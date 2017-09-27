@@ -1,0 +1,1014 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.16.1103.2331                                -->
+<workbook source-build='9.3.9 (9300.16.1103.2331)' source-platform='mac' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='custom_sql_query (business_intelligence)' inline='true' name='vertica.1t8ebh41603c4z1fe90591hn28k0' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='' one-time-sql='' port='5433' schema='business_intelligence' server='warehouse.analytics.edx.org' username='ahemphill'>
+        <relation name='custom_sql_query' type='text'>select&#10;a.user_id,&#10;a.course_id,&#10;percent_grade,&#10;f.cnt_attempted_subsections,&#10;current_enrollment_mode,&#10;e.course_verification_end_date,&#10;PERCENT_RANK() OVER (partition by a.course_id  order by  percent_grade asc) AS pct_rank_grade,&#10;PERCENT_RANK() OVER (partition by a.course_id  order by  cnt_attempted_subsections asc) AS pct_rank_attempts&#10;&#10;from lms_read_replica.grades_persistentcoursegrade a &#10;join production.d_user b&#10;on a.user_id = b.user_id&#10;--and a.course_id = &apos;course-v1:RITx+PM9001x+1T2017&apos;&#10;&#10;join production.d_user_course d&#10;on a.user_id = d.user_id&#10;and a.course_id = d.course_id&#10;join business_intelligence.course_master e&#10;on a.course_id = e.course_id&#10;join &#10;(&#10;SELECT&#10;user_id,&#10;course_id, &#10;COUNT(first_attempted) AS cnt_attempted_subsections&#10;FROM lms_read_replica.grades_persistentsubsectiongrade&#10;GROUP BY 1,2&#10;) f&#10;ON a.user_id = f.user_id&#10;AND a.course_id = f.course_id&#10;order by percent_grade desc</relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_grade</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percent_grade]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>percent_grade</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_attempted_subsections</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_attempted_subsections]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>cnt_attempted_subsections</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_enrollment_mode</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[current_enrollment_mode]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>current_enrollment_mode</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_verification_end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[course_verification_end_date]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>course_verification_end_date</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pct_rank_grade</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pct_rank_grade]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>pct_rank_grade</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pct_rank_attempts</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pct_rank_attempts]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>pct_rank_attempts</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='grade_percentile' datatype='real' name='[Calculation_4677199368347316224]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RANK_PERCENTILE([percent_grade], &apos;asc&apos;)' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column aggregation='Sum' datatype='integer' name='[cnt_attempted_subsections]' role='dimension' type='quantitative' />
+      <column datatype='string' name='[current_enrollment_mode]' role='dimension' type='nominal' />
+      <column caption='pct_rank_attempts (bin)' datatype='integer' name='[pct_rank_attempts (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-1' formula='[pct_rank_attempts]' peg='0' size='0.2' />
+      </column>
+      <column aggregation='Sum' datatype='real' name='[pct_rank_attempts]' role='dimension' type='ordinal' />
+      <column caption='percent_grade (bin)' datatype='integer' name='[percent_grade (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-1' formula='[percent_grade]' peg='0' size='0.1' />
+      </column>
+      <column aggregation='Sum' datatype='real' name='[percent_grade]' role='dimension' type='ordinal' />
+      <column-instance column='[current_enrollment_mode]' derivation='None' name='[none:current_enrollment_mode:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.531064' measure-ordering='alphabetic' measure-percentage='0.468936' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:current_enrollment_mode:nk]' type='palette'>
+            <map to='#1f77b4'>
+              <bucket>&quot;audit&quot;</bucket>
+            </map>
+            <map to='#2ca02c'>
+              <bucket>&quot;honor&quot;</bucket>
+            </map>
+            <map to='#8c564b'>
+              <bucket>&quot;verified&quot;</bucket>
+            </map>
+            <map to='#9467bd'>
+              <bucket>&quot;professional&quot;</bucket>
+            </map>
+            <map to='#d62728'>
+              <bucket>&quot;no-id-professional&quot;</bucket>
+            </map>
+            <map to='#ff7f0e'>
+              <bucket>&quot;credit&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='course_grading_detailed (ahemphill.course_grading_detailed) (ahemphill)' inline='true' name='vertica.0letx9t0oqrhia1gaafwb0p1na0d' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='' one-time-sql='' port='5433' schema='ahemphill' server='warehouse.analytics.edx.org' username='ahemphill'>
+        <relation name='course_grading_detailed' table='[ahemphill].[course_grading_detailed]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>letter_grade</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[letter_grade]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>letter_grade</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_grade</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percent_grade]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>percent_grade</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_attempts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_attempts]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>cnt_attempts</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_subsections</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_subsections]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>cnt_subsections</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pct_progress</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[pct_progress]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>pct_progress</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>40</precision>
+            <scale>19</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_enrollment_mode</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[current_enrollment_mode]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>current_enrollment_mode</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>enrollment_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[enrollment_date]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>enrollment_date</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>content_availability_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[content_availability_date]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>content_availability_date</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_passed</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[date_passed]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>date_passed</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>days_content_availability_to_pass</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[days_content_availability_to_pass]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>days_content_availability_to_pass</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cnt_users</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cnt_users]</local-name>
+            <parent-name>[course_grading_detailed]</parent-name>
+            <remote-alias>cnt_users</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Percent Grade (bin)' datatype='integer' name='[Percent Grade (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-1' formula='[percent_grade]' peg='0' size='0.1' />
+      </column>
+      <column caption='Cnt Attempts' datatype='integer' name='[cnt_attempts]' role='measure' type='quantitative' />
+      <column caption='Cnt Subsections' datatype='integer' name='[cnt_subsections]' role='measure' type='quantitative' />
+      <column caption='Cnt Users' datatype='integer' name='[cnt_users]' role='measure' type='quantitative' />
+      <column caption='Content Availability Date' datatype='date' name='[content_availability_date]' role='dimension' type='ordinal' />
+      <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+      <column caption='Current Enrollment Mode' datatype='string' name='[current_enrollment_mode]' role='dimension' type='nominal' />
+      <column caption='Date Passed' datatype='date' name='[date_passed]' role='dimension' type='ordinal' />
+      <column caption='Days Content Availability To Pass' datatype='integer' name='[days_content_availability_to_pass]' role='measure' type='quantitative' />
+      <column caption='Enrollment Date' datatype='date' name='[enrollment_date]' role='dimension' type='ordinal' />
+      <column caption='Letter Grade' datatype='string' name='[letter_grade]' role='dimension' type='nominal' />
+      <column caption='Pct Progress' datatype='real' name='[pct_progress]' role='measure' type='quantitative' />
+      <column caption='Percent Grade' datatype='real' name='[percent_grade]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.500426' measure-ordering='alphabetic' measure-percentage='0.499574' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='custom_sql_query (ahemphill)' inline='true' name='vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='' one-time-sql='' port='5433' schema='ahemphill' server='warehouse.analytics.edx.org' username='ahemphill'>
+        <relation name='custom_sql_query' type='text'>select&#10;a.user_id,&#10;a.course_id,&#10;percent_grade,&#10;first_email,&#10;second_email,&#10;current_enrollment_mode,&#10;row_number() OVER (order by percent_grade desc) AS rank&#10;from lms_read_replica.grades_persistentcoursegrade a &#10;join production.d_user b&#10;on a.user_id = b.user_id&#10;and a.course_id = &apos;course-v1:RITx+PM9001x+1T2017&apos;&#10;join ahemphill.bisupport99 c &#10;on b.user_email = c.email&#10;join production.d_user_course d&#10;on a.user_id = d.user_id&#10;and a.course_id = d.course_id&#10;order by percent_grade desc</relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>course_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[course_id]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>course_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percent_grade</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percent_grade]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>percent_grade</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[first_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>first_email</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>second_email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[second_email]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>second_email</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_enrollment_mode</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[current_enrollment_mode]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>current_enrollment_mode</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[rank]</local-name>
+            <parent-name>[custom_sql_query]</parent-name>
+            <remote-alias>rank</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='real' default-format='p0.00%' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Number of Records]) / TOTAL(SUM([Number of Records]))'>
+          <table-calc ordering-type='Columns' />
+        </calculation>
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='percent_grade (bin)' datatype='integer' name='[percent_grade (bin)]' role='dimension' type='ordinal'>
+        <calculation class='bin' decimals='-3' formula='[percent_grade]' peg='0' size='0.025' />
+      </column>
+      <column aggregation='Sum' datatype='real' name='[percent_grade]' role='dimension' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.515745' measure-ordering='alphabetic' measure-percentage='0.484255' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='custom_sql_query (ahemphill)' name='vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='string' name='[current_enrollment_mode]' role='dimension' type='nominal' />
+            <column datatype='string' name='[first_email]' role='dimension' type='nominal' />
+            <column-instance column='[current_enrollment_mode]' derivation='None' name='[none:current_enrollment_mode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[first_email]' derivation='None' name='[none:first_email:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[pcto:sum:Number of Records:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
+            </column-instance>
+            <column caption='percent_grade (bin)' datatype='integer' name='[percent_grade (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-3' formula='[percent_grade]' peg='0' size='0.025' />
+            </column>
+            <column aggregation='Sum' datatype='real' name='[percent_grade]' role='dimension' type='ordinal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:first_email:nk]'>
+            <groupfilter function='level-members' level='[none:first_email:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]'>
+            <groupfilter from='0' function='range' level='[percent_grade (bin)]' to='15' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:first_email:nk]</column>
+            <column>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:current_enrollment_mode:nk]' />
+              <text column='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[pcto:sum:Number of Records:qk:2]</rows>
+        <cols>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]</cols>
+        <show-full-range>
+          <column>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='custom_sql_query (business_intelligence)' name='vertica.1t8ebh41603c4z1fe90591hn28k0' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.1t8ebh41603c4z1fe90591hn28k0'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column datatype='string' name='[current_enrollment_mode]' role='dimension' type='nominal' />
+            <column-instance column='[course_id]' derivation='None' name='[none:course_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[current_enrollment_mode]' derivation='None' name='[none:current_enrollment_mode:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[pcto:sum:Number of Records:qk:5]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='ColumnInPane' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk]'>
+            <groupfilter function='member' level='[none:course_id:nk]' member='&quot;course-v1:ETSx+TOEFLx+1T2017&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk]' value='-90' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:current_enrollment_mode:nk]' />
+              <text column='[vertica.1t8ebh41603c4z1fe90591hn28k0].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk] * [vertica.1t8ebh41603c4z1fe90591hn28k0].[pcto:sum:Number of Records:qk:5])</rows>
+        <cols />
+        <show-full-range>
+          <column>[vertica.1t8ebh41603c4z1fe90591hn28k0].[pct_rank (bin)]</column>
+          <column>[vertica.1t8ebh41603c4z1fe90591hn28k0].[pct_rank_attempts (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='course_grading_detailed (ahemphill.course_grading_detailed) (ahemphill)' name='vertica.0letx9t0oqrhia1gaafwb0p1na0d' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.0letx9t0oqrhia1gaafwb0p1na0d'>
+            <column caption='Percent Grade (bin)' datatype='integer' name='[Percent Grade (bin)]' role='dimension' type='ordinal'>
+              <calculation class='bin' decimals='-1' formula='[percent_grade]' peg='0' size='0.1' />
+            </column>
+            <column caption='Cnt Users' datatype='integer' name='[cnt_users]' role='measure' type='quantitative' />
+            <column caption='Course Id' datatype='string' name='[course_id]' role='dimension' type='nominal' />
+            <column-instance column='[course_id]' derivation='None' name='[none:course_id:nk]' pivot='key' type='nominal' />
+            <column caption='Percent Grade' datatype='real' name='[percent_grade]' role='measure' type='quantitative' />
+            <column-instance column='[cnt_users]' derivation='Sum' name='[sum:cnt_users:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[none:course_id:nk]'>
+            <groupfilter function='member' level='[none:course_id:nk]' member='&quot;course-v1:ETSx+TOEFLx+1T2017&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[none:course_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[sum:cnt_users:qk]</rows>
+        <cols>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[Percent Grade (bin)]</cols>
+        <show-full-range>
+          <column>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[Percent Grade (bin)]</column>
+        </show-full-range>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='68'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:current_enrollment_mode:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:first_email:nk]' type='filter' />
+            <card param='[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:current_enrollment_mode:nk]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:first_email:nk]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:percent_grade:ok]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:current_enrollment_mode:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='dropdown' param='[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:course_id:nk]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:current_enrollment_mode:nk]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:first_email:nk]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[none:percent_grade:ok]</field>
+            <field>[vertica.0nzxdag0qlsn8o1f8ym3z0n4evmf].[percent_grade (bin)]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:cnt_attempted_subsections:ok]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:cnt_attempted_subsections:qk]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_id:nk]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:course_verification_end_date:qk]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:current_enrollment_mode:nk]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[none:percent_grade:ok]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[pct_rank (bin)]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[pct_rank_attempts (bin)]</field>
+            <field>[vertica.1t8ebh41603c4z1fe90591hn28k0].[percent_grade (bin)]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='checkdropdown' param='[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[none:course_id:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[Percent Grade (bin)]</field>
+            <field>[vertica.0letx9t0oqrhia1gaafwb0p1na0d].[none:course_id:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      QmCC
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 2' width='158'>
+      iVBORw0KGgoAAAANSUhEUgAAAJ4AAADACAYAAAD1Adr8AAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAJc0lEQVR4nO3df2jU9x3H8efNi17uW5fVGz3I2STlunIF94emuvljOlgh2Cq0o8lQtEnQ
+      0tBeIAuNa5UqPdCE2LWRphCxamdLXZtBu84qDKU1zEIjLC0GdmQqcemFVXaW0H5zV3Ny+yOJ
+      qZqkl4K+U/N6QDD3vTvv+zme971vvv+8PdlsNovILfYj6x2QmUnhiQmFJyYUnphQeGJC4YkJ
+      hScmFJ6YUHhiQuGJCYUnJhSemFB4YkLhiQmFJyYUnphQeGJC4YkJhScmFJ6YUHhiQuGJCYUn
+      JhSemFB4YkLhiQmFJyYUnphQeGJC4YkJhScmFJ6YUHhiQuGJCYUnJhSemFB4YkLhiQmFJyYU
+      nphQeGJC4YkJhScmFJ6YUHhiQuGJCYUnJry3+gXj8fitfkmZhjwalHyTpV1c5uD4xj7jGdcl
+      4zj4JnlaPB4nEonc/P0zoq/aSVw4FqPmta6xDW6cV2vKqaiooLyyia5kZnh7+hwtNZVUVFQM
+      31e+lW4X3Pj7VDxeTfXj63m1IzHy2DjRqqc4M3Dr1zOd3PKv2h8Gl9OH/8jud7uZ/+hvR7al
+      ObbzeT4qqeG11l/y2d6n2LXtPV5ve4w5yR5OJUPUNz1JIRlSQ3D3HOg5cZRlDfuIzjvKuthx
+      Nq2spPftFlJlDSwuMF2gOR3xxuF2Hab55I9ZNT/L4OXRjWf567+h9onfUOB1WFlVhz95nB4X
+      BvrPAyHu9Gb4ashLSSSMM/KRzst38PryYHA2V9LdNB7x89yGBVZLmzZ0xBuH8/Mq2tu8nDsc
+      p9Md2TgLIMDc0ROzWXnkj/z6n8868XhSNO45B319DPrLaNm/mcJFD3Aytp7ObJbSmiZ63owR
+      2Bgj4oN0Bnwz+N2fwUufhHf4bUldvv6O1LgPL1wRpWFFEYsjQSBBS3kd7afXUrd0M4fuW0uS
+      AkLeLsrb7qep5SJby5/hrMfDsupG6laHb+pSpit91ebqyvA/6czohiFSpIAM5M2lqCQ4sj1A
+      0A/x3i8B8AWChAI+Ova8RGl9NXTsJ7GmiXcO/p6uAx8yU//GUHi5cu7hwcAgbe2nAeh+9w0G
+      WUKhk+GT3c8TbT6BC6QTXZwchFVLSq4+NZM4xitnlvPE0iBDLoTuugOcueT7bZYyHeirdhLe
+      2X4YGr3l8MgL9fwz2kzF3z1ks/OoeXETQXw89MIWPo02U12xF4BFG3dQHh49GXRp33qA5fVt
+      BADfigc5u72WygNZ8svqcQzWNR3oAvKUZXAHvmFOgXPDp9Z1B2BWAc41V4bTJC4kCRSHrl4w
+      TicTJL72ES4OTPgqt/sFZIU3Td3u4ekcT0woPDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8
+      MaHwxITCExMKT0woPDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHwxITCExMKT0woPDGh
+      8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHwxITCExMKT0woPDGh8G6mtIs7NoMKGB6SnDba
+      nelE4U0g5yHJDHCspX5kQHIlf+lKjjxcQ5Ino/Bu4HL6cIyGg934nbyRbWNDkve9dZDaJf9i
+      17b3cIELx/Zw4FQRjQcP8WLtEt7etZN4emxI8luNj/LR/uOkgbiGJF+l8K4ztSHJLh/9+Qyl
+      tesIOz6KV26gjD7+cXb4kKYhyRPTEL3rTHVI8mzgp/NG7/Di+MEFDUn+DjN8+eOY4pBk4FsT
+      HscENSR5UgovFxMOSYbLwNeZsb9cLw/CNyMh+gJBQkBH7CVK61uhY8fwkOTHLlJZ9SEDq8MU
+      MDwwb6pKnv3g+67GRG/Tw9fc1jleLiYckuzwi7V3c6r1CF8AA93vcwQ/i4rGptDmMiQ5Eonc
+      8HO70xFvArkNSYbgI39gzcdRaiuGj0C/rtnN0sDo26ohyRPRvNop+Y4hyXMKcK654/sNSYbv
+      nlf7Q/+q1RFvSrw4BeO/ZY4z3sU5H6Hi0LVbAiHCkzc3I+gcT0woPDGh8MSEwhMTCk9MKDwx
+      ofDEhMITEwpPTCg8MaHwxITCExMKT0woPDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHw
+      xITCExMKT0woPDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHwxITCExMKT0woPDGh8MSE
+      whMTCk9MKDwxofDEhMITEwpPTCg8MaHwbqa0izs2Tx6AjOuSNtqd6UTzanOU+eI0u6LNdHs8
+      ZOctY+vOKAsDXkifo6UuxseXUgBks/ey4/Vd3NP3PtXb3wRgVfRlnl4ZgnScaFUjm177E4vH
+      G287gyi8nHzB3mgz/WW17Ksq5Xz7TnbV7KW1/WkCyR5OJUPUNz1JIRlSQ3D3HOg5cZRlDfuI
+      zjvKuthxNq2spPftFlJlDTM+OtBXbW7cfjoJEN2wkgKvw8Ly9fjppN+Fgf7zQIg7vRm+GvJS
+      EglfHQ+fl+/g9eXB4GyupLtpPOLnuQ0LTJcyXeiIl4tZeeSTJN7rsiDikE70kfKk+O//0vBZ
+      Jx5PisY956Cvj0F/GS37N1O46AFOxtbTmc1SWtNEz5sxAhtjRHyQzoBvhr/zM3z5OfItoO53
+      P2P79mqOz5/Ppc8/J5vN5yd3eClcEaVhRRGLI0EgQUt5He2n11K3dDOH7ltLkgJC3i7K2+6n
+      qeUiW8uf4azHw7LqRupWh61XZkbh5ejeNdt4ZXEf/ZfyKCq8xLZoKz4fkDeXolBw5FEBgn44
+      2fslLA3iCwQJAR2xlyitb4WOHSTWNPHOYxeprPqQgdVhCoB4PG63MCM6x8tJktaNVRzuv5OF
+      C8Oc/9t+kv5fUeRk+GT380SbT+AC6UQXJwdh1ZKSq8/MJI7xypnlPLE0yJALobvuAGcu+f6x
+      /z0Sidzwc7vTES8nAdZtWUPt7lo+fhmy2QVsaasigJeHXtjCp9Fmqiv2ArBo4w7Kw76R57m0
+      bz3A8vo2AoBvxYOc3V5L5YEs+WX1OGbrsefJZrNZ6534wcikcb+5guPcmIzrDsCsAhzft7em
+      SVxIEigOMbo5nUyQ+NpHuDgw6UvF4/FJj3wlz34w9f031Nv08DW3dcSbCq/v6qWS6znOeBfn
+      fISKQ9duCYQIT97cjKBzPDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHwxITCExMKT0wo
+      PDGh8MSEwhMTCk9MKDwxofDEhMITEwpPTCg8MaHwxITCExMKT0woPDGh8MTE/wHZIfbH4gPH
+      aAAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 3' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>

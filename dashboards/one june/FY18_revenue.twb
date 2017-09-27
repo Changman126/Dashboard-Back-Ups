@@ -1,0 +1,770 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 9300.17.0201.1840                                -->
+<workbook source-build='9.3.13 (9300.17.0201.1840)' source-platform='win' version='9.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='time_net_agg (finance.time_net_agg) (finance)' inline='true' name='vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y' version='9.3'>
+      <connection class='vertica' dbname='warehouse' odbc-connect-string-extras='' odbc-native-protocol='yes' one-time-sql='' port='5433' schema='finance' server='10.5.3.246' username='ojchang'>
+        <relation name='time_net_agg' table='[finance].[time_net_agg]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>week_start_fiscal_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[week_start_fiscal_year]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_start_fiscal_year</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week_start_fiscal_quarter</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[week_start_fiscal_quarter]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_start_fiscal_quarter</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fiscal_year_quarter_filter</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[fiscal_year_quarter_filter]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>fiscal_year_quarter_filter</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week_start_fiscal_week_number</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[week_start_fiscal_week_number]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_start_fiscal_week_number</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>36</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week_of</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[week_of]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_of</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week_start_current_quarter</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[week_start_current_quarter]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_start_current_quarter</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week_start_current_week_number</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[week_start_current_week_number]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>week_start_current_week_number</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>36</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[gross_revenue]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>gross_revenue</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>39</precision>
+            <scale>3</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_expenses</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[total_expenses]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>total_expenses</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>42</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_revenue</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[net_revenue]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>net_revenue</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>42</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_sustainable_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_sustainable_bookings]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>net_sustainable_bookings</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_margin]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>weekly_margin</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_gross_percentage_of_total</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[weekly_gross_percentage_of_total]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>weekly_gross_percentage_of_total</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>81</precision>
+            <scale>42</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_gross_trend_to_target</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_gross_trend_to_target]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>weekly_gross_trend_to_target</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weekly_net_sustainable_trend_to_target</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weekly_net_sustainable_trend_to_target]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>weekly_net_sustainable_trend_to_target</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>last_week_fy_quarter</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[last_week_fy_quarter]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>last_week_fy_quarter</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>36</precision>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adjust</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[adjust]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>adjust</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_sustainable_bookings_ytd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_sustainable_bookings_ytd]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>net_sustainable_bookings_ytd</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dividend_gross</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dividend_gross]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>dividend_gross</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>difference_by_quarter_gross</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[difference_by_quarter_gross]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>difference_by_quarter_gross</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>difference_by_quarter_net</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[difference_by_quarter_net]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>difference_by_quarter_net</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue_remaining_target</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[gross_revenue_remaining_target]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>gross_revenue_remaining_target</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_sustainable_bookings_remaining_target</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_sustainable_bookings_remaining_target]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>net_sustainable_bookings_remaining_target</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quarter_weekly_gross_forecast</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quarter_weekly_gross_forecast]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>quarter_weekly_gross_forecast</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quarter_weekly_net_sustainable_forecast</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[quarter_weekly_net_sustainable_forecast]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>quarter_weekly_net_sustainable_forecast</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gross_revenue_prior</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[gross_revenue_prior]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>gross_revenue_prior</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>39</precision>
+            <scale>3</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_NUMERIC&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>net_sustainable_bookings_prior</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[net_sustainable_bookings_prior]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>net_sustainable_bookings_prior</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_margin_prior</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[yearly_margin_prior]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>yearly_margin_prior</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>target_gross_booking</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[target_gross_booking]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>target_gross_booking</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>target_net_bookings</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[target_net_bookings]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>target_net_bookings</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>target_agg_margin</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[target_agg_margin]</local-name>
+            <parent-name>[time_net_agg]</parent-name>
+            <remote-alias>target_agg_margin</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Adjust' datatype='boolean' name='[adjust]' role='dimension' type='nominal' />
+      <column caption='Difference By Quarter Gross' datatype='real' name='[difference_by_quarter_gross]' role='measure' type='quantitative' />
+      <column caption='Difference By Quarter Net' datatype='real' name='[difference_by_quarter_net]' role='measure' type='quantitative' />
+      <column caption='Dividend Gross' datatype='real' name='[dividend_gross]' role='measure' type='quantitative' />
+      <column caption='Fiscal Year Quarter Filter' datatype='integer' name='[fiscal_year_quarter_filter]' role='measure' type='quantitative' />
+      <column caption='Gross Revenue' datatype='real' name='[gross_revenue]' role='measure' type='quantitative' />
+      <column caption='Gross Revenue Prior' datatype='real' name='[gross_revenue_prior]' role='measure' type='quantitative' />
+      <column caption='Gross Revenue Remaining Target' datatype='real' name='[gross_revenue_remaining_target]' role='measure' type='quantitative' />
+      <column caption='Last Week Fy Quarter' datatype='real' name='[last_week_fy_quarter]' role='dimension' type='quantitative' />
+      <column caption='Net Revenue' datatype='real' name='[net_revenue]' role='measure' type='quantitative' />
+      <column caption='Net Sustainable Bookings' datatype='real' name='[net_sustainable_bookings]' role='measure' type='quantitative' />
+      <column caption='Net Sustainable Bookings Prior' datatype='real' name='[net_sustainable_bookings_prior]' role='measure' type='quantitative' />
+      <column caption='Net Sustainable Bookings Remaining Target' datatype='real' name='[net_sustainable_bookings_remaining_target]' role='measure' type='quantitative' />
+      <column caption='Net Sustainable Bookings Ytd' datatype='real' name='[net_sustainable_bookings_ytd]' role='measure' type='quantitative' />
+      <column caption='Quarter Weekly Gross Forecast' datatype='real' name='[quarter_weekly_gross_forecast]' role='dimension' type='quantitative' />
+      <column caption='Quarter Weekly Net Sustainable Forecast' datatype='real' name='[quarter_weekly_net_sustainable_forecast]' role='dimension' type='quantitative' />
+      <column caption='Target Agg Margin' datatype='real' name='[target_agg_margin]' role='measure' type='quantitative' />
+      <column caption='Target Gross Booking' datatype='real' name='[target_gross_booking]' role='measure' type='quantitative' />
+      <column caption='Target Net Bookings' datatype='real' name='[target_net_bookings]' role='measure' type='quantitative' />
+      <column caption='Total Expenses' datatype='real' name='[total_expenses]' role='measure' type='quantitative' />
+      <column caption='Week Of' datatype='datetime' name='[week_of]' role='dimension' type='ordinal' />
+      <column caption='Week Start Current Quarter' datatype='integer' name='[week_start_current_quarter]' role='dimension' type='quantitative' />
+      <column caption='Week Start Current Week Number' datatype='real' name='[week_start_current_week_number]' role='dimension' type='quantitative' />
+      <column caption='Week Start Fiscal Quarter' datatype='integer' name='[week_start_fiscal_quarter]' role='dimension' type='quantitative' />
+      <column caption='Week Start Fiscal Week Number' datatype='real' name='[week_start_fiscal_week_number]' role='dimension' type='quantitative' />
+      <column caption='Week Start Fiscal Year' datatype='integer' name='[week_start_fiscal_year]' role='dimension' type='quantitative' />
+      <column caption='Weekly Gross Percentage Of Total' datatype='real' name='[weekly_gross_percentage_of_total]' role='measure' type='quantitative' />
+      <column caption='Weekly Gross Trend To Target' datatype='real' name='[weekly_gross_trend_to_target]' role='measure' type='quantitative' />
+      <column caption='Weekly Margin' datatype='real' name='[weekly_margin]' role='measure' type='quantitative' />
+      <column caption='Weekly Net Sustainable Trend To Target' datatype='real' name='[weekly_net_sustainable_trend_to_target]' role='measure' type='quantitative' />
+      <column caption='Yearly Margin Prior' datatype='real' name='[yearly_margin_prior]' role='measure' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.32859' measure-ordering='alphabetic' measure-percentage='0.67141' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='time_net_agg (finance.time_net_agg) (finance)' name='vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y' />
+          </datasources>
+          <datasource-dependencies datasource='vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y'>
+            <column caption='Gross Revenue' datatype='real' name='[gross_revenue]' role='measure' type='quantitative' />
+            <column caption='Net Revenue' datatype='real' name='[net_revenue]' role='measure' type='quantitative' />
+            <column caption='Net Sustainable Bookings' datatype='real' name='[net_sustainable_bookings]' role='measure' type='quantitative' />
+            <column-instance column='[week_start_fiscal_quarter]' derivation='None' name='[none:week_start_fiscal_quarter:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[week_start_fiscal_quarter]' derivation='None' name='[none:week_start_fiscal_quarter:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[week_start_fiscal_week_number]' derivation='None' name='[none:week_start_fiscal_week_number:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[week_start_fiscal_year]' derivation='None' name='[none:week_start_fiscal_year:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[week_start_fiscal_year]' derivation='None' name='[none:week_start_fiscal_year:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[gross_revenue]' derivation='Sum' name='[sum:gross_revenue:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[net_revenue]' derivation='Sum' name='[sum:net_revenue:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[net_sustainable_bookings]' derivation='Sum' name='[sum:net_sustainable_bookings:qk]' pivot='key' type='quantitative' />
+            <column caption='Week Start Fiscal Quarter' datatype='integer' name='[week_start_fiscal_quarter]' role='dimension' type='quantitative' />
+            <column caption='Week Start Fiscal Week Number' datatype='real' name='[week_start_fiscal_week_number]' role='dimension' type='quantitative' />
+            <column caption='Week Start Fiscal Year' datatype='integer' name='[week_start_fiscal_year]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:gross_revenue:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:net_revenue:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:net_sustainable_bookings:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_quarter:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>1</max>
+          </filter>
+          <filter class='quantitative' column='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_year:qk]' included-values='in-range'>
+            <min>2018</min>
+            <max>2018</max>
+          </filter>
+          <slices>
+            <column>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_year:qk]</column>
+            <column>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_quarter:qk]</column>
+            <column>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:gross_revenue:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:net_revenue:qk]' value='C1033%' />
+            <format attr='text-format' field='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[sum:net_sustainable_bookings:qk]' value='C1033%' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[:Measure Names]' value='156' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='3'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[:Measure Names]</rows>
+        <cols>([vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_year:ok] / ([vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_quarter:ok] / [vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_week_number:ok]))</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='32'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_quarter:qk]</field>
+            <field>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_week_number:qk]</field>
+            <field>[vertica.1frkdaq1n3lx5l10i9pwt1r8bd9y].[none:week_start_fiscal_year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='144' name='Sheet 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAACQCAYAAABeUmTwAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAUtUlEQVR4nO3de1RVdd7H8ffMJhAQGcUURRbq6OiIKaIot9LES1ExQ9l5QoXwTmmZFFaa
+      l/LBDBIExxFTk0HquE4qMzYwg5MzWQckUKQMwydHpQNmJhoSHCW2Pn8ckItyMRh01v6+1mIp
+      Z+/927+z2Z+zf+fyO99fXL9+/TpCaNQv73QHhLiTJABC0yQAQtMkAELTJABC0yQAQtMkAELT
+      JABC0yQAQtMkAELTJABC0yQAQtMkAELTJABC0yQAQtMkAELTJABC0yQAQtMkAELTJABC0yQA
+      QtMkAELTJABC0yQAQtMkAELTJABC0yQAQtMkAOKuUlRU1Kn7kwAITZMACE2TAAhNkwAITZMA
+      CE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhN
+      kwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMA
+      CE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhN
+      kwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMACE2TAAhNkwAITZMA
+      CE37xfXr16+3tEJRUVFn9UWITtdqAIToTEVFRQwdOrTT9idDIKFpEgChaVbtbaD6XBY7Nu7A
+      +PVlrgJWdj0Y4BnEjKenMsxR6YAutkceibpYjE1utek2GK+ZESyc4Mqd7qHobCrF6W/xtuEY
+      35nV9gWgIi+RyNgc7KcuIWGVFz2sVa6UHGTj60msfulbViXNwf1uOMPcQoiPDcYFQC0na+ML
+      JPwxht5uG/mfAXe6c6JTFe7gjdRLTP7fCL7d9G07hkBqIYZ3jJQPmcmKOV70sAZQ6NJvIlFb
+      DRi23iUnf1OKI35+o4DvOHrs3J3ujehkpuPHqfD8HU/+2hpQ2nEFKMrBWA79pt6HU4sr1g5D
+      +vnib52L8dRvWbB9BQE2ZziQtBV93tdcvmqF3YDxzFsyCz9na0DFtH89b79fwLdVNVjZ9cFj
+      +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
+    </thumbnail>
+  </thumbnails>
+</workbook>
