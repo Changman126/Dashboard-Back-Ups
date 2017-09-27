@@ -1,0 +1,3 @@
+CREATE TABLE ahemphill.bisupport_177 (user_email varchar(555));
+
+COPY ahemphill.bisupport_177 FROM LOCAL '/Users/adleyhemphill/Downloads/bisupport_177.csv' WITH DELIMITER ',';

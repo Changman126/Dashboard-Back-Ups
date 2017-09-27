@@ -1,0 +1,26 @@
+Context: Katy, Gabe and I met a few weeks ago to clearly define metrics and evaluate what metrics we are missing.
+
+We circled around the problem for awhile and eventually decided to ground ourselves in the more high level purpose of metrics: to describe an aspect of a process or the business.
+
+Next question: What does edX's business look like? What do we do and care about?
+
+This was a really instructive exercise and I wanted to share the first output from our brainstorming session. 
+
+The goal here is not to show off a suite of new metrics, but rather a process for understanding and measuring what we do and how it fits into the larger company goals. This way of thinking is useful in:
+
+1) Designing AB tests.
+2) Breaking down large projects into executable initiatives
+3) Highlighting key conversions that define success.
+
+Block diagrams! Customer flow diagrams! Boring but powerful. They force you to:
+
+1) Explicitly define a workflow and identify key events along that path.
+2) Simplify complicated processes into their constituent components.
+3) Understand where key projects and initiatives fit in.
+
+Conveniently, the ratio of any two of those events, a conversion, are out of the box metrics that we can use to evalute the impact of our work.
+
+This may seem obvious, but it's critical that we break down large scale problems into small pieces. This reduces the noise that we get out of experiments and allows us to answer important questions along the way. Doing this consciously and explicitly can also help with prioritization.
+
+High level, I'd like to propose that we start building out and aligning on these key user workflows (and perhaps those one level down). They provide a clean framework for us to go and dig in deeper, with start and end points that we know matter to the business. As we look into a re-org based on our different customers, OJ and I would be excited to sit down with the different teams, map out what the customer flow looks like, and hopefully consolidate measures of success and priorities.
+
