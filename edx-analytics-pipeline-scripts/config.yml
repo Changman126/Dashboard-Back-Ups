@@ -1,0 +1,82 @@
+scripts:
+  - name: edx_summary
+    location: edx_summary.sql
+    description: A summary table with key metrics across all of edX.
+  - name: spanish_language_countries
+    location: spanish_language_countries.sql
+    description: Tracking which countries we want to include as targets for edX i18n.
+  - name: identify
+    location: identify.sql
+    description: A table that links all anonymous identifiers for a user with the identifier they eventually login with. This allows us to look at an anonymous user identifier and tell if the user ever eventually logged in.
+  - name: event_summary
+    location: event_summary.sql
+    description: A per-day count of events from tracking logs and Segment, grouped by project and event type.
+  - name: simple_daily_stats_tables
+    location: simple_daily_stats_tables.sql
+    description: A per day count of registrations, enrollments, verifications, and vtr as well as running totals and weekly calculations.
+  - name: voucher_redemption
+    location: voucher_redemption.sql
+    description: tables that consolidate voucher generation and redemption data.
+  - name: mapping_tables
+    location: mapping_tables.sql
+    description: a collection of mapping tables including a course metadata table, alphabetically deduped course subjects table, and a course dates table.
+  - name: course_completion
+    location: course_completion.sql
+    description: Consolidate course completion information per course_id.
+  - name: stats_summary_tables
+    location: stats_summary_tables.sql
+    description: summary tables for courses, programs, and partners.
+  - name: course_first_event
+    location: course_first_event.sql
+    description: Overall count of first time enrollments, verifications, and certificates by course_id.
+  - name: stats_time_tables
+    location: stats_time_tables.sql
+    description: A per day count of enrollments, verifications, vtr, and bookings by course_id.
+  - name: registrations_course
+    location: registrations_course.sql
+    description: Table associating registration events driven by specific courses.
+  - name: user_content_availability_date
+    location: user_content_availability_date.sql
+    description: Find content availability date [MAX(user_enrollment_date, course_start_date)] per (user_id, course_id).
+  - name: activity_engagement_time
+    location: activity_engagement_time.sql
+    description: Daily aggregation of activity and engagement events by course.
+  - name: grading_summary
+    location: grading_summary.sql
+    description: Aggregation of subsection and course level grading based on new persistent grading framework.
+  - name: utm_attribution_model
+    location: utm_attribution_model.sql
+    description: Log daily source of user acquisition to feed into marketing acquisition analysis. 
+  - name: ltv_summary
+    location: ltv_summary.sql
+    description: Calculation of learner value after their first course to support Tableau dashboards. Lifetime value (LTV) proxy.
+  - name: course_availability
+    location: course_availability.sql
+    description: Tracking the count of courses enrollable, verifiable, and running over time.
+  - name: d_course_dates_changelog
+    location: d_course_dates_changelog.sql
+    description: Changelog of course dates from d_course.
+  - name: enterprise_summary
+    location: enterprise_summary.sql
+    description: Tracking enrollments that are attributable to an enterprise, along with relevant metadata.
+  - name: experiment_results
+    location: experiment_results.sql
+    description: Pull experiment exposure data from event log.
+  - name: finance_audit
+    location: finance_check.sql
+    description: Look for errors in our finance table.
+  - name: program_compliance
+    location: program_compliance.sql
+    description: Check that courses within a program are within compliance (defined within).
+  - name: user_session_time
+    location: user_session_time.sql
+    description: Pull time spent per session, per user.
+  - name: d_user_categorized
+    location: d_user_categorized.sql
+    description: Add categorizations of user demographics to d_user.
+  - name: survey_query
+    location: survey_query.sql
+    description: Course end survey query.
+  - name: grant_standard_role_access
+    location: grant_standard_role_access.sql
+    description: This should always be run last! It grants access to all tables in the schema to the standard role.
